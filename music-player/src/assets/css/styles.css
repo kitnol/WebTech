@@ -185,10 +185,17 @@ button i {
     transition: all 0.3s ease;
 }
 
+.progress-circle:hover {
+    background: conic-gradient(var(--primary-color) 0deg,
+            var(--primary-color) 0deg,
+            #b3b3b3 0deg);
+
+}
+
 .progress-circle::before {
     content: '';
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     background-color: #121212;
     position: absolute;
@@ -199,5 +206,20 @@ button i {
     z-index: 1;
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #b3b3b3;
+}
+
+.track-art {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+    
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
 }
