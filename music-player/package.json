@@ -1,0 +1,14 @@
+{
+  "name": "music-player",
+  "version": "1.0.0",
+  "description": "A simple music player application.",
+  "main": "src/js/player.js",
+  "scripts": {
+    "start": "live-server src"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

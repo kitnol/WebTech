@@ -1,0 +1,166 @@
+/* Variables */
+:root {
+    --primary-color: #1eedbe;
+    --secondary-color: #72f2cc;
+    --background-color: #121212;
+    --text-color: #f1f1f1;
+    --txt-bk-color: #b3b3b3;
+}
+
+
+/* Styles for the music player */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+/* Music player controls */
+.controls {
+    grid-area: "controls";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1%;
+    padding: 10px 0;
+    float: center;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+    height: 35px;
+    width: 35px;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: background-color .2s ease-out, .2s ease-out;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    animation: pulse 0.5s;
+}
+
+button i {
+    font-size: 16px;
+    vertical-align: middle;
+    color: var(--background-color);
+}
+
+#frbk  {
+    background-color: transparent;
+}
+
+#frbk:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+#frbk i{
+    color: var(--txt-bk-color);
+}
+
+#frbk i:hover{
+    color: var(--text-color);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(0.97);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Progress bar of music player */
+#seekbar {
+    -webkit-appearance: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 5px;
+    height: 10px;
+    width: 100%;
+    margin-left: 0px;
+}
+
+#seekbar:hover {
+    background-color: var(--primary-color);
+    transition: 0.2s;
+}
+
+.seekbar-container {
+    background-color: var(--txt-bk-color);
+    height: 10px;
+    border-radius: 5px;
+    margin-left: 10%;
+    width: 80%;
+    grid-area: "progress-bar";
+    position: relative;
+    display: flex;
+    vertical-align: middle;
+}
+
+/* Current time display */
+#current-time {
+    grid-area: "left";
+    position: relative;
+    display: flex;
+    vertical-align: middle;
+    text-align: right;
+}
+
+/* Volume control */
+#volume {
+    grid-area: "volume";
+    width: 80%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+    vertical-align: middle; 
+}
+
+#volume input[type="range"] {
+    width: 90%;
+    height: 10px;
+    outline: none;
+}
+
+#volume i {
+    vertical-align: middle;
+}
+
+/* Footer styling */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0 0;
+    display: grid;
+    grid-template:
+        "empty controls empty" 
+        "left progress-bar volume" ;
+    grid-template-columns: 15% 70% 15%;
+    gap: 0px;
+    padding: 10px 0;
+    background-color: #282828;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+}
