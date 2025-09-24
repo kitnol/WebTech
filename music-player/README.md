@@ -6,7 +6,6 @@ This project is a simple music player that allows users to play, pause, and navi
 ## Project Structure
 - `src/assets/css/styles.css`: Contains styles for the music player.
 - `src/js/player.js`: Handles core functionality of the music player.
-- `src/js/controls.js`: Manages user interface controls.
 - `src/index.html`: Main HTML document for the music player.
 - `package.json`: Configuration file for npm.
 
