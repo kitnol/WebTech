@@ -1,0 +1,123 @@
+/*I HAVE COPIED IT FROM THE LECTURE 3 JAVASCRIPT TEMPLATE TOGETHER WITH THE EVENTS.JS AND KEYPRESS.JS*/
+
+/* Variables */
+:root {
+  --primary-color: #1eedbe;
+  --secondary-color: #72f2cc;
+  --background-color: #121212;
+  --text-color: #f1f1f1;
+  --txt-bk-color: #b3b3b3;
+}
+
+/*Text, titles font/color/style*/
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /*to make sure it stays on top of everything*/
+  padding: 5px;
+  text-align: center;
+  background: #333;
+  color: white;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0px 20px 0px 20px;
+  text-align: center;
+}
+
+.bottominfo {
+  padding: 10px;
+  background-color: purple;
+  text-align: center;
+  color: white;
+  text-decoration: none; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.bottominfo a {
+  color: white;
+  text-decoration: none;
+}
+
+.bottominfo a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+h2 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #121212;
+}
+p {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  
+  padding: 5px;
+  display: flex;
+  background-color: #333;
+  justify-content: center;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.navbar a:hover { /* Change color on hover */
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar a.active {
+  text-decoration: underline; /*Creates a simple underline.*/
+  font-weight: bold; /*Makes the text visually heavier*/
+  border-bottom: 3px solid purple; /* A thick orange line */
+  padding-bottom: 5px;             /* Adds space between text and line */
+}
+
+
+form {
+  display: inline-grid;
+  grid-row-gap: 16px;
+}
+
+.grid {
+  display: grid;
+}
+
+.tracks {
+  grid-row-gap: 5px;
+}
+
+.inputs {
+  grid-row-gap: 5px;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+.invalid-feedback{
+  display: none;
+}
