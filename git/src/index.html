@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/index_styles.css">
+    <link rel="stylesheet" href="assets/css/basic_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Music Player</title>
 </head>
@@ -17,8 +18,22 @@
           <a href="artists.html">Artists</a>
           <a href="newtrack.html" >Add new</a>
           <a href="profile.html">Profile</a>
+          <a href="login.html">Login</a>
         </nav> 
       </header> <!--I added-->
+
+      
+        <div class="music-sheets">
+                 <img src="https://placehold.co/600x600?text=music_sheets" alt="music_sheets">
+                <!-- somehow display the music sheet here for the specific track, this should be the biggest block, left of both track picker and player-->
+        </div>
+        
+        <div class="music-tracks">
+            <!--make user pick the track or playlist here,  this should be above the music player-->
+            <img src="https://placehold.co/200x400?text=track_picker" alt="track_picker">
+        </div>
+    
+
 
     <div class="music-player">
         <h1>Home</h1> <!-- I changed the name from "Music player"-->
@@ -29,6 +44,12 @@
         
         <audio id="audio" src=""></audio>
     </div>
+    
+    <fotter class="bottom">
+        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
+    </fotter>  
+ 
+
     <div class="footer">
         <div></div>
         <!--<div class="seekbar-container">
@@ -42,8 +63,11 @@
         </div>
         <div id="volume">
             <input class="volume" type ="range" min="0" max="1" value="1" step="0.01">
+            <div id="volume-icon">
+                <i class="fa fa-volume-up vol-ico"></i>
+            </div>
         </div>
-        <div id="current-time">0:00</div>
+        <div id="timeDisplay">0:00</div>
 
         
         <div class="controls">
@@ -51,10 +75,9 @@
             <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button>
             <button onclick="player.next()" id="frbk"><i class="fa fa-forward"></i></button>
         </div>
-        <div id="volume-icon">
-            <i class="fa fa-volume-up vol-ico"></i>
-        </div>
+        <div class="song-length">0:00</div>
     </div>
+
 
     <script src="js/player.js"></script>
    <script>
@@ -104,8 +127,5 @@
         // Initialize with 0%
         setProgress(0);
     </script>
-    <footer class="bottominfo">
-        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
-      </footer>  
 </body>
 </html>

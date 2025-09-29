@@ -15,37 +15,9 @@ p {
 main{
   text-align: center;
 }
-form {
-  display: inline-grid;
-  grid-row-gap: 16px;
-}
-
-.grid {
-  display: grid;
-}
-
-.tracks {
-  grid-row-gap: 5px;
-}
-
-.inputs {
-  grid-row-gap: 5px;
-}
-
-.invalid-feedback {
-  color: #dc3545;
-}
-
-.is-invalid {
-  border-color: #dc3545;
-}
-
-.invalid-feedback{
-  display: none;
-}
 
 /*interactive buttons "view more"*/
-.submitbutton {
+button {
   background-color: purple;
   border: none;
   color: white;
@@ -60,9 +32,16 @@ form {
   border-radius: 10px; /*add rounded corners*/
 }
 
-.submitbutton:hover {
+button:hover {
   background-color: indigo;color: white;
   /* Increase the size by 10% (1.1) when hovered */
   transform: scale(1.1); 
 
 }
+
+fieldset{
+  width: 300px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+

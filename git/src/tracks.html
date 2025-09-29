@@ -3,8 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/basic_styles.css">
+        <link rel="stylesheet" href="assets/css/tracks_styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script defer src="js/tracks.js"></script>
         <title>Tracks</title>
     </head>
 <body>
@@ -17,6 +19,7 @@
           <a href="artists.html">Artists</a>
           <a href="newtrack.html" >Add new</a>
           <a href="profile.html">Profile</a>
+          <a href="login.html">Login</a>
         </nav> 
       </header> <!--I added-->
     <main>
@@ -24,9 +27,40 @@
         <p>
             List of all the tracks divided by author.     
         </p> 
+        <section class="grid">
+            <article class="card">
+              <h2>Track 1 - Artist 1</h2>
+              <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+            </article>
+            <article class="card">
+                <h2>Track 2 - Artist 2</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+              <article class="card">
+                <h2>Track 3 - Artist 3</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+              <article class="card">
+                <h2>Track 4 - Artist 4</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+              <article class="card">
+                <h2>Track 5 - Artist 5</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+              <article class="card">
+                <h2>Track 6 - Artist 6</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+              <article class="card">
+                <h2>Track 7 - Artist 7</h2>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button> <!--NOT DONE when you click it it should bring you to the home page playing the right track-->
+              </article>
+            
+      
     </main>
-    <footer class="bottominfo">
-        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html">About us</a>
-      </footer>  
+    <fotter class="bottom">
+        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
+    </fotter>  
 </body>
 </html>
