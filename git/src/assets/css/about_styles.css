@@ -1,0 +1,50 @@
+h2 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
+  color: #520019;
+}
+p {
+  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #784848;
+}
+
+/*cards fratures*/
+.grid {
+  display: grid;
+  gap: 20px 20px;
+  /*grid-template-columns: auto auto auto; removed because it needs to vary based on the device*/ 
+  padding: 50px;    
+}
+
+/*to make the grid change size based on teh device*/
+@media only screen and (max-width: 600px) { /*phone*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-width: 600px) { /*tablet*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) { /*laptop*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  background-color: #e6d1e3;
+  max-width: 700px;   /* prevents it from stretching too wide */
+  margin: auto;     /* centers the card inside the grid */
+  padding: 20px 50px;  /* this padding is necessary to have the text in the card nicely centered */
+  font-size: 10px;
+  text-align: center;
+  border-radius: 25px; /*add rounded corners*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
+}

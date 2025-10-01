@@ -1,9 +1,9 @@
 /* Variables */
 :root {
-  --primary-color: #1eedbe;
-  --secondary-color: #72f2cc;
-  --background-color: #121212;
-  --text-color: #f1f1f1;
+  --primary-color: purple;
+  --secondary-color: hsl(300, 48%, 51%);
+  --background-color: plum;
+  --text-color: black;
   --txt-bk-color: #b3b3b3;
 }
 
@@ -15,20 +15,34 @@ body {
   padding: 0;
 }
 
+.header{
+  grid-template: 
+  "title"
+  "navbar";
+  gap: 10px;
+  grid-template-rows: 70% 30%;
+}
+
+.header h1{
+  grid-area: "title";
+}
+
 /*Navigation bar*/
 /* Style the top navigation bar */
-.navbar {
 
+.navbar {
+  height: auto;
+  width: auto;
+  grid-area: "navbar";
   padding: 5px;
-  display: flex;
-  background-color: #333;
+  background-color: purple;
   justify-content: center;
 }
 
 /* Style the navigation bar links */
 .navbar a {
   color: white;
-  padding: 14px 20px;
+  padding: 1% 1%;
   text-decoration: none;
   text-align: center;
 }
@@ -52,13 +66,12 @@ body {
 
 /*Text, titles font/color/style*/
 .header {
-  position: sticky;
   top: 0;
   z-index: 1000;
   /*to make sure it stays on top of everything*/
   padding: 5px;
   text-align: center;
-  background: #333;
+  background: rgb(77, 2, 77);
   color: white;
 }
 
@@ -74,7 +87,7 @@ main {
   text-align: center;
   color: white;
   text-decoration: none;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   left: 0px;
   width: 100%;
@@ -104,7 +117,7 @@ main {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 

@@ -146,13 +146,13 @@ button i {
 }
 
 /* Footer styling */
-.footer {
+/*.footer {
     position: fixed;
     right: 0;
     bottom: 40px;
     width: 30%;
     margin: 0 0;
-    dislay: grpid;
+    display: grid;
     grid-template:
         "empty progress-bar volume"
         "left controls volume-icon";
@@ -161,7 +161,7 @@ button i {
     padding: 10px 0;
     background-color: #282828;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
-}
+}*/
 
 .progress-container {
     grid-area: "progress-bar";

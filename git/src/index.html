@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/index_styles.css">
     <link rel="stylesheet" href="assets/css/basic_styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/index_styles.css">
     <title>Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!--I added-->
     <header class="header" >
-        <h1>Music Player</h1>
+        <h1>d-_-b Music Player</h1>
         <nav class="navbar">
           <a href="index.html" class="active">Home</a>
           <a href="tracks.html" >Tracks</a>
@@ -20,64 +20,66 @@
           <a href="profile.html">Profile</a>
           <a href="login.html">Login</a>
         </nav> 
-      </header> <!--I added-->
+    </header> <!--I added-->
 
-      
-        <div class="music-sheets">
-                 <img src="https://placehold.co/600x600?text=music_sheets" alt="music_sheets">
-                <!-- somehow display the music sheet here for the specific track, this should be the biggest block, left of both track picker and player-->
-        </div>
-        
-        <div class="music-tracks">
-            <!--make user pick the track or playlist here,  this should be above the music player-->
-            <img src="https://placehold.co/200x400?text=track_picker" alt="track_picker">
-        </div>
     
-
-
-    <div class="music-player">
-        <h1>Home</h1> <!-- I changed the name from "Music player"-->
-        <div class="track-info">
-            <p id="track-title">Track Title</p>
-            <p id="track-artist">Track Artist</p>
-        </div>
-        
-        <audio id="audio" src=""></audio>
-    </div>
-    
-    <fotter class="bottom">
-        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
-    </fotter>  
- 
-
-    <div class="footer">
+    <div class="main">
+        <div class="main-left">
         <div></div>
-        <!--<div class="seekbar-container">
-            <div id="seekbar" style="height:15%"></div>
-        </div>-->
-        <div class="progress-container">
-            <div class="progress-circle" id="progressCircle">
-                <!--<div class="progress-text" id="progressText">0%</div>-->
-                <img class="track-art" src="vinyl_PNG18-2327334362.png" alt="Track Art" unselectable="on" style="rotate: 10deg;">
-            </div>
+        <div class="song-list">
+            <ul>
+                <li>one</li>
+                <li>two</li>
+            </ul>
         </div>
-        <div id="volume">
-            <input class="volume" type ="range" min="0" max="1" value="1" step="0.01">
-            <div id="volume-icon">
-                <i class="fa fa-volume-up vol-ico"></i>
-            </div>
         </div>
-        <div id="timeDisplay">0:00</div>
+        <div class="main-right">
+        <div class="album-art">
+            albumartpic
+        </div>
+        <div class="player-class">
+            <div></div>
+            <div class="song-info">
+                <h1>Home</h1> <!-- I changed the name from "Music player"-->
+                <div class="track-info">
+                    <p id="track-title">Track Title</p>
+                    <p id="track-artist">Track Artist</p>
+                </div>
+                <audio id="audio" src=""></audio>
+            </div>
+            <div></div>
+            <div></div>
+            <!--<div class="seekbar-container">
+                <div id="seekbar" style="height:15%"></div>
+            </div>-->
+            <div class="progress-container">
+                <div class="progress-circle" id="progressCircle">
+                    <!--<div class="progress-text" id="progressText">0%</div>-->
+                    <img class="track-art" src="vinyl_PNG18-2327334362.png" alt="Track Art" unselectable="on" style="rotate: 10deg;">
+                </div>
+            </div>
+            <div id="volume">
+                <input class="volume" type ="range" min="0" max="1" value="1" step="0.01">
+                <div id="volume-icon">
+                    <i class="fa fa-volume-up vol-ico"></i>
+                </div>
+            </div>
+            <div id="timeDisplay">0:00</div>
 
-        
-        <div class="controls">
-            <button onclick="player.previous()" id="frbk"><i class="fa fa-backward" style="align-items: center;"></i></button>
-            <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button>
-            <button onclick="player.next()" id="frbk"><i class="fa fa-forward"></i></button>
+            
+            <div class="controls">
+                <button onclick="player.previous()" id="frbk"><i class="fa fa-backward" style="align-items: center;"></i></button>
+                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button>
+                <button onclick="player.next()" id="frbk"><i class="fa fa-forward"></i></button>
+            </div>
+            <div class="song-length">0:00</div>
         </div>
-        <div class="song-length">0:00</div>
+        </div>
     </div>
-
+    
+    <!--<div class="bottominfo">
+        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
+    </div> -->
 
     <script src="js/player.js"></script>
    <script>

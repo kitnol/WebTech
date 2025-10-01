@@ -7,7 +7,6 @@
     width: 100%;
     gap: 1%;
     padding: 10px 0;
-    float: center;
 }
 
 button {
@@ -121,24 +120,110 @@ button i {
 .music-tracks{
     display: inline-block;
 }
-/* Footer styling */
-.footer {
-    position:absolute;
-    right: 0;
-    bottom: 0;
-    width: 30em;
-    margin: 0 0;
+
+body{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+   height: 100%;
+   width: 100%;
+   margin: 0;
+   display: grid;
+   gap:10px;
+   grid-template: 
+   "header"
+   "content"
+   "footer"; 
+   grid-template-rows: 10% 85% 5%;
+}
+
+.main{
+    grid-area: "content";
+    display:grid;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+    grid-template: 
+            "main-left-grid main-right-grid";
+    grid-template-columns: 60% 40%; 
+    /*grid-template-rows: calc(30%-10px) calc(70%-10px);*/
+}
+.main-left{
+    grid-area: "main-left-grid";
+    display:grid;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+    grid-template: 
+            "empty"
+            "music-list";
+    grid-template-rows: 30% 70%;
+}
+.main-right{
+    grid-area: "main-right-grid";
+    display:grid;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+    grid-template: 
+            "artpic"
+            "the-music-player";
+    grid-template-rows: 50% 50%;
+}
+.header{
+    height: 100%;
+    width: 100%;
+    grid-area: "header";
+    position: relative;
+}
+
+.bottominfo{
+    grid-area: "footer";
+    position: relative;
+    width: 100%;
+}
+
+/* Music player styling */
+.song-info{
+    grid-area: "song-info";
+    position:relative;
+}
+.album-art{
+    grid-area: "artpic";
+    position:relative;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 30px;
+    background-color: rgb(77, 2, 77);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+}
+.song-list{
+    grid-area: "music-list";
+    position:relative;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: 30px;
+    background-color: rgb(77, 2, 77);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+}
+.player-class {
+    color: #f1f1f1;
+    grid-area: "the-music-player";
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     display: grid;
     grid-template:
+        "empty1 song-info empty2"
         "empty progress-bar volume"
         "left controls right";
     grid-template-columns: 15% 70% 15%;
     gap: 0px;
     padding: 20px;
-    background-color: #282828;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(77, 2, 77);
 }
-
 .progress-container {
     grid-area: "progress-bar";
     position: relative;
@@ -146,13 +231,12 @@ button i {
     height: 200px;
     margin: auto;
 }
-
 .progress-circle {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background: conic-gradient(#72f2cc 0deg,
-            #72f2cc 0deg,
+    background: conic-gradient(#2e0183 0deg,
+            #7a1ecf 0deg,
             #b3b3b3 0deg);
     position: relative;
     display: flex;
