@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,81 +9,84 @@
     <title>Music Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    <!--I added-->
-    <header class="header" >
+    <!--Header-->
+    <header class="header">
         <h1>d-_-b Music Player</h1>
         <nav class="navbar">
-          <a href="index.html" class="active">Home</a>
-          <a href="tracks.html" >Tracks</a>
-          <a href="artists.html">Artists</a>
-          <a href="newtrack.html" >Add new</a>
-          <a href="profile.html">Profile</a>
-          <a href="login.html">Login</a>
-        </nav> 
-    </header> <!--I added-->
+            <a href="index.html" class="active">Home</a>
+            <a href="tracks.html">Tracks</a>
+            <a href="artists.html">Artists</a>
+            <a href="newtrack.html">Add new</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header> <!--Header-->
 
-    
-    <div class="main">
+
+    <main class="main">
         <div class="main-left">
-        <div></div>
-        <div class="song-list">
-            <ul>
-                <li>one</li>
-                <li>two</li>
-            </ul>
-        </div>
+            <div></div>
+            <div class="song-list">
+                <ul>
+                    <li>one</li>
+                    <li>two</li>
+                </ul>
+            </div>
         </div>
         <div class="main-right">
-        <div class="album-art">
-            albumartpic
-        </div>
-        <div class="player-class">
-            <div></div>
-            <div class="song-info">
-                <h1>Home</h1> <!-- I changed the name from "Music player"-->
-                <div class="track-info">
-                    <p id="track-title">Track Title</p>
-                    <p id="track-artist">Track Artist</p>
-                </div>
-                <audio id="audio" src=""></audio>
+            <div class="album-art">
+                albumartpic
             </div>
-            <div></div>
-            <div></div>
-            <!--<div class="seekbar-container">
-                <div id="seekbar" style="height:15%"></div>
-            </div>-->
-            <div class="progress-container">
-                <div class="progress-circle" id="progressCircle">
-                    <!--<div class="progress-text" id="progressText">0%</div>-->
-                    <img class="track-art" src="vinyl_PNG18-2327334362.png" alt="Track Art" unselectable="on" style="rotate: 10deg;">
+            <div class="player-class">
+                <div></div>
+                <div class="song-info">
+                    <h1>Home</h1>
+                    <div class="track-info">
+                        <p id="track-title">Track Title</p>
+                        <p id="track-artist">Track Artist</p>
+                    </div>
+                    <audio id="audio" src=""></audio>
                 </div>
-            </div>
-            <div id="volume">
-                <input class="volume" type ="range" min="0" max="1" value="1" step="0.01">
-                <div id="volume-icon">
-                    <i class="fa fa-volume-up vol-ico"></i>
-                </div>
-            </div>
-            <div id="timeDisplay">0:00</div>
+                <div></div>
+                <div></div>
 
-            
-            <div class="controls">
-                <button onclick="player.previous()" id="frbk"><i class="fa fa-backward" style="align-items: center;"></i></button>
-                <button onclick="player.play()" ><i id = "playBt" class="fa fa-play"></i></button>
-                <button onclick="player.next()" id="frbk"><i class="fa fa-forward"></i></button>
+                <div class="progress-container">
+                    <div class="progress-circle" id="progressCircle">
+                        <!--<div class="progress-text" id="progressText">0%</div>-->
+                        <img class="track-art" src="vinyl_PNG18-2327334362.png" alt="Track Art" unselectable="on"
+                            style="rotate: 10deg;">
+                    </div>
+                </div>
+                <div id="volume">
+                    <input class="volume" type="range" min="0" max="1" value="1" step="0.01">
+                    <div id="volume-icon">
+                        <i class="fa fa-volume-up vol-ico"></i>
+                    </div>
+                </div>
+                <div id="timeDisplay">0:00</div>
+
+
+                <div class="controls">
+                    <button onclick="player.previous()" id="frbk"><i class="fa fa-backward"
+                            style="align-items: center;"></i></button>
+                    <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                    <button onclick="player.next()" id="frbk"><i class="fa fa-forward"></i></button>
+                </div>
+                <div class="song-length">0:00</div>
             </div>
-            <div class="song-length">0:00</div>
         </div>
-        </div>
-    </div>
-    
-    <!--<div class="bottominfo">
-        © 2025 Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
-    </div> -->
+    </main>
+
+    <footer class="bottominfo">
+        © 2025 Music Player | <a
+            href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en">SDU - Web
+            Technologies</a> | <a href="aboutus.html">About us</a>
+    </footer>
 
     <script src="js/player.js"></script>
-   <script>
+    <script>
         const progressCircle = document.getElementById('progressCircle');
         const progressText = document.getElementById('progressText');
         const progressSlider = document.getElementById('progressSlider');
@@ -90,26 +94,26 @@
         function setProgress(percentage) {
             // Ensure percentage is between 0 and 100
             percentage = Math.max(0, Math.min(100, percentage));
-            
+
             // Calculate the angle for the conic gradient
             const angle = (percentage / 100) * 360;
-            
+
             // Update the conic gradient
             progressCircle.style.background = `conic-gradient(
                 #4CAF50 0deg,
                 #4CAF50 ${angle}deg,
                 #e0e0e0 ${angle}deg
             )`;
-            
+
             // Update the text
             progressText.textContent = `${Math.round(percentage)}%`;
-            
+
             // Update slider
             progressSlider.value = percentage;
         }
 
         // Slider event listener
-        progressSlider.addEventListener('input', function() {
+        progressSlider.addEventListener('input', function () {
             setProgress(this.value);
         });
 
@@ -119,7 +123,7 @@
             const interval = setInterval(() => {
                 progress += 2;
                 setProgress(progress);
-                
+
                 if (progress >= 100) {
                     clearInterval(interval);
                 }
@@ -130,4 +134,5 @@
         setProgress(0);
     </script>
 </body>
+
 </html>

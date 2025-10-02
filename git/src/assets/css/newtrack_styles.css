@@ -1,8 +1,8 @@
 h2 {
   text-align: center;
   font-family: Arial, sans-serif;
-  font-size: 20px;
-  color: black;
+  font-size: 30px;
+  color: #520019;
 }
 p {
   text-align: center;
@@ -15,11 +15,13 @@ p {
 main{
   text-align: center;
 }
+
 form {
   display: inline-grid;
   grid-row-gap: 16px;
 }
 
+/*grid*/
 .grid {
   display: grid;
 }
@@ -62,7 +64,5 @@ form {
 
 .submitbutton:hover {
   background-color: indigo;color: white;
-  /* Increase the size by 10% (1.1) when hovered */
-  transform: scale(1.1); 
-
+  transform: scale(1.1);   /* Increase size*/
 }

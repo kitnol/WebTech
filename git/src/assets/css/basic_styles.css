@@ -21,28 +21,33 @@ body {
   "navbar";
   gap: 10px;
   grid-template-rows: 70% 30%;
+  padding: 0px;
 }
 
 .header h1{
   grid-area: "title";
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 /*Navigation bar*/
 /* Style the top navigation bar */
-
 .navbar {
-  height: auto;
+  height: 2em;
   width: auto;
-  grid-area: "navbar";
-  padding: 5px;
+  left: 0;
+  padding: 0.5em;
   background-color: purple;
   justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 /* Style the navigation bar links */
 .navbar a {
   color: white;
-  padding: 1% 1%;
+  height: auto;
+  padding: 0.5em;
   text-decoration: none;
   text-align: center;
 }
@@ -54,30 +59,20 @@ body {
 }
 
 .navbar a.active {
-  text-decoration: underline;
-  /*Creates a simple underline.*/
-  font-weight: bold;
-  /*Makes the text visually heavier*/
-  border-bottom: 3px solid purple;
-  /* A thick orange line */
+  text-decoration: underline; /*Underline.*/
+  font-weight: bold; /*Bold*/
+  border-bottom: 3px solid var(--secondary-color); /* Purple line */
   padding-bottom: 5px;
-  /* Adds space between text and line */
 }
 
 /*Text, titles font/color/style*/
 .header {
   top: 0;
-  z-index: 1000;
-  /*to make sure it stays on top of everything*/
+  z-index: 1000; /*to make sure it stays on top of everything*/
   padding: 5px;
   text-align: center;
   background: rgb(77, 2, 77);
   color: white;
-}
-
-main {
-  flex: 70%;
-  padding: 20px;
 }
 
 /*footer line features*/
@@ -87,11 +82,8 @@ main {
   text-align: center;
   color: white;
   text-decoration: none;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  margin: 0 0;
+  width: auto;
+  margin-top: 10px;
 }
 
 .bottominfo a {
@@ -104,43 +96,6 @@ main {
   text-decoration: underline;
 }
 
-.bottom {
-   padding: 10px;
-  background-color: purple;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  position: absolute;
-  height: auto;
-  width: 100%;
-  margin: 0 0;
+main{
+  min-height: 100vh;
 }
-
-footer {
-  position: fixed;
-  bottom: 0;
-}
-
-.bottom a {
-  color: white;
-  text-decoration: none;
-}
-
-.bottom a:hover {
-  color: white;
-  text-decoration: underline;
-}
-
-.link{
-    text-decoration: none;
-    color: white;
-}
-
-.link a {
-    color: white;
-    text-decoration: none;
-  }
-.link a:hover {
-    color: white;
-    text-decoration: underline;
-  }

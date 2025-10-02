@@ -33,7 +33,12 @@ class MusicPlayer {
 
         // Initialize seekbar
         this.audio.addEventListener('timeupdate', () => {
-            song_length.textContent = Math.floor(this.audio.duration / 60) + ":" + (Math.floor(this.audio.duration % 60) < 10 ? "0" + Math.floor(this.audio.duration % 60) : Math.floor(this.audio.duration % 60));
+            let song_duration = this.audio.duration;
+            if(isNaN(song_duration))
+            {
+                song_duration = 0;
+            }
+            song_length.textContent = Math.floor(song_duration / 60) + ":" + (Math.floor(song_duration % 60) < 10 ? "0" + Math.floor(song_duration % 60) : Math.floor(song_duration % 60));
 
             if (this.isMoving) return;
             else {

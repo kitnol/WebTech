@@ -16,11 +16,10 @@ p {
 .grid {
   display: grid;
   gap: 20px 20px;
-  /*grid-template-columns: auto auto auto; removed because it needs to vary based on the device*/ 
   padding: 10px;    
 }
 
-/*to make the grid change size based on teh device*/
+/*to make the grid change size based on the device*/
 @media only screen and (max-width: 600px) { /*phone*/
   .grid{
     grid-template-columns: repeat(2, 1fr);
@@ -67,30 +66,22 @@ button {
 
 button:hover {
   background-color: indigo;color: white;
-  /* Increase the size by 10% (1.1) when hovered */
-  transform: scale(1.1); 
-
+  transform: scale(1.1); /* Increase the size when hovered */
 }
 
 .card:hover {
-  background-color: #FFF0F5 ;
-  /* Lift the element 5 pixels up (negative Y value) */
+  background-color: #FFF0F5 ; /* Lift element */
   transform: translateY(-5px); 
-    
-  /* Make the shadow larger and darker to emphasize the lift */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
-  
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /*shadow*/
 }
 
+/*image on card*/
 img {
-  /* Set negative margins equal to the card's padding */
   margin-top: -10px; 
   margin-left: -10px;
   margin-right: -10px;
   height: auto;
-  /* The width should be the full width of the padded card */
-  width: calc(100% + 20px); /* 100% + (20px left + 20px right) */
-  /* Ensure the top corners remain rounded to match the card */
+  width: calc(100% + 20px);
   border-top-left-radius: 25px; 
   border-top-right-radius: 25px;
 }

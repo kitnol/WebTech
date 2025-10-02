@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,38 +9,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Music Player</title>
 </head>
+
 <body>
-    <!--I added-->
-    <header class="header" >
+    <!--Header-->
+    <header class="header">
         <h1>Create a user</h1>
-            <nav class="navbar">
-          <a href="index.html" >Home</a>
-          <a href="tracks.html" >Tracks</a>
-          <a href="artists.html">Artists</a>
-          <a href="newtrack.html" >Add new</a>
-          <a href="profile.html">Profile</a>
-          <a href="login.html" class="active">Login</a>
-        </nav> 
-      </header> <!--I added-->
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="tracks.html">Tracks</a>
+            <a href="artists.html">Artists</a>
+            <a href="newtrack.html">Add new</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html" class="active">Login</a>
+        </nav>
+    </header> <!--Header-->
     <main>
         <div class="login-container">
-        <h2>New user:</h2>
-       <form action="/submit_login" method="post"></form>
+            <h2>New user:</h2>
+            <form action="/submit_login" method="post"></form>
             <fieldset>
                 <br>
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" minlength="5" required><br><br>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br><br>
-        
+                <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    required><br><br>
+
             </fieldset>
-        </form>
-        <button type="submit" value="Create" id="createbutton" class="submitbutton" >Create</button>
-    </div>
+            </form>
+            <button type="submit" value="Create" id="createbutton" class="submitbutton">Create</button>
+        </div>
     </main>
-    
+
     <footer class="bottominfo">
-        © 2025 d-_-b Music Player | <a href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en" >SDU - Web Technologies</a>  | <a href="aboutus.html" >About us</a>
-      </footer>  
+        © 2025 d-_-b Music Player | <a
+            href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en">SDU - Web
+            Technologies</a> | <a href="aboutus.html">About us</a>
+    </footer>
 </body>
+
 </html>

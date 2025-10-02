@@ -121,40 +121,19 @@ button i {
     display: inline-block;
 }
 
-body{
-    position: absolute;
-    left: 0px;
-    top: 0px;
-   height: 100%;
-   width: 100%;
-   margin: 0;
-   display: grid;
-   gap:10px;
-   grid-template: 
-   "header"
-   "content"
-   "footer"; 
-   grid-template-rows: 10% 85% 5%;
-}
-
-.main{
-    grid-area: "content";
+.main{  
     display:grid;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    gap: 10px;
+    gap: 0.5%;
     grid-template: 
             "main-left-grid main-right-grid";
-    grid-template-columns: 60% 40%; 
-    /*grid-template-rows: calc(30%-10px) calc(70%-10px);*/
+    grid-template-columns: 59.5% 40%; 
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .main-left{
     grid-area: "main-left-grid";
     display:grid;
     position: relative;
-    height: 100%;
-    width: 100%;
     gap: 10px;
     grid-template: 
             "empty"
@@ -165,25 +144,11 @@ body{
     grid-area: "main-right-grid";
     display:grid;
     position: relative;
-    height: 100%;
-    width: 100%;
     gap: 10px;
     grid-template: 
             "artpic"
             "the-music-player";
-    grid-template-rows: 50% 50%;
-}
-.header{
-    height: 100%;
-    width: 100%;
-    grid-area: "header";
-    position: relative;
-}
-
-.bottominfo{
-    grid-area: "footer";
-    position: relative;
-    width: 100%;
+    grid-template-rows: 40% 60%;
 }
 
 /* Music player styling */
@@ -276,7 +241,6 @@ body{
     border-radius: 50%;
     object-fit: cover;
     z-index: 1;
-
 }
 
 img {
@@ -287,8 +251,7 @@ img {
 .song-length {
     grid-area: "right";
     position: relative;
-    bottom: 10px;
-    left: 10px;
+    text-align: left;
     font-size: 14px;
     color: #b3b3b3;
 }
@@ -297,8 +260,7 @@ img {
 #timeDisplay {
     grid-area: "left";
     position: relative;
-    bottom: 10px;
-    left: 10px;
+    text-align: right;
     font-size: 14px;
     color: #b3b3b3;
 }

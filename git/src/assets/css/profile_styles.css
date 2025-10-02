@@ -21,11 +21,10 @@ p {
 .grid {
   display: grid;
   gap: 20px 20px;
-  /*grid-template-columns: auto auto auto; removed because it needs to vary based on the device*/ 
   padding: 50px;    
 }
 
-/*to make the grid change size based on teh device*/
+/*to make the grid change size based on the device*/
 @media only screen and (max-width: 600px) { /*phone*/
   .grid{
     grid-template-columns: repeat(1, 1fr);
@@ -51,13 +50,12 @@ p {
   text-align: center;
   border-radius: 25px; /*add rounded corners*/
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
-  max-width: 600px;   /* prevents it from stretching too wide */
-  margin: 0 auto;     /* centers the card inside the grid */
-/* --------------- */
-  display: flex;         /* make content side-by-side */
+  max-width: 600px;   
+  margin: 0 auto;    
+  display: flex;        /* make content side-by-side */
   align-items: flex-start;   /* keeps items on top */
-  justify-content: space-between; /* spread username/info and image */
-  gap: 20px;             /* spacing between text and picture */
+  justify-content: space-between; 
+  gap: 20px;          
 }
 
 /* left section (text) */
@@ -72,7 +70,7 @@ p {
   height: 160px;
   object-fit: cover;   /* keeps image from stretching */
   border-radius: 50%;  /* makes it circular */
-  border: 3px solid #784848; /* optional border */
+  border: 3px solid #784848; /* imge border */
 }
 
 .info-row {

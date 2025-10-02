@@ -1,3 +1,7 @@
+
+/* READ: This is temporary code, used for feature development and debugging - not used in the website */
+
+
 /* Variables */
 :root {
     --primary-color: #1eedbe;
@@ -7,14 +11,12 @@
     --txt-bk-color: #b3b3b3;
 }
 
-
 /* Styles for the music player */
 body {
     font-family: Arial, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
-    
 }
 
 /* Music player controls */
