@@ -1,3 +1,122 @@
+/*whole page grid structure*/
+.main{  
+    display:grid;
+    gap: 0.5%;
+    grid-template: 
+            "main-left-grid main-right-grid";
+    grid-template-columns: 59.5% 40%; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.main-left{
+    grid-area: "main-left-grid";
+    display:grid;
+    position: relative;
+    gap: 10px;
+    grid-template: 
+            "title-part"
+            "music-list";
+    grid-template-rows: 40% 60%;
+}
+.main-right{
+    grid-area: "main-right-grid";
+    display:grid;
+    position: relative;
+    gap: 10px;
+    grid-template: 
+            "artpic"
+            "the-music-player";
+    grid-template-rows: 40% 60%;
+}
+
+/*main-left structure*/
+/*top left*/
+.hero-image {
+    grid-area: "title-part";
+    position: absolute;
+    background-image: url("musicimage.png") ;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.hero-text{
+    font-size: 30px;
+    text-align: center;
+    top: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*bottom left*/
+.song-list{
+    grid-area: "music-list";
+    position:relative;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: 30px;
+    background-color: rgb(77, 2, 77);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    color: #f1f1f1;
+    display: grid;
+    padding: 5px;  
+    grid-template: 
+            "title"
+            "cards";
+    grid-template-rows: 20% 80%;
+}
+
+.cards-grid{
+    grid-area: "cards";
+    position: relative;
+    display: grid;
+    gap: 20px 20px;
+    padding: 10px;  
+}
+/*cards fratures*/
+.card {
+    background-color: #f1f1f1;
+    font-size: 16px;
+    padding: 4px;
+    color: black;
+    text-align: center;
+    border-radius: 25px; /*add rounded corners*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
+}
+
+.card:hover {
+    background-color: #FFF0F5 ; /* Lift element */
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /*shadow*/
+}
+
+
+/*main-right structure*/
+/*top right*/
+.album-art{
+    grid-area: "artpic";
+    position:relative;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 30px;
+    background-color: rgb(77, 2, 77);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox for album-pic*/
+    justify-content: center;
+    align-items: center;
+}
+.album-pic{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 100%; /* same width as album-art */
+    height: 100%; /* same height as album-art */
+    object-fit: cover;
+}
+
+/*bottom right*/
 /* Music player controls */
 .controls {
     grid-area: "controls";
@@ -121,59 +240,16 @@ button i {
     display: inline-block;
 }
 
-.main{  
-    display:grid;
-    gap: 0.5%;
-    grid-template: 
-            "main-left-grid main-right-grid";
-    grid-template-columns: 59.5% 40%; 
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.main-left{
-    grid-area: "main-left-grid";
-    display:grid;
+/* Current time display */
+#timeDisplay {
+    grid-area: "left";
     position: relative;
-    gap: 10px;
-    grid-template: 
-            "empty"
-            "music-list";
-    grid-template-rows: 30% 70%;
-}
-.main-right{
-    grid-area: "main-right-grid";
-    display:grid;
-    position: relative;
-    gap: 10px;
-    grid-template: 
-            "artpic"
-            "the-music-player";
-    grid-template-rows: 40% 60%;
+    text-align: right;
+    font-size: 14px;
+    color: #b3b3b3;
 }
 
-/* Music player styling */
-.song-info{
-    grid-area: "song-info";
-    position:relative;
-}
-.album-art{
-    grid-area: "artpic";
-    position:relative;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    padding: 30px;
-    background-color: rgb(77, 2, 77);
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
-}
-.song-list{
-    grid-area: "music-list";
-    position:relative;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    padding: 30px;
-    background-color: rgb(77, 2, 77);
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
-}
+/*player*/
 .player-class {
     color: #f1f1f1;
     grid-area: "the-music-player";
@@ -189,6 +265,7 @@ button i {
     padding: 20px;
     background-color: rgb(77, 2, 77);
 }
+
 .progress-container {
     grid-area: "progress-bar";
     position: relative;
@@ -196,6 +273,7 @@ button i {
     height: 200px;
     margin: auto;
 }
+
 .progress-circle {
     width: 200px;
     height: 200px;
@@ -256,11 +334,7 @@ img {
     color: #b3b3b3;
 }
 
-/* Current time display */
-#timeDisplay {
-    grid-area: "left";
-    position: relative;
-    text-align: right;
-    font-size: 14px;
-    color: #b3b3b3;
+.song-info{
+    grid-area: "song-info";
+    position:relative;
 }

@@ -27,25 +27,42 @@
 
     <main class="main">
         <div class="main-left">
-            <div></div>
+            <div class="hero-image">
+                <h1 class="hero-text" style="margin-left: 50px;">Home Page</h1>
+            </div>
             <div class="song-list">
-                <ul>
-                    <li>one</li>
-                    <li>two</li>
-                </ul>
+                <section class="title" style="margin-left: 10px;">
+                    <h2>Track list:</h2>
+                </section>
+                
+                <section class="cards-grid">
+      <article class="card">
+        <p>Track 1 - Artist 1</p>
+      </article>
+      <article class="card">
+        <p>Track 2 - Artist 2</p>
+      </article>
+      <article class="card">
+        <p>Track 3 - Artist 3</p>
+      </article>
+      <article class="card">
+        <p>Track 4 - Artist 4</p>
+      </article>
+    </section>
+                
             </div>
         </div>
         <div class="main-right">
             <div class="album-art">
-                albumartpic
+                <img src="https://placehold.co/300x200?text=Album-Picture" class="album-pic" alt="albumpic" >
             </div>
             <div class="player-class">
                 <div></div>
                 <div class="song-info">
-                    <h1>Home</h1>
+                    <h2>Played song:</h2>
                     <div class="track-info">
-                        <p id="track-title">Track Title</p>
-                        <p id="track-artist">Track Artist</p>
+                        <p id="track-title">Track Title:</p>
+                        <p id="track-artist">Track Artist:</p>
                     </div>
                     <audio id="audio" src=""></audio>
                 </div>
