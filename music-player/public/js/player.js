@@ -7,6 +7,8 @@ const volumeControl = document.getElementById('volume');
 const progressCircle = document.getElementById('progressCircle');
 const progressText = document.getElementById('progressText');
 const progressSlider = document.getElementById('progressSlider');
+const timeDisplay = document.getElementById('timeDisplay');
+const song_length = document.getElementsByClassName('song-length')[0];
 
 
 volumeControl.addEventListener('input', (e) => {
@@ -31,9 +33,18 @@ class MusicPlayer {
 
         // Initialize seekbar
         this.audio.addEventListener('timeupdate', () => {
+            let song_duration = this.audio.duration;
+            if(isNaN(song_duration))
+            {
+                song_duration = 0;
+            }
+            song_length.textContent = Math.floor(song_duration / 60) + ":" + (Math.floor(song_duration % 60) < 10 ? "0" + Math.floor(song_duration % 60) : Math.floor(song_duration % 60));
+
             if (this.isMoving) return;
             else {
                 const percentage = (this.audio.currentTime / this.audio.duration);
+                console.log(this.audio.currentTime);
+                console.log(this.audio.duration);
                 console.log(percentage * 100);
                 this.vinyl_angle += 5;
                 if (this.vinyl_angle >= 360) {
@@ -46,16 +57,14 @@ class MusicPlayer {
                 console.log(this.vinyl_angle);
                 this.vinyl.style.rotate = this.vinyl_angle + "deg";
                 setProgress(percentage * 100);
+                let currentMinutes = Math.floor(this.audio.currentTime / 60);
+                let currentSeconds = Math.floor(this.audio.currentTime % 60);
+                timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds); 
             }
         });
 
         // Handle seekbar click/drag
         this.seekbar.addEventListener('mousedown', (e) => this.click(e));
-        //this.seekbar_cont[0].addEventListener('mousedown', (e) => this.seek(e));
-        //this.seekbar_cont[0].addEventListener('click', (e) => this.seek(e));
-        // this.seekbar_cont[0].addEventListener('mousedown', (e) => this.click(e));
-        //this.audioElement.addEventListener('mousedown', (e) => this.seek(e));
-
     }
 
     click(event) {
@@ -173,7 +182,7 @@ class MusicPlayer {
         this.audio.load();
         title.textContent = "Title: " + this.getCurrentTrack().substr(0, this.getCurrentTrack().length - 4);
     }
-
+    
     play() {
         if (!this.isPlaying) {
             // Play the track

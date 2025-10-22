@@ -1,0 +1,92 @@
+h2 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
+  color: #520019;
+}
+h3 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #520019;
+}
+p {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #784848;
+}
+
+/*cards fratures*/
+.grid {
+  display: grid;
+  gap: 20px 20px;
+  padding: 50px;    
+}
+
+/*to make the grid change size based on the device*/
+@media only screen and (max-width: 600px) { /*phone*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-width: 600px) { /*tablet*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media only screen and (min-width: 768px) { /*laptop*/
+  .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  background-color: #e6d1e3;
+  padding: 70px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 25px; /*add rounded corners*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
+  max-width: 600px;   
+  margin: 0 auto;    
+  display: flex;        /* make content side-by-side */
+  align-items: flex-start;   /* keeps items on top */
+  justify-content: space-between; 
+  gap: 20px;          
+}
+
+/* left section (text) */
+.card-info {
+  flex: 1;  /* let the text area take remaining space */
+  text-align: left;
+}
+
+/* profile picture */
+.card img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;   /* keeps image from stretching */
+  border-radius: 50%;  /* makes it circular */
+  border: 3px solid #784848; /* imge border */
+}
+
+.info-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;     /* space between label and value */
+  margin: 20px 0; /* space between info rows */
+}
+
+.label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #520019;
+}
+
+.value {
+  color: #784848;
+  font-size: 20px;
+}

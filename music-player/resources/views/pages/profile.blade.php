@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/profile_styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/basic_styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Profile</title>
+</head>
+
+<body>
+    <!--Header-->
+  <header class="header">
+    <h1>d-_-b Music Player</h1>
+    <nav class="navbar">
+      <a href="{{ route('pages.index') }}">Home</a>
+      <a href="{{ route('pages.tracks') }}">Tracks</a>
+      <a href="{{ route('pages.artists') }}">Artists</a>
+      <a href="{{ route('pages.newtrack') }}">Add new</a>
+      <a href="{{ route('pages.profile') }}">Profile</a>
+      <a href="{{ route('pages.login') }}">Login</a>
+    </nav>
+  </header> <!--Header-->
+    <main>
+        <h2>Your d-_-b Profile</h2>
+        <p>
+            All your info in the right place!
+        </p>
+        <article class="card">
+            <div class="card-info">
+                <div class="info-row">
+                    <span class="label">Username:</span>
+                    <span class="value">Cool Cat</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">E-mail:</span>
+                    <span class="value">super_cool@email.com</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Date of birth:</span>
+                    <span class="value">01 / 10 / 2025</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Joined since:</span>
+                    <span class="value">01 / 10 / 2025</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Songs saved:</span>
+                    <span class="value">156</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Total listening hours:</span>
+                    <span class="value">200</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Most Listened Song:</span>
+                    <span class="value">Crab Rave</span>
+                </div>
+            </div>
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F474x%2F59%2F1a%2Fab%2F591aabea9f41760593c8b3d86cc9d0af.jpg%3Fnii%3Dt&f=1&nofb=1&ipt=29e3ae791a9a6f16f9b234f998f3cdf98df02f45df8cb6b61fb091d04244dd8d"
+                alt="User profile picture">
+        </article>
+    </main>
+    <footer class="bottominfo">
+        © 2025 d-_-b Music Player | <a
+        href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en">SDU - Web
+        Technologies</a> | <a href="{{ route('pages.aboutus') }}">About us</a>
+    </footer>
+</body>
+
+</html>
