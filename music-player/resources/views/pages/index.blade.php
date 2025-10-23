@@ -72,7 +72,7 @@
                 <div class="progress-container">
                     <div class="progress-circle" id="progressCircle">
                         <!--<div class="progress-text" id="progressText">0%</div>-->
-                        <img class="track-art" src="vinyl_PNG18-2327334362.png" alt="Track Art" unselectable="on"
+                        <img class="track-art" src="{{ asset('pictures/vinyl_PNG18-2327334362.png') }}" alt="Track Art" unselectable="on"
                             style="rotate: 10deg;">
                     </div>
                 </div>
@@ -102,7 +102,7 @@
         Technologies</a> | <a href="{{ route('pages.aboutus') }}">About us</a>
     </footer>
 
-    <script src="js/player.js"></script>
+    <script src="{{ asset('js/player.js') }}"></script>
     <script>
         const progressCircle = document.getElementById('progressCircle');
         const progressText = document.getElementById('progressText');

@@ -26,25 +26,27 @@
     <main>
         <div class="login-container">
             <h2>Login!</h2>
-            <form>
+            <form method="POST" action="{{ route('login.attempt') }}">
+                @csrf
                 <fieldset>
                     <br>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required><br><br>
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="passsword" required><br>
+                    <input type="password" id="password" name="password" required><br>
                     <br>
                 </fieldset>
+                <br>
+                <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
             </form>
-            <br>
-            <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
+            
             <br>
             <p class="link">
                 <a href="{{ route('pages.create') }}">Create a new user instead</a>
             </p>
         </div>
 
-        <script src="js/login.js"></script>
+        <script src="{{ asset('js/login.js') }}"></script>
     </main>
 
     <footer class="bottominfo">

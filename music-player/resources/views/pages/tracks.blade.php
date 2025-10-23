@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{{ asset('css/basic_styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/tracks_styles.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script defer src="js/tracks.js"></script>
+  <script defer src="{ asset('js/tracks.js') }}"></script>
   <title>Tracks</title>
 </head>
 
