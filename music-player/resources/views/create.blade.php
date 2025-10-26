@@ -1,29 +1,32 @@
-@extends('pages.layout')
+@extends('layout')
 @section('title', 'Registration')
 @section('content')
     <head>
-        <link rel="stylesheet" href="{{ asset('css/basic_styles.css') }}">
         <link rel="stylesheet" href="{{ asset('css/create_styles.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>Music Player</title>
     </head>
-
     <body>
-        <header class="header">
-            <h1>d-_-b Music Player</h1>
-            <nav class="navbar">
-                <a href="{{ route('pages.index') }}">Home</a>
-                <a href="{{ route('pages.tracks') }}">Tracks</a>
-                <a href="{{ route('pages.artists') }}">Artists</a>
-                <a href="{{ route('pages.newtrack') }}">Add new</a>
-                <a href="{{ route('pages.profile') }}">Profile</a>
-                <a href="{{ route('pages.login') }}">Login</a>
-            </nav>
-        </header>
         <main>
-            <div class="login-container">
+            <!--display error messages-->
+            <div class="mt-5">
+                @if($errors->any()) <!--check for errors-->
+                    <div class="col-12">
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger">{{$error}}</div>
+                        @endforeach
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">{{session('error')}}</div>
+                @endif
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">{{session('success')}}</div>
+                @endif
+            </div>
+            <div class="create-container">
                 <h2>New user:</h2>
-                <form method="POST" action="{{ route('pages.userstore') }}">
+                <form action="{{ route('create.post') }}" method="POST">
                     @csrf <!-- you should include a hidden CSRF token field in the form so that the CSRF protection middleware can validate the request. You may use the @csrf Blade directive to generate the token field-->
                     <fieldset>
                         <br>
@@ -40,12 +43,6 @@
                 </form>
             </div>
         </main>
-
-        <footer class="bottominfo">
-            © 2025 d-_-b Music Player | <a
-            href="https://odin.sdu.dk/sitecore/index.php?a=fagbesk&id=157925&listid=21432&lang=en">SDU - Web
-            Technologies</a> | <a href="{{ route('pages.aboutus') }}">About us</a>
-        </footer>
     </body>
 
     </html>

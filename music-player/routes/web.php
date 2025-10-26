@@ -1,48 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController; // Import the controller
+use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\SongController;
 
-Route::get('/users/create', function () {
-    return view('users.index'); 
-})->name('users.create'); 
+Route::get('/create', [AuthManager::class, 'create'])->name('create'); 
+Route::post('/create', [AuthManager::class, 'createPost'])->name('create.post'); 
 
-Route::get('/pages/aboutus', function () {
-    return view('pages.aboutus'); 
-})->name('pages.aboutus'); 
+Route::get('/login', [AuthManager::class, 'login'])->name('login'); 
+Route::post('/login', [AuthManager::class, 'loginPost'])->name('login.post'); 
 
-Route::get('/pages/artists', function () {
-    return view('pages.artists'); 
-})->name('pages.artists'); 
+Route::get('/logout', [AuthManager::class, 'logout'])-> name('logout');
 
-Route::get('/pages/create', function () {
-    return view('pages.create'); 
-})->name('pages.create'); 
+Route::get('/aboutus', function () {
+    return view('aboutus'); 
+})->name('aboutus'); 
 
-Route::get('/pages/index', function () {
-    return view('pages.index'); 
-})->name('pages.index'); 
+Route::group(['middleware' => 'auth'], function(){ //check if user is logged in or not
+    Route::get('/artists', function () {
+        return view('artists'); 
+    })->name('artists'); 
 
-Route::get('/pages/login', function () {
-    return view('pages.login'); 
-})->name('pages.login'); 
+    Route::get('/home', function () {
+        return view('home'); 
+    })->name('home'); 
 
-Route::get('/pages/newtrack', function () {
-    return view('pages.newtrack'); 
-})->name('pages.newtrack'); 
+    Route::get('/newtrack', [SongController::class, 'create'])->name('newtrack'); 
+    Route::post('/newtrack', [SongController::class, 'store'])->name('newtrack.post'); 
 
-Route::get('/pages/newtrack', function () {
-    return view('pages.newtrack'); 
-})->name('pages.newtrack');
+    Route::get('/profile', function () {
+        return view('profile'); 
+    })->name('profile'); 
 
-Route::get('/pages/profile', function () {
-    return view('pages.profile'); 
-})->name('pages.profile'); 
-
-Route::get('/pages/tracks', function () {
-    return view('pages.tracks'); 
-})->name('pages.tracks'); 
-
-//POST
-Route::post('/pages', [UserController::class, 'createuser'])
-    ->name('pages.userstore'); 
+    Route::get('/tracks', function () {
+        return view('tracks'); 
+    })->name('tracks'); 
+});

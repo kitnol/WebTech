@@ -46,7 +46,7 @@ form {
   display: none;
 }
 
-/*interactive buttons "view more"*/
+/*interactive button "save"*/
 .submitbutton {
   background-color: purple;
   border: none;
@@ -65,4 +65,24 @@ form {
 .submitbutton:hover {
   background-color: indigo;color: white;
   transform: scale(1.1);   /* Increase size*/
+}
+
+/*fieldset input and lable*/
+fieldset{
+  border: 1px solid purple;
+}
+
+input {
+  border: 1px solid purple;
+  border-radius: 4px;
+  padding: 6px;
+  margin-bottom: 6px; 
+  margin-top: 6px;
+}
+
+textarea {
+  border: 1px solid purple;
+  border-radius: 4px;
+  min-width: 350px;
+  min-height: 25px;
 }
