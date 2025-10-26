@@ -46,8 +46,3 @@ Route::get('/pages/tracks', function () {
 //POST
 Route::post('/pages', [UserController::class, 'createuser'])
     ->name('pages.userstore'); 
-
-//trial
-// LOGIN POST ROUTE: This handles the form submission
-Route::post('/login', [UserController::class, 'handleLogin'])
-    ->name('login.attempt');
