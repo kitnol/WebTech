@@ -35,13 +35,18 @@
         <fieldset>
           <div class='grid inputGroup'>
             <label> *Artist: </label>
-            <input type="text" name="artist" id="artist" class="inputForm" required />
+            <input list="artist-options" name="artist" id="artist" class="inputForm" required />
+            <datalist id="artist-options">
+              @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+                <option value={{$artist}}></option>
+              @endforeach
+            </datalist>
             <div class="invalid-feedback">Please provide a valid name.</div>
           </div>
 
           <div class='grid inputGroup'>
             <label> Album: </label>
-            <input type="text" name="album" id="album" class="inputForm" required />
+            <input type="text" name="album" id="album" class="inputForm" />
             <div class="invalid-feedback">Please provide a valid name.</div>
           </div>
 

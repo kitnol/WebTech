@@ -13,11 +13,21 @@
         Here you can find a list of all your tracks. d-_-b
       </p>
       <section class="grid">
-        @foreach(auth()->user()->songs as $song)
-          <article class="card">
-          <h2>{{$song->title}} - {{$song->artist}}</h2>
-          <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
-        </article>
+        @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+          <fieldset>
+            <legend>{{ $artist }}</legend>
+            @php
+              $songsbyartist = auth()->user()->songs
+                  ->where('artist', $artist)
+                  ->unique('title');
+            @endphp
+            @foreach($songsbyartist as $song)
+              <article class="card">
+                <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                <h2>{{$song->artist}} - {{$song->title}}</h2>
+            </article>
+            @endforeach
+          </fieldset>   
         @endforeach
       </section>
 

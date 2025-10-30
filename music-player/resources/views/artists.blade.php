@@ -10,11 +10,10 @@
       <section class="grid">
         @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
           <article class="card">
-            <img src="https://placehold.co/300x200?text=Artist1" alt="Artist1">
+            <img src="https://placehold.co/300x200?text={{$artist}}" alt="{{$artist}}">
             <h2>{{$artist}}</h2>
             <p> Some information about the artist.</p>
-            <a href="#.html"><button class="button">View More</button></a>
-            <!--the link should be the one to the artist page-->
+            <a href="{{ route('tracks')}}"><button class="button">View Songs</button></a>
           </article>
         @endforeach
       </section>

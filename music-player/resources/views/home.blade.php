@@ -15,21 +15,23 @@
                     <section class="title" style="margin-left: 10px;">
                         <h2>Track list:</h2>
                     </section>
-                    
-                    <section class="cards-grid">
-                        <article class="card">
-                            <p>Track 1 - Artist 1</p>
-                        </article>
-                        <article class="card">
-                            <p>Track 2 - Artist 2</p>
-                        </article>
-                        <article class="card">
-                            <p>Track 3 - Artist 3</p>
-                        </article>
-                        <article class="card">
-                            <p>Track 4 - Artist 4</p>
-                        </article>
-                    </section>     
+                    <div class="scrollable">
+                        <section class="cards-grid">
+                            @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+                                    @php
+                                    $songsbyartist = auth()->user()->songs
+                                        ->where('artist', $artist)
+                                        ->unique('title');
+                                    @endphp
+                                    @foreach($songsbyartist as $song)
+                                        <article class="card">
+                                            <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                                             <p>{{$song->artist}} - {{$song->title}}</p>
+                                        </article>
+                                    @endforeach
+                            @endforeach
+                        </section>     
+                    </div>
                 </div>
             </div>
             <div class="main-right">

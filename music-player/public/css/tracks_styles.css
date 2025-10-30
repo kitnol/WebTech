@@ -15,7 +15,7 @@ p {
 .grid {
   display: grid;
   gap: 20px 20px;
-  padding: 1px;    
+  padding: 15px;    
 }
 
 /*to make the grid change size based on the device*/
@@ -46,6 +46,7 @@ p {
   align-items: center;
   border-radius: 25px; /*add rounded corners*/
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
+  margin-bottom: 20px;
 }
 
 /*interactive buttons "view more"*/
@@ -82,4 +83,18 @@ img {
   width: calc(100% + 20px); 
   border-top-left-radius: 25px; 
   border-top-right-radius: 25px;
+}
+
+fieldset{
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+legend{
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
