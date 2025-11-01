@@ -30,6 +30,7 @@
           @endif
       </div>
       <h2>Add new tracks!</h2>
+      <p class="guidetext"> Here you can find new tracks to your list. d-_-b </p>
       <form action="{{route('newtrack.post')}}" method="POST" enctype="multipart/form-data"> <!--enctype="multipart/form-data" is required for uploading files-->
         @csrf
         <fieldset>
@@ -38,7 +39,7 @@
             <input list="artist-options" name="artist" id="artist" class="inputForm" required />
             <datalist id="artist-options">
               @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
-                <option value={{$artist}}></option>
+                <option value="{{$artist}}"></option>
               @endforeach
             </datalist>
             <div class="invalid-feedback">Please provide a valid name.</div>
@@ -80,7 +81,8 @@
             <div class="invalid-feedback">Please provide at least one track.</div>
           </div>
           <div class='grid tracks inputGroup'>
-            <label> Music sheet: </label>
+          <br>  
+          <label> Music sheet: </label>
             <div class='grid inputs'>
               <div class='track'>
                 <input type="file" name="file_path_music_sheet" class="inputForm" accept=".doc, .docx, .pdf, .png, .jpg, .jpeg" style="border: 0px">

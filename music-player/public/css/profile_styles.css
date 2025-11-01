@@ -1,20 +1,19 @@
+main {
+  text-align: center;
+}
+
 h2 {
   text-align: center;
   font-family: Arial, sans-serif;
-  font-size: 40px;
+  font-size: 30px;
   color: #520019;
 }
-h3 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 20px;
-  color: #520019;
-}
+
 p {
   text-align: center;
   font-family: Arial, sans-serif;
-  font-size: 20px;
-  color: #784848;
+  font-size: 16px;
+  color: black;
 }
 
 /*cards fratures*/
@@ -89,4 +88,25 @@ p {
 .value {
   color: #784848;
   font-size: 20px;
+}
+
+/*interactive button "save"*/
+button {
+  background-color: purple;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px; /*add rounded corners*/
+}
+
+button:hover {
+  background-color: indigo;color: white;
+  transform: scale(1.1);   /* Increase size*/
 }

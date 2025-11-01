@@ -8,10 +8,8 @@
 
   <body>
     <main>
-      <h2>Tracks</h2>
-      <p>
-        Here you can find a list of all your tracks. d-_-b
-      </p>
+      <h2>Tracks!</h2>
+      <p class="guidetext">Here you can find a list of all your tracks, click on the track to find out more. d-_-b</p>
       <section class="grid">
         @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
           <fieldset>
@@ -24,7 +22,7 @@
             @foreach($songsbyartist as $song)
               <article class="card">
                 <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
-                <a href="{{ route('songinfo', ['song' => $song->id]) }}"><h2>{{$song->artist}} - {{$song->title}}</h2></a>
+                <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">{{$song->artist}} - {{$song->title}}</a>
               </article>
             @endforeach
           </fieldset>   

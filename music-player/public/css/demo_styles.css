@@ -34,7 +34,7 @@
 .hero-image {
     grid-area: "title-part";
     position: absolute;
-    background-image: url("musicimage.png") ;
+    background-image: url("demoimage.png") ;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,15 +42,25 @@
     position: relative;
 }
 .hero-text{
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
-    top: 50%;
+    top: 30%;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    left: 45%;
     transform: translate(-50%, -50%);
     font-family: Arial, sans-serif;
     color: #520019;
+}
+
+.demotext{
+    font-size: 20px;
+    text-align: center;
+    top: 60%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    color: black;
 }
 
 /*bottom left*/

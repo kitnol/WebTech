@@ -8,8 +8,8 @@
     <body>
         <main>
             <section class="grid">
-                <article class="card">
-                    <h2>About d-_-b</h2>
+            <h2>About us! d-_-b</h2>    
+            <article class="card">
                     <p>
                         Welcome, dear visitor! <br><br>
                         We are five humble Mechatronics students, currently in our 5th semester at SDU, carrying forth the

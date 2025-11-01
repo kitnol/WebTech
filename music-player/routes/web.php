@@ -17,11 +17,9 @@ Route::get('/aboutus', function () {
     return view('aboutus'); 
 })->name('aboutus'); 
 
-Route::group(['middleware' => 'auth'], function(){ //check if user is logged in or not
-    Route::get('/songinfo/{song}', function (Song $song) {
-        return view('songinfo', compact('song'));
-    })->name('songinfo'); 
+Route::get('/', [AuthManager::class, 'demo'])->name('demo'); 
 
+Route::group(['middleware' => 'auth'], function(){ //check if user is logged in or not
     Route::get('/artists', function () {
         return view('artists'); 
     })->name('artists'); 
@@ -40,4 +38,16 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::get('/tracks', function () {
         return view('tracks'); 
     })->name('tracks'); 
+
+    Route::get('/songinfo/{song}', function (Song $song) {
+        return view('songinfo', compact('song'));
+    })->name('songinfo'); 
+
+    Route::get('/artistinfo/{artist}', function ($artist) {
+        $songs = auth()->user()->songs()->where('artist', $artist)->get();
+        return view('artistinfo', [
+        'artist' => $artist,
+        'songs' => $songs,
+        ]);
+    })->name('artistinfo'); 
 });

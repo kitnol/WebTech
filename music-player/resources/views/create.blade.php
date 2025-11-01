@@ -25,7 +25,8 @@
                 @endif
             </div>
             <div class="create-container">
-                <h2>New user:</h2>
+                <h2>New user!</h2>
+                <p class="guidetext">Welcome! Are you ready to listen to your favorite songs? Then lets start by creating a new account. d-_-b</p>
                 <form action="{{ route('create.post') }}" method="POST">
                     @csrf <!-- you should include a hidden CSRF token field in the form so that the CSRF protection middleware can validate the request. You may use the @csrf Blade directive to generate the token field-->
                     <fieldset>

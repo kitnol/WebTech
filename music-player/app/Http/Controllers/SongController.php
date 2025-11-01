@@ -26,7 +26,7 @@ class SongController extends Controller
             'file_path_music_sheet'=>'nullable|mimes:doc,docx,pdf,png,jpg,jpeg|max:5120'//5MB
         ]);
 
-        //copied
+        //copied DOES NOT WORK
         $trackPaths = null;
         if ($request->hasFile('file_path_track')) {
             $trackPaths = [];
@@ -40,7 +40,7 @@ class SongController extends Controller
         if ($request->hasFile('file_path_music_sheet')) { //file uploaded
             $musicSheetPath = $request->file('file_path_music_sheet')->store('music_sheets', 'public'); //store file in public disk in folder music_sheets
         }
-        //endcopied
+        //endcopied UNTIL HERE 
 
         $songinfo['artist']= $request-> artist; 
         $songinfo['album']= $request-> album;

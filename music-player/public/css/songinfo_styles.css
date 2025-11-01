@@ -1,5 +1,5 @@
 main {
-    text-align: center;
+  text-align: center;
 }
 
 h2 {
@@ -10,10 +10,10 @@ h2 {
 }
 
 p {
-  text-align: left;
+  text-align: center;
   font-family: Arial, sans-serif;
-  font-size: 20px;
-  color: #784848;
+  font-size: 16px;
+  color: black;
 }
 
 .label {

@@ -99,3 +99,10 @@ body {
 main{
   min-height: 100vh;
 }
+
+.guidetext{
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: black;
+}

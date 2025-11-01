@@ -27,7 +27,7 @@
             
             <div class="login-container">
                 <h2>Login!</h2>
-                <p>To access the pages please login or create a new account. d-_-b</p>
+                <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
                 <form action="{{route('login.post')}}" method="POST"> 
                     @csrf
                     <fieldset>

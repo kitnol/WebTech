@@ -18,10 +18,17 @@ class AuthManager extends Controller
     }
 
     public function create(){
-        return view('create'); 
         if(Auth::check()){
             return redirect(route('home')); //if user is logged in, the create new user page cannot be accessed
         }
+        return view('create');
+    }
+
+    public function demo(){
+        if(Auth::check()){
+            return redirect(route('home')); //if user is logged in, the demo page cannot be accessed
+        }
+        return view('demo');
     }
 
     public function loginPost(Request $request){

@@ -4,11 +4,12 @@ h2 {
   font-size: 40px;
   color: #520019;
 }
+
 p {
-  text-align: left;
+  text-align: center;
   font-family: Arial, sans-serif;
   font-size: 20px;
-  color: #784848;
+  color: black;
 }
 
 /*cards fratures*/

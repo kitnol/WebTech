@@ -1,9 +1,10 @@
 h2 {
   text-align: center;
   font-family: Arial, sans-serif;
-  font-size: 20px;
-  color: black;
+  font-size: 30px;
+  color: #520019;
 }
+
 p {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -49,6 +50,19 @@ p {
   margin-bottom: 20px;
 }
 
+.card:hover {
+  background-color: #FFF0F5 ;
+  transform: translateY(-5px); /*lift*/
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /*shodow*/
+}
+
+.cardtext{
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
 /*interactive buttons "view more"*/
 button {
   background-color: purple;
@@ -67,12 +81,6 @@ button {
 button:hover {
   background-color: indigo;color: white;
   transform: scale(1.1); /*increase size*/
-}
-
-.card:hover {
-  background-color: #FFF0F5 ;
-  transform: translateY(-5px); /*lift*/
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /*shodow*/
 }
 
 img {
