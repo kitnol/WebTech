@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\SongController;
+use App\Models\Song;
 
 Route::get('/create', [AuthManager::class, 'create'])->name('create'); 
 Route::post('/create', [AuthManager::class, 'createPost'])->name('create.post'); 
@@ -17,6 +18,10 @@ Route::get('/aboutus', function () {
 })->name('aboutus'); 
 
 Route::group(['middleware' => 'auth'], function(){ //check if user is logged in or not
+    Route::get('/songinfo/{song}', function (Song $song) {
+        return view('songinfo', compact('song'));
+    })->name('songinfo'); 
+
     Route::get('/artists', function () {
         return view('artists'); 
     })->name('artists'); 

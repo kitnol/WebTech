@@ -24,8 +24,8 @@
             @foreach($songsbyartist as $song)
               <article class="card">
                 <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
-                <h2>{{$song->artist}} - {{$song->title}}</h2>
-            </article>
+                <a href="{{ route('songinfo', ['song' => $song->id]) }}"><h2>{{$song->artist}} - {{$song->title}}</h2></a>
+              </article>
             @endforeach
           </fieldset>   
         @endforeach
