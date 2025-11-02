@@ -232,7 +232,7 @@ class MusicPlayer {
 
 // Example usage
 const tracks = [
-    'track1.mp3',
+    "{{ asset('songs/track1.mp3') }}",
     'Post Success Depression.mp3',
     "Trust Nobody.mp3"
 ];

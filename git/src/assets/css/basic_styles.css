@@ -2,7 +2,7 @@
 :root {
   --primary-color: purple;
   --secondary-color: hsl(300, 48%, 51%);
-  --background-color: plum;
+  --background-color: #dda0dd;
   --text-color: black;
   --txt-bk-color: #b3b3b3;
 }

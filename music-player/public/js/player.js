@@ -1,6 +1,4 @@
 const title = document.getElementById('track-title');
-const audioElement = document.getElementById('audio');
-//const seekbar = document.getElementById('seekbar');
 const playButton = document.getElementById('playBt');
 const volumeControl = document.getElementById('volume');
 
@@ -8,7 +6,6 @@ const progressCircle = document.getElementById('progressCircle');
 const progressText = document.getElementById('progressText');
 const progressSlider = document.getElementById('progressSlider');
 const timeDisplay = document.getElementById('timeDisplay');
-const song_length = document.getElementsByClassName('song-length')[0];
 
 
 volumeControl.addEventListener('input', (e) => {
@@ -21,7 +18,6 @@ class MusicPlayer {
         this.change_amount = 11;
         this.tracks = tracks;
         this.currentTrackIndex = 0;
-        this.audio = new Audio();
         this.isPlaying = false;
         this.isMoving = false;
         this.last_angle = 0;
@@ -29,6 +25,8 @@ class MusicPlayer {
         this.audio = document.getElementById('audio');
         this.seekbar = document.getElementById('progressCircle');
         this.vinyl = document.getElementsByClassName('track-art')[0];
+        this.songLength = document.getElementsByClassName('song-length')[0];
+        this.timeDisplay = document.getElementById('timeDisplay');
         //this.seekbar_cont = document.getElementsByClassName('seekbar-container');
 
         // Initialize seekbar
@@ -38,7 +36,7 @@ class MusicPlayer {
             {
                 song_duration = 0;
             }
-            song_length.textContent = Math.floor(song_duration / 60) + ":" + (Math.floor(song_duration % 60) < 10 ? "0" + Math.floor(song_duration % 60) : Math.floor(song_duration % 60));
+            this.songLength.textContent = Math.floor(song_duration / 60) + ":" + (Math.floor(song_duration % 60) < 10 ? "0" + Math.floor(song_duration % 60) : Math.floor(song_duration % 60));
 
             if (this.isMoving) return;
             else {
@@ -59,7 +57,7 @@ class MusicPlayer {
                 setProgress(percentage * 100);
                 let currentMinutes = Math.floor(this.audio.currentTime / 60);
                 let currentSeconds = Math.floor(this.audio.currentTime % 60);
-                timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds); 
+                this.timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds); 
             }
         });
 
@@ -98,28 +96,17 @@ class MusicPlayer {
         setProgressAngle(angle);
         let percent = angle / 360;
         console.log("Percent: " + percent);
-        this.audio.currentTime = percent * this.audio.duration;
+        let audioTime = percent * this.audio.duration;
+        console.log("Calculated time: " + audioTime + " Current time: " + this.audio.currentTime);
+        this.audio.currentTime = 25;
 
         console.log("Set current time to " + this.audio.currentTime);
         this.seekbar.removeEventListener('mousemove', (e) => this.changeSeek(e));
         this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e))
         console.log(this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e)));
-        audioElement.playbackRate=1.0;
+        this.audio.playbackRate=1.0;
         this.change_amount = 11;
     }
-
-    // seek(event) {
-    //     const X = event.offsetX - 100;
-    //     const Y = (event.offsetY - 100) * (-1);
-    //     let angle = Math.atan2(X, Y) * (180 / Math.PI);
-
-    //     if (angle < 0) {
-    //         angle = 360 + angle;
-    //     }
-
-    //     console.log(angle);
-    //     setProgressAngle(angle);
-    // }
 
     changeSeek(event) {
         if (!this.isMoving) {
@@ -163,7 +150,7 @@ class MusicPlayer {
 
             }
             if (this.change_amount > 10) {
-                audioElement.playbackRate=0.5;
+                this.audio.playbackRate=0.5;
                 this.change_amount = 0;
             }
             this.change_amount += 1;
@@ -232,18 +219,13 @@ class MusicPlayer {
 
 // Example usage
 const tracks = [
-    'track1.mp3',
-    'Post Success Depression.mp3',
-    "Trust Nobody.mp3"
+    "/songs/track1.mp3",
+    '/songs/Post Success Depression.mp3',
+    "/songs/Trust Nobody.mp3"
 ];
 
 const player = new MusicPlayer(tracks);
 player.loadTrack(0);
-
-// player.audio.addEventListener('timeupdate', () => {
-//     console.log((player.audio.currentTime / player.audio.duration)*100);
-//     seekbar.value = (player.audio.currentTime / player.audio.duration);
-// });
 
 function setProgress(percentage) {
     // Ensure percentage is between 0 and 100
@@ -254,8 +236,8 @@ function setProgress(percentage) {
 
     // Update the conic gradient
     progressCircle.style.background = `conic-gradient(
-                #72f2cc 0deg,
-                #72f2cc ${angle}deg,
+                #dda0dd 0deg,
+                #dda0dd ${angle}deg,
                 #b3b3b3 ${angle}deg
             )`;
 }
@@ -263,8 +245,8 @@ function setProgress(percentage) {
 function setProgressAngle(angle) {
     // Update the conic gradient
     progressCircle.style.background = `conic-gradient(
-                #72f2cc 0deg,
-                #72f2cc ${angle}deg,
+                #dda0dd 0deg,
+                #dda0dd ${angle}deg,
                 #b3b3b3 ${angle}deg
             )`;
 }
