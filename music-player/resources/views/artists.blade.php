@@ -15,9 +15,9 @@
         @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
           <article class="card">
             <img src="https://placehold.co/300x200?text={{$artist}}" alt="{{$artist}}">
-            <a href="{{ route('artistinfo', ['artist' => $artist]) }}" class="cardtext">{{$artist}}</a>
+            <p class="cardtext">{{$artist}}</p>
             <p> Total songs in your list: {{ auth()->user()->songs->where('artist', $artist)->count() }}</p>
-            <a href="{{ route('tracks')}}"><button class="button">View Songs</button></a>
+            <a href="{{ route('artistinfo', ['artist' => $artist]) }}"><button class="button">View More</button></a>
           </article>
         @endforeach
       </section>

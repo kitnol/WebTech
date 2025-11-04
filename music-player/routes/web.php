@@ -58,4 +58,14 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         'songs' => $songs,
         ]);
     })->name('artistinfo'); 
+
+    Route::get('/editartist/{artist}', function ($artist) {
+        $songs = auth()->user()->songs()->where('artist', $artist)->get();
+        return view('editartist', [
+        'artist' => $artist,
+        'songs' => $songs,
+        ]);
+    })->name('editartist'); 
+    
+    Route::post('/editartist', [SongController::class, 'editartistPost'])->name('editartist.post'); 
 });

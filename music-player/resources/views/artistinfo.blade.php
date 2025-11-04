@@ -11,7 +11,8 @@
       <section class="card">
         <div class="info-row">
           <span class="label">Artist:</span> 
-          <span class="value">{{ $artist }}</span>
+          <span class="value">{{ $artist }} </span>
+          <a href="{{ route('editartist', ['artist' => $artist]) }}"><button class="button">&#9998;</button></a>
         </div>
         <div class="info-row">
           <span class="label">Total songs from your list:</span> 
@@ -30,7 +31,6 @@
           <span class="value">NOT WORKING</span>
         </div>
       </section>
-      <a href="{{ route('artists')}}"><button class="button">Edit</button></a>
       <a href="{{ route('artists')}}"><button class="button">Close</button></a>
 
     </main>

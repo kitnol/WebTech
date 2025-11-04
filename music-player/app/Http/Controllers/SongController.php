@@ -56,4 +56,29 @@ class SongController extends Controller
 
     }
 
+    public function editartistPost(Request $request){
+        
+        $currentArtist = $request->input('current_artist');
+        $newArtist = $request->input('new_artist');
+
+        // 1. Validate the inputs
+        $request->validate([
+            'current_artist' => 'required|string|max:255', 
+            'new_artist' => [
+                'required', 
+                'string', 
+                'max:255',
+            ], 
+        ]);
+
+        // Changing artist name everywhere
+        $updatedCount = auth()->user()->songs()
+            ->where('artist', $currentArtist)
+            ->update(['artist' => $newArtist]);
+
+        if ($updatedCount > 0){
+            return redirect(route('artistinfo', ['artist' => $newArtist]))
+                   ->with("success", "Artist '{$currentArtist}' successfully renamed to '{$newArtist}' across {$updatedCount} songs.");
+        }
+    }
 }
