@@ -57,18 +57,18 @@ class SongController extends Controller
     }
 
     public function editartistPost(Request $request){
-        
+
         $currentArtist = $request->input('current_artist');
         $newArtist = $request->input('new_artist');
 
         // 1. Validate the inputs
         $request->validate([
-            'current_artist' => 'required|string|max:255', 
+            'current_artist' => 'required|string|max:255',
             'new_artist' => [
-                'required', 
-                'string', 
+                'required',
+                'string',
                 'max:255',
-            ], 
+            ],
         ]);
 
         // Changing artist name everywhere
@@ -80,5 +80,29 @@ class SongController extends Controller
             return redirect(route('artistinfo', ['artist' => $newArtist]))
                    ->with("success", "Artist '{$currentArtist}' successfully renamed to '{$newArtist}' across {$updatedCount} songs.");
         }
+    }
+
+    public function destroy($id)
+    {
+        $song = Song::findOrFail($id);
+        
+        if ($song->user_id !== auth()->id()) {
+            return redirect()->back()->with('error', 'Unauthorized action.');
+        }
+
+        if ($song->file_path_track) {
+            $tracks = explode(',', $song->file_path_track);
+            foreach ($tracks as $track) {
+                \Storage::disk('public')->delete($track);
+            }
+        }
+
+        if ($song->file_path_music_sheet) {
+            \Storage::disk('public')->delete($song->file_path_music_sheet);
+        }
+
+        $song->delete();
+        
+        return redirect()->route('tracks')->with('success', 'Song deleted successfully.');
     }
 }

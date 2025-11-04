@@ -25,7 +25,12 @@
                   <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
                 </a>
                 <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">{{$song->artist}} - {{$song->title}}</a>
-                  <button><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  <form action="{{ route('songs.destroy', $song->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  </form>
+
               </article>
             @endforeach
           </fieldset>
