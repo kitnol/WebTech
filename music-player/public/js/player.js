@@ -1,4 +1,3 @@
-const title = document.getElementById('track-title');
 const playButton = document.getElementById('playBt');
 const volumeControl = document.getElementById('volume');
 
@@ -13,6 +12,7 @@ volumeControl.addEventListener('input', (e) => {
 });
 
 class MusicPlayer {
+
     constructor(tracks) {
         this.vinyl_angle = 0;
         this.change_amount = 11;
@@ -29,6 +29,7 @@ class MusicPlayer {
         this.timeDisplay = document.getElementById('timeDisplay');
         this.title = document.getElementById('track-title');
         this.artist = document.getElementById('track-artist');
+        this.songButton = null;
         //this.seekbar_cont = document.getElementsByClassName('seekbar-container');
 
         // Initialize seekbar
@@ -169,6 +170,15 @@ class MusicPlayer {
     loadTrack(index) {
         this.audio.src = "storage/"  + this.tracks[index].url;
         this.audio.load();
+        if(this.songButton != null)
+        {
+            this.songButton.classList.remove('fa-pause');
+            this.songButton.classList.add('fa-play');
+        }
+        console.log(index);
+        console.log(this.tracks[index].id)
+        this.songButton = document.getElementById('playBt' + this.tracks[index].id);
+        console.log(this.songButton);
         this.title.textContent = "Title: " + this.tracks[index].title;
         this.artist.textContent = "Track Artist: " + this.tracks[index].artist;
     }
@@ -180,6 +190,8 @@ class MusicPlayer {
             this.isPlaying = true;
             playButton.classList.remove('fa-play');
             playButton.classList.add('fa-pause');
+            this.songButton.classList.remove('fa-play');
+            this.songButton.classList.add('fa-pause');
         }
         else {
             // Pause the track
@@ -187,6 +199,8 @@ class MusicPlayer {
             this.isPlaying = false;
             playButton.classList.remove('fa-pause');
             playButton.classList.add('fa-play');
+            this.songButton.classList.remove('fa-pause');
+            this.songButton.classList.add('fa-play');
         }
     }
 
