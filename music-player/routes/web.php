@@ -39,9 +39,17 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         return view('tracks'); 
     })->name('tracks'); 
 
+     Route::get('/editemail', function () {
+        return view('editemail'); 
+    })->name('editemail'); 
+    Route::post('/editemail', [AuthManager::class, 'editemailPost'])->name('editemail.post'); 
+
     Route::get('/songinfo/{song}', function (Song $song) {
         return view('songinfo', compact('song'));
     })->name('songinfo'); 
+    Route::get('/home/{play}', function (Song $song) {
+        return view('home', compact('play'));
+    })->name('home.play'); 
 
     Route::get('/artistinfo/{artist}', function ($artist) {
         $songs = auth()->user()->songs()->where('artist', $artist)->get();

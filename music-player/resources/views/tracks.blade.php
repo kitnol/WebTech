@@ -21,7 +21,9 @@
             @endphp
             @foreach($songsbyartist as $song)
               <article class="card">
-                <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                <a href="{{ route('home', ['play' => $song->id]) }}" class="play-link">
+                  <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                </a>
                 <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">{{$song->artist}} - {{$song->title}}</a>
               </article>
             @endforeach
