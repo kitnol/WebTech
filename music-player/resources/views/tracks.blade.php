@@ -25,9 +25,10 @@
                   <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
                 </a>
                 <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">{{$song->artist}} - {{$song->title}}</a>
+                  <button><i class="fa fa-trash" aria-hidden="true"></i></button>
               </article>
             @endforeach
-          </fieldset>   
+          </fieldset>
         @endforeach
       </section>
 
