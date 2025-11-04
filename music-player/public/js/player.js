@@ -27,6 +27,8 @@ class MusicPlayer {
         this.vinyl = document.getElementsByClassName('track-art')[0];
         this.songLength = document.getElementsByClassName('song-length')[0];
         this.timeDisplay = document.getElementById('timeDisplay');
+        this.title = document.getElementById('track-title');
+        this.artist = document.getElementById('track-artist');
         //this.seekbar_cont = document.getElementsByClassName('seekbar-container');
 
         // Initialize seekbar
@@ -165,9 +167,10 @@ class MusicPlayer {
     }
 
     loadTrack(index) {
-        this.audio.src = this.tracks[index];
+        this.audio.src = "storage/"  + this.tracks[index].url;
         this.audio.load();
-        title.textContent = "Title: " + this.getCurrentTrack().substr(0, this.getCurrentTrack().length - 4);
+        this.title.textContent = "Title: " + this.tracks[index].title;
+        this.artist.textContent = "Track Artist: " + this.tracks[index].artist;
     }
 
     play() {
@@ -218,14 +221,14 @@ class MusicPlayer {
 }
 
 // Example usage
-const tracks = [
-    "/songs/track1.mp3",
-    '/songs/Post Success Depression.mp3',
-    "/songs/Trust Nobody.mp3"
-];
+// const tracks = [
+//     "/songs/track1.mp3",
+//     '/songs/Post Success Depression.mp3',
+//     "/songs/Trust Nobody.mp3"
+// ];
 
 const player = new MusicPlayer(tracks);
-//player.loadTrack(0);
+player.loadTrack(0);
 
 function setProgress(percentage) {
     // Ensure percentage is between 0 and 100
