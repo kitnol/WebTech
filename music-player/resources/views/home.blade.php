@@ -25,7 +25,7 @@
                                     @endphp
                                     @foreach($songsbyartist as $song)
                                         <article class="card">
-                                            <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
+                                            <button onclick="player.play({{$song->id}})"><i id="playBt{{(string)$song->id}}" class="fa fa-play"></i></button>
                                              <p>{{$song->artist}} - {{$song->title}}</p>
                                         </article>
                                     @endforeach
@@ -101,7 +101,8 @@
                         $songs_urls[] = [
                             'title' => $song->title,
                             'artist' => $song->artist,
-                            'url' => $song->file_path_track
+                            'url' => $song->file_path_track,
+                            'id' => $song->id
                         ];
                     }
                 }
