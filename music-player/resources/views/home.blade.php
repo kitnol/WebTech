@@ -56,6 +56,12 @@
                             @endphp
                             <audio id="audio" src="storage/{{$song_url}}"></audio>
 
+                            @php
+                                if($song_url != null)
+                                {
+                                    break;
+                                }
+                            @endphp
                         @endforeach
                     </div>
                     <div></div>
@@ -87,6 +93,23 @@
         </main>
 
 
+        <script>
+                @php
+                $songs_urls = [];
+                foreach(auth()->user()->songs as $song) {
+                    if($song->file_path_track != null) {
+                        $songs_urls[] = [
+                            'title' => $song->title,
+                            'artist' => $song->artist,
+                            'url' => $song->file_path_track
+                        ];
+                    }
+                }
+
+                @endphp
+
+                const tracks = {!! json_encode($songs_urls) !!};
+        </script>
         <script src="{{ asset('js/player.js') }}"></script>
         <script>
             const progressCircle = document.getElementById('progressCircle');
