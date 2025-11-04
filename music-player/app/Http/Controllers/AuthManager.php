@@ -63,6 +63,21 @@ class AuthManager extends Controller
         return redirect(route('login'))->with("success", "Registration successful, Please log in");
     }
 
+    
+    public function editemailPost(Request $request){
+        $request -> validate([
+            'email' => 'required|email|unique:users',
+        ]);
+        if (!$request){
+            return redirect(route('editemail'))->with("error", "Email already in use");
+        }
+        $data['email']= $request-> email;
+        $user=User::changeEmail($data); //pass the data
+        if (!$user){
+            return redirect(route('editemail'))->with("error", "Email change failed");
+        }
+        return redirect(route('profile'))->with("success", "Email changed successfully");
+    }
     public function logout(){
         Session::flush();
         Auth::logout();

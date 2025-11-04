@@ -53,5 +53,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Song::class);
     }
+    public static function changeEmail($data)
+    {
+        // Assuming you have an authenticated user
+        $user = auth()->user();
+        if ($user->email === $data['email']) { // if new email is different from the current 
+            return false; // dont update
+        }
 
+        // Update the email address
+        $user->email = $data['email'];
+        return $user->save(); // Save the updated user
+    }
 }
