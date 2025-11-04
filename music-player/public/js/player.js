@@ -242,7 +242,20 @@ class MusicPlayer {
 // ];
 
 const player = new MusicPlayer(tracks);
-player.loadTrack(0);
+
+if(song_id){
+    const index = tracks.findIndex(t => t.id === song_id);
+    console.log("Index of song: " + index);
+    if(index != -1)
+    {
+        player.loadTrack(index);
+        player.play();
+    }
+    else{
+        player.loadTrack(0);
+        alert("You did not upload a song you trying to play");
+    }
+}
 
 function setProgress(percentage) {
     // Ensure percentage is between 0 and 100
