@@ -1,10 +1,10 @@
 /*whole page grid structure*/
-.main{  
+.main{
     display:grid;
     gap: 0.5%;
-    grid-template: 
+    grid-template:
             "main-left-grid main-right-grid";
-    grid-template-columns: 59.5% 40%; 
+    grid-template-columns: 59.5% 40%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -13,7 +13,7 @@
     display:grid;
     position: relative;
     gap: 10px;
-    grid-template: 
+    grid-template:
             "title-part"
             "music-list";
     grid-template-rows: 40% 60%;
@@ -23,7 +23,7 @@
     display:grid;
     position: relative;
     gap: 10px;
-    grid-template: 
+    grid-template:
             "artpic"
             "the-music-player";
     grid-template-rows: 40% 60%;
@@ -50,13 +50,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Arial, sans-serif;
-    color: #520019;
+    color: #181818;
 }
 
 /*bottom left*/
 /*scrollbar*/
 .scrollable {
-    height: 350px; 
+    height: 350px;
     overflow-y: auto;
 }
 
@@ -67,19 +67,19 @@
 
 /* Track */
 .scrollable::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .scrollable::-webkit-scrollbar-thumb {
-  background: hsl(300, 48%, 51%); 
+  background: hsl(300, 48%, 51%);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .scrollable::-webkit-scrollbar-thumb:hover {
-  background: hsl(300, 46%, 43%); 
+  background: hsl(300, 46%, 43%);
 }
 
 .song-list{
@@ -92,8 +92,8 @@
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     color: #f1f1f1;
     display: grid;
-    padding: 5px;  
-    grid-template: 
+    padding: 5px;
+    grid-template:
             "title"
             "cards";
     grid-template-rows: 20% 80%;
@@ -104,7 +104,7 @@
     position: relative;
     display: grid;
     gap: 20px 20px;
-    padding: 10px;  
+    padding: 10px;
     margin-right: 10px;
 }
 /*cards fratures*/
@@ -121,7 +121,7 @@
 
 .card:hover {
     background-color: #FFF0F5 ; /* Lift element */
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /*shadow*/
 }
 

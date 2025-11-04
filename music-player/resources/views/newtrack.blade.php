@@ -81,7 +81,7 @@
             <div class="invalid-feedback">Please provide at least one track.</div>
           </div>
           <div class='grid tracks inputGroup'>
-          <br>  
+          <br>
           <label> Music sheet: </label>
             <div class='grid inputs'>
               <div class='track'>

@@ -57,7 +57,7 @@ class MusicPlayer {
                 setProgress(percentage * 100);
                 let currentMinutes = Math.floor(this.audio.currentTime / 60);
                 let currentSeconds = Math.floor(this.audio.currentTime % 60);
-                this.timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds); 
+                this.timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds);
             }
         });
 
@@ -68,7 +68,7 @@ class MusicPlayer {
     click(event) {
         if (event.button == 2) {
             console.log("🖱 right click detected!")
-            
+
             this.isMoving = true;
             this.seekbar.addEventListener('mousemove', (e) => this.changeSeek_DJ(e));
             this.seekbar.addEventListener('mouseup', (e) => this.mouseup(e));
@@ -91,7 +91,7 @@ class MusicPlayer {
         if (angle < 0) {
             angle = 360 + angle;
         }
-        
+
         console.log(angle);
         setProgressAngle(angle);
         let percent = angle / 360;
@@ -116,7 +116,7 @@ class MusicPlayer {
             const X = event.offsetX - 100;
             const Y = (event.offsetY - 100) * (-1);
             let angle = Math.atan2(X, Y) * (180 / Math.PI);
-            
+
             if (angle < 0) {
                 angle = 360 + angle;
             }
@@ -129,7 +129,7 @@ class MusicPlayer {
             setProgressAngle(angle);
         }
     }
-    
+
     changeSeek_DJ(event) {
         if (!this.isMoving) {
             return;
@@ -143,7 +143,7 @@ class MusicPlayer {
             if (angle < 0) {
                 angle = 360 + angle;
             }
-            
+
             change = this.last_angle - angle;
             if (change < 0) {
                 change = change * (-1);
@@ -169,7 +169,7 @@ class MusicPlayer {
         this.audio.load();
         title.textContent = "Title: " + this.getCurrentTrack().substr(0, this.getCurrentTrack().length - 4);
     }
-    
+
     play() {
         if (!this.isPlaying) {
             // Play the track
@@ -225,7 +225,7 @@ const tracks = [
 ];
 
 const player = new MusicPlayer(tracks);
-player.loadTrack(0);
+//player.loadTrack(0);
 
 function setProgress(percentage) {
     // Ensure percentage is between 0 and 100

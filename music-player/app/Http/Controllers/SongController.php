@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class SongController extends Controller
 {
     public function create(){
-        return view('newtrack'); 
+        return view('newtrack');
     }
 
     public function store(Request $request){
@@ -40,9 +40,9 @@ class SongController extends Controller
         if ($request->hasFile('file_path_music_sheet')) { //file uploaded
             $musicSheetPath = $request->file('file_path_music_sheet')->store('music_sheets', 'public'); //store file in public disk in folder music_sheets
         }
-        //endcopied UNTIL HERE 
+        //endcopied UNTIL HERE
 
-        $songinfo['artist']= $request-> artist; 
+        $songinfo['artist']= $request-> artist;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
         $songinfo['year']= $request-> year;

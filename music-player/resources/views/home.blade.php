@@ -30,7 +30,7 @@
                                         </article>
                                     @endforeach
                             @endforeach
-                        </section>     
+                        </section>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,17 @@
                             <p id="track-title">Track Title:</p>
                             <p id="track-artist">Track Artist:</p>
                         </div>
-                        <audio id="audio" src=""></audio>
+                        @foreach(auth()->user()->songs->pluck('file_path_track') as $song_url)
+                            @php
+                                if($song_url == null)
+                                {
+                                    continue;
+                                }
+
+                            @endphp
+                            <audio id="audio" src="storage/{{$song_url}}"></audio>
+
+                        @endforeach
                     </div>
                     <div></div>
                     <div></div>
