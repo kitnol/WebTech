@@ -39,9 +39,6 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         return view('tracks'); 
     })->name('tracks'); 
 
-     Route::get('/editemail', function () {
-        return view('editemail'); 
-    })->name('editemail'); 
     Route::post('/editemail', [AuthManager::class, 'editemailPost'])->name('editemail.post'); 
 
     Route::post('/editprofile', [AuthManager::class, 'editprofilePost'])->name('editprofile.post'); 

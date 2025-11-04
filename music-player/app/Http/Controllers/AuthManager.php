@@ -69,12 +69,12 @@ class AuthManager extends Controller
             'email' => 'required|email|unique:users',
         ]);
         if (!$request){
-            return redirect(route('editemail'))->with("error", "Email already in use");
+            return redirect(route('profile'))->with("error", "Email already in use");
         }
         $data['email']= $request-> email;
         $user=User::changeEmail($data); //pass the data
         if (!$user){
-            return redirect(route('editemail'))->with("error", "Email change failed");
+            return redirect(route('profile'))->with("error", "Email change failed");
         }
         return redirect(route('profile'))->with("success", "Email changed successfully");
     }
