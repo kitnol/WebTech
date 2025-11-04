@@ -65,4 +65,16 @@ class User extends Authenticatable
         $user->email = $data['email'];
         return $user->save(); // Save the updated user
     }
+    public static function changeProfile($data)
+    {
+        // Assuming you have an authenticated user
+        $user = auth()->user();
+        if ($user->username === $data['username']) { // if new username is different from the current 
+            return false; // dont update
+        }
+
+        // Update the username
+        $user->username = $data['username'];
+        return $user->save(); // Save the updated user
+    }
 }

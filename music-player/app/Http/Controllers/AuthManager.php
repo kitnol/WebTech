@@ -78,6 +78,20 @@ class AuthManager extends Controller
         }
         return redirect(route('profile'))->with("success", "Email changed successfully");
     }
+    public function editprofilePost(Request $request){
+        $request -> validate([
+            'username' => 'required|string|max:255',
+        ]);
+        if (!$request){
+            return redirect(route('profile'))->with("error", "Profile update failed");
+        }
+        $data['username']= $request-> username;
+        $user=User::changeProfile($data); //pass the data
+        if (!$user){
+            return redirect(route('profile'))->with("error", "Profile update failed");
+        }
+        return redirect(route('profile'))->with("success", "Profile updated successfully");
+    }
     public function logout(){
         Session::flush();
         Auth::logout();

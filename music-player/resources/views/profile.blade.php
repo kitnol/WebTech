@@ -3,6 +3,7 @@
 @section('content')
     <head>
         <link rel="stylesheet" href="{{ asset('css/profile_styles.css') }}">
+        <script src="{{ asset('js/profile.js') }}"></script>
     </head>
 
     <body>
@@ -11,13 +12,26 @@
             <p class="guidetext">All your info in the right place!</p>
             <article class="card">
                 <div class="card-info">
-                    <div class="info-row">
+                    <div class="info-row" id="username-info">
                         <span class="label">Username:</span>
                         <span class="value">{{auth()->user()->username}}</span>
+                        <a href="javascript:editUsername()"><button class="button">&#9998;</button></a>
+                    </div>
+                    <div class="info-row" id="username-edit" style="display:none;">
+                        <form action="{{ route('editprofile.post') }}" method="POST">
+                            @csrf
+                                <div class="info-row">
+                                    <label for="username" class="label">Username:</label>
+                                    <input type="text" id="username" name="username" value="{{auth()->user()->username}}" required>
+                                </div>
+                                <button type="submit" class="button">Save username</button>
+                        </form>
+                        <a href="javascript:cancelUsername()"><button class="button">&#10006;</button></a>
                     </div>
                     <div class="info-row">
                         <span class="label">E-mail:</span>
                         <span class="value">{{auth()->user()->email}}</span>
+                        <a href="{{ route('editemail')}}"><button class="button">&#9998;</button></a>
                     </div>
                     <div class="info-row">
                         <span class="label">Joined since:</span>
@@ -39,7 +53,7 @@
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F474x%2F59%2F1a%2Fab%2F591aabea9f41760593c8b3d86cc9d0af.jpg%3Fnii%3Dt&f=1&nofb=1&ipt=29e3ae791a9a6f16f9b234f998f3cdf98df02f45df8cb6b61fb091d04244dd8d"
                     alt="User profile picture">
             </article>
-            <a href="{{ route('editemail')}}"><button class="button">Change email</button></a>
+            
         </main>
     </body>
 @endsection

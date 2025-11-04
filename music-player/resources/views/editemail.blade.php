@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Profile')
+@section('title', 'Edit email')
 @section('content')
     <head>
         <link rel="stylesheet" href="{{ asset('css/profile_styles.css') }}">
@@ -7,7 +7,7 @@
 
     <body>
         <main>
-            <h2>Your d-_-b Change email address</h2>
+            <h2>Change your d-_-b email address</h2>
             <div class="mt-5">
                 @if($errors->any()) <!--check for errors-->
                     <div class="col-12">
