@@ -95,20 +95,23 @@
 
         <script>
                 @php
-                $songs_urls = [];
-                foreach(auth()->user()->songs as $song) {
-                    if($song->file_path_track != null) {
-                        $songs_urls[] = [
-                            'title' => $song->title,
-                            'artist' => $song->artist,
-                            'url' => $song->file_path_track,
-                            'id' => $song->id
-                        ];
+
+                    $song_id = request('play');
+
+                    $songs_urls = [];
+                    foreach(auth()->user()->songs as $song) {
+                        if($song->file_path_track != null) {
+                            $songs_urls[] = [
+                                'title' => $song->title,
+                                'artist' => $song->artist,
+                                'url' => $song->file_path_track,
+                                'id' => $song->id
+                            ];
+                        }
                     }
-                }
 
                 @endphp
-
+                let song_id = {{$song_id ?? 'null'}};
                 const tracks = {!! json_encode($songs_urls) !!};
         </script>
         <script src="{{ asset('js/player.js') }}"></script>

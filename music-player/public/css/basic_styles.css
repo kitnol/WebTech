@@ -16,7 +16,7 @@ body {
 }
 
 .header{
-  grid-template: 
+  grid-template:
   "title"
   "navbar";
   gap: 10px;
@@ -54,7 +54,7 @@ body {
 
 /* Change color on hover */
 .navbar a:hover {
-  background-color: #ddd;
+  background-color: #f7c3ff;
   color: black;
 }
 
