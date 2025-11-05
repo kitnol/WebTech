@@ -18,6 +18,7 @@ class MusicPlayer {
         this.change_amount = 11;
         this.tracks = tracks;
         this.currentTrackIndex = 0;
+        this.currentTrackID = 0;
         this.isPlaying = false;
         this.isMoving = false;
         this.last_angle = 0;
@@ -177,13 +178,33 @@ class MusicPlayer {
         }
         console.log(index);
         console.log(this.tracks[index].id)
+        this.currentTrackID = this.tracks[index].id
+        this.currentTrackIndex = index;
+        console.log("Current index: " + this.currentTrackID)
         this.songButton = document.getElementById('playBt' + this.tracks[index].id);
         console.log(this.songButton);
         this.title.textContent = "Title: " + this.tracks[index].title;
         this.artist.textContent = "Track Artist: " + this.tracks[index].artist;
     }
 
-    play() {
+    play(id) {
+        if(this.currentTrackID !== id)
+        {
+            const index = tracks.findIndex(t => t.id === id);
+            console.log("Index of song: " + index);
+            if(index !== -1)
+            {
+                player.loadTrack(index);
+                console.log("TRACK CHANGED")
+                this.currentTrackID = id;
+                this.isPlaying = false;
+            }
+        }
+        else{
+            console.log("NO TRACK CHANGED")
+
+        }
+
         if (!this.isPlaying) {
             // Play the track
             this.audio.play();

@@ -3,12 +3,13 @@
 @section('content')
   <head>
     <link rel="stylesheet" href="{{ asset('css/songinfo_styles.css') }}">
+    <script src="{{ asset('js/editsong.js') }}"></script>
   </head>
 
   <body>
     <main>
       <h2>Song Info d-_-b</h2>
-      <section class="card">
+      <section class="card" id="song-info">
         <div class="info-row">
           <span class="label">Song Title:</span> 
           <span class="value">{{ $song->title }}</span>
@@ -37,6 +38,43 @@
           <span class="label">Music Sheet:</span> 
           <span class="value">NOT WORKING</span>
         </div>
+        <a href="javascript:editSong()"><button class="button">Edit</button></a>
+      </section>
+      <section class="card" id="song-edit" style="display:none;">
+        <form action="{{ route('editsong.post') }}" method="POST">
+          @csrf
+          <input type="hidden" name="song_id" value="{{ $song->id }}">
+          <div class="info-row">
+            <span class="label">Song Title:</span> 
+            <input type="text" id="title" name="title" value="{{ $song->title }}" required>
+          </div>
+          <div class="info-row">
+            <span class="label">Artist:</span> 
+            <input type="text" id="artist" name="artist" value="{{ $song->artist }}" required>
+          </div>
+          <div class="info-row">
+            <span class="label">Album:</span> 
+            <input type="text" id="album" name="album" value="{{ $song->album }}">
+          </div>
+          <div class="info-row">
+            <span class="label">Year:</span> 
+            <input type="text" id="year" name="year" value="{{ $song->year }}">
+          </div>
+          <div class="info-row">
+            <span class="label">Description:</span> 
+            <textarea id="description" name="description">{{ $song->description }}</textarea>
+          </div>
+          <div class="info-row">
+            <span class="label">Track:</span>   
+            <span class="value">NOT WORKING</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Music Sheet:</span> 
+            <span class="value">NOT WORKING</span>
+          </div>
+          <button type="submit" class="button">Save song NOTWORKING - fix in songcontroller.php</button>
+        </form>
+        <a href="javascript:cancelSong()"><button class="button">Cancel</button></a>
       </section>
       <a href="{{ route('tracks')}}"><button class="button">Close</button></a>
 

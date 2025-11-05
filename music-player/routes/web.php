@@ -37,6 +37,10 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         return view('profile');
     })->name('profile');
 
+    Route::get('/passedit', function () {
+        return view('passedit');
+    })->name('passedit');
+
     Route::get('/tracks', function () {
         return view('tracks');
     })->name('tracks');
@@ -44,6 +48,10 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::post('/editemail', [AuthManager::class, 'editemailPost'])->name('editemail.post');
 
     Route::post('/editprofile', [AuthManager::class, 'editprofilePost'])->name('editprofile.post');
+
+    Route::post('/editsong', [SongController::class, 'editsongPost'])->name('editsong.post');
+    
+    Route::post('/changepassword', [AuthManager::class, 'changepasswordPost'])->name('changepassword.post');
 
     Route::get('/songinfo/{song}', function (Song $song) {
         return view('songinfo', compact('song'));

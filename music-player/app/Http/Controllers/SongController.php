@@ -89,6 +89,26 @@ class SongController extends Controller
                    ->with("success", "Artist '{$currentArtist}' successfully renamed to '{$newArtist}' across {$updatedCount} songs.");
         }
     }
+    public function editsongPost(Request $request){
+        $request -> validate([
+            'artist'=> 'required|string|max:255',
+            'album' =>'nullable|string|max:255',
+            'title'=> 'required|string|max:255',
+            'year'=>'nullable|integer|min:0|max:2100',
+            'description'=>'nullable|string'
+        ]);
+        $song = Song::findOrFail($request->input('song_id'));
+        $songinfo['artist']= $request-> artist;
+        $songinfo['album']= $request-> album;
+        $songinfo['title']= $request-> title;
+        $songinfo['year']= $request-> year;
+        $songinfo['description']= $request-> description;
+
+        //$song=auth()->user()->songs()-> somehow edit it($songinfo); //pass the data while linking it to a user
+
+        return redirect(route('songinfo', ['song' => $song->id]))->with("success", "The song has been recoded successfully!");
+
+    }
 
     public function destroy($id)
     {
