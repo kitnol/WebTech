@@ -28,13 +28,16 @@
                     <div class="alert alert-success">{{session('success')}}</div>
                 @endif
             </div>
+            <!-- Start of card -->
             <article class="card">
                 <div class="card-info">
+                    <!-- Username info -->
                     <div class="info-row" id="username-info">
                         <span class="label">Username:</span>
                         <span class="value">{{auth()->user()->username}}</span>
                         <a href="javascript:editUsername()"><button class="button">&#9998;</button></a>
                     </div>
+                    <!-- Edit Username -->
                     <div class="info-row" id="username-edit" style="display:none;">
                         <form action="{{ route('editprofile.post') }}" method="POST">
                             @csrf
@@ -46,12 +49,13 @@
                         </form>
                         <a href="javascript:cancelUsername()"><button class="button">&#10006;</button></a>
                     </div>
-
+                    <!-- Email info -->
                     <div class="info-row" id="emailname-info">
                         <span class="label">E-mail:</span>
                         <span class="value">{{auth()->user()->email}}</span>
                         <a href="javascript:editEmail()"><button class="button">&#9998;</button></a>
                     </div>
+                    <!-- Edit Email -->
                     <div class="info-row" id="emailname-edit" style="display:none;">
                         <form action="{{ route('editemail.post') }}" method="POST">
                             @csrf
@@ -63,23 +67,38 @@
                         </form>
                         <a href="javascript:cancelEmail()"><button class="button">&#10006;</button></a>
                     </div>
+                    <!-- Password info -->
+                    <div class="info-row" id="passowrd-info">
+                        <span class="label">Password:</span>
+                        <span class="value">********</span>
+                        <a href="{{ route('passedit') }}"><button class="button">&#9998;</button></a>
+
+
+                    </div>
+
+
+                    <!-- Joined since info -->
                     <div class="info-row">
                         <span class="label">Joined since:</span>
                         <span class="value">{{ auth()->user()->created_at->format('F j, Y') }}</span>
                     </div>
+                    <!-- Songs saved info -->
                     <div class="info-row">
                         <span class="label">Songs saved:</span>
                         <span class="value">{{auth()->user()->songs->count()}}</span>
                     </div>
+                    <!-- Hrs listened info -->
                     <div class="info-row">
                         <span class="label">Total listening hours:</span>
                         <span class="value">NOT WORKING</span>
                     </div>
+                    <!-- Most listened song info -->
                     <div class="info-row">
                         <span class="label">Most Listened Song:</span>
                         <span class="value">NOT WORKING</span>
                     </div>
                 </div>
+                <!-- Profile picture -->
                 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F474x%2F59%2F1a%2Fab%2F591aabea9f41760593c8b3d86cc9d0af.jpg%3Fnii%3Dt&f=1&nofb=1&ipt=29e3ae791a9a6f16f9b234f998f3cdf98df02f45df8cb6b61fb091d04244dd8d"
                     alt="User profile picture">
             </article>
