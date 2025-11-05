@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         return view('editartist', [
         'artist' => $artist,
         'songs' => $songs,
+        'cover_art' => $cover_art,
         ]);
     })->name('editartist');
 

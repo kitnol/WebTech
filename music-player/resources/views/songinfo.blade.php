@@ -38,7 +38,6 @@
           <span class="value">NOT WORKING</span>
         </div>
       </section>
-      <a href="{{ route('tracks')}}"><button class="button">Edit</button></a>
       <a href="{{ route('tracks')}}"><button class="button">Close</button></a>
 
     </main>

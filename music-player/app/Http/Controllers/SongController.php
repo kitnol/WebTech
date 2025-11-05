@@ -16,17 +16,26 @@ class SongController extends Controller
     }
 
     public function store(Request $request){
-        $request -> validate([
+        $validatedData = $request -> validate([
             'artist'=> 'required|string|max:255',
+            'cover_art' => 'nullable|image|max:2048', // 2MB max
             'album' =>'nullable|string|max:255',
             'title'=> 'required|string|max:255',
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string',
-            'file_path_track.*'=>'nullable|mimes:mp3,wav,acc|max:5120', //5MB
+            'file_path_track.*'=>'required|mimes:mp3,wav,acc|max:5120', //5MB
             'file_path_music_sheet'=>'nullable|mimes:doc,docx,pdf,png,jpg,jpeg|max:5120'//5MB
         ]);
 
-        //copied DOES NOT WORK
+        $picturePath = null;
+        $artistName = $validatedData['artist'];
+        if ($request->hasFile('cover_art')) {
+            $picturePath = $request->file('cover_art')->store('song_covers', 'public');
+        }
+        else {
+            $picturePath = "https://placehold.co/300x200?text={{$artist}}";
+        }
+
         $trackPaths = null;
         if ($request->hasFile('file_path_track')) {
             $trackPaths = [];
@@ -40,8 +49,7 @@ class SongController extends Controller
         if ($request->hasFile('file_path_music_sheet')) { //file uploaded
             $musicSheetPath = $request->file('file_path_music_sheet')->store('music_sheets', 'public'); //store file in public disk in folder music_sheets
         }
-        //endcopied UNTIL HERE
-
+        $songinfo['cover_art'] = $picturePath;
         $songinfo['artist']= $request-> artist;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
