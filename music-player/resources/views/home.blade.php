@@ -115,53 +115,6 @@
                 const tracks = {!! json_encode($songs_urls) !!};
         </script>
         <script src="{{ asset('js/player.js') }}"></script>
-        <script>
-            const progressCircle = document.getElementById('progressCircle');
-            const progressText = document.getElementById('progressText');
-            const progressSlider = document.getElementById('progressSlider');
-
-            function setProgress(percentage) {
-                // Ensure percentage is between 0 and 100
-                percentage = Math.max(0, Math.min(100, percentage));
-
-                // Calculate the angle for the conic gradient
-                const angle = (percentage / 100) * 360;
-
-                // Update the conic gradient
-                progressCircle.style.background = `conic-gradient(
-                    #4CAF50 0deg,
-                    #4CAF50 ${angle}deg,
-                    #e0e0e0 ${angle}deg
-                )`;
-
-                // Update the text
-                progressText.textContent = `${Math.round(percentage)}%`;
-
-                // Update slider
-                progressSlider.value = percentage;
-            }
-
-            // Slider event listener
-            progressSlider.addEventListener('input', function () {
-                setProgress(this.value);
-            });
-
-            // Animate progress function
-            function animateProgress() {
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += 2;
-                    setProgress(progress);
-
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                    }
-                }, 50);
-            }
-
-            // Initialize with 0%
-            setProgress(0);
-        </script>
     </body>
 
 @endsection
