@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
 
     Route::post('/editprofile', [AuthManager::class, 'editprofilePost'])->name('editprofile.post');
 
+    Route::post('/editsong', [SongController::class, 'editsongPost'])->name('editsong.post');
+
     Route::get('/songinfo/{song}', function (Song $song) {
         return view('songinfo', compact('song'));
     })->name('songinfo');
