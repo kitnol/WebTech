@@ -14,7 +14,7 @@ class AuthManager extends Controller
         if(Auth::check()){
             return redirect(route('home')); //if user is logged in, the login page cannot be accessed
         }
-        return view('login'); 
+        return view('login');
     }
 
     public function create(){
@@ -38,9 +38,9 @@ class AuthManager extends Controller
         ]);
 
         $credentials = $request->only('email','password');
-        
+
         if (Auth::attempt($credentials)){
-            return redirect()->intended(route('home')); 
+            return redirect()->intended(route('home'));
         }
 
         return redirect(route('login'))->with("error", "Invalid details, please try again");
@@ -63,7 +63,7 @@ class AuthManager extends Controller
         return redirect(route('login'))->with("success", "Registration successful, Please log in");
     }
 
-    
+
     public function editemailPost(Request $request){
         $request -> validate([
             'email' => 'required|email|unique:users',
@@ -91,6 +91,33 @@ class AuthManager extends Controller
             return redirect(route('profile'))->with("error", "Profile update failed");
         }
         return redirect(route('profile'))->with("success", "Profile updated successfully");
+    }
+
+    public function changepasswordPost(Request $request){
+        $request -> validate([
+            'current_password' => 'required|string|max:255',
+            'new_password' => 'required|string|max:255',
+            'new_password_confirmation' => 'required|string|max:255',
+        ]);
+
+        $current_password = $request -> current_password;
+        $new_password = $request -> new_password;
+        $new_password_confirmation = $request -> new_password_confirmation;
+
+        if (!$request || $new_password !== $new_password_confirmation){
+            return redirect(route('profile'))->with("error", "Passwords do not match");
+        }
+        $credentials = [ "email"=>auth()->user()->email, "password"=>$current_password];
+        if (!Auth::attempt($credentials)) {
+            return redirect(route('profile'))->with("error", "Wrong password, please try again");
+        }
+
+        $data['password']= $new_password;
+        $user=User::changePassword($data); //pass the data
+        if (!$user){
+            return redirect(route('profile'))->with("error", "Password failed");
+        }
+        return redirect(route('profile'))->with("success", "Password updated successfully");
     }
     public function logout(){
         Session::flush();

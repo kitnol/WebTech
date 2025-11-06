@@ -48,7 +48,7 @@ class User extends Authenticatable
         ];
     }
 
-    //get the songs from the user 
+    //get the songs from the user
     public function songs()
     {
         return $this->hasMany(Song::class);
@@ -57,7 +57,7 @@ class User extends Authenticatable
     {
         // Assuming you have an authenticated user
         $user = auth()->user();
-        if ($user->email === $data['email']) { // if new email is different from the current 
+        if ($user->email === $data['email']) { // if new email is different from the current
             return false; // dont update
         }
 
@@ -69,7 +69,7 @@ class User extends Authenticatable
     {
         // Assuming you have an authenticated user
         $user = auth()->user();
-        if ($user->username === $data['username']) { // if new username is different from the current 
+        if ($user->username === $data['username']) { // if new username is different from the current
             return false; // dont update
         }
 
@@ -77,4 +77,16 @@ class User extends Authenticatable
         $user->username = $data['username'];
         return $user->save(); // Save the updated user
     }
+
+    public static function changePassword($data)
+    {
+        $user = auth()->user();
+        if (!$user || empty($data['password'])) {
+            return false;
+        }
+        // pass plain password; the 'hashed' cast will hash it
+        $user->password = $data['password'];
+        return $user->save();
+    }
+    
 }
