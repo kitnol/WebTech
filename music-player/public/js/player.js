@@ -172,15 +172,18 @@ class MusicPlayer {
     loadTrack(index) {
         if(!this.tracks[index].cover)
         {
+            this.coveraArt.style.objectFit = 'cover';
             this.coveraArt.src = "https://placehold.co/300x200?text=" + this.tracks[index].artist;
-            console.log(this.coveraArt);
             console.log("Change")
+
         }
         else{
+            this.coveraArt.style.objectFit = 'scale-down';
             this.coveraArt.src = "storage/"  + this.tracks[index].cover;
         }
         this.audio.src = "storage/"  + this.tracks[index].url;
         this.audio.load();
+        console.log(this.audio)
         if(this.songButton != null)
         {
             this.songButton.classList.remove('fa-pause');
