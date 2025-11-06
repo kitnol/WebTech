@@ -6,11 +6,6 @@ const progressText = document.getElementById('progressText');
 const progressSlider = document.getElementById('progressSlider');
 const timeDisplay = document.getElementById('timeDisplay');
 
-
-volumeControl.addEventListener('input', (e) => {
-    player.audio.volume = e.target.value;
-});
-
 class MusicPlayer {
 
     constructor(tracks) {
@@ -268,29 +263,6 @@ class MusicPlayer {
 
 }
 
-// Example usage
-// const tracks = [
-//     "/songs/track1.mp3",
-//     '/songs/Post Success Depression.mp3',
-//     "/songs/Trust Nobody.mp3"
-// ];
-
-const player = new MusicPlayer(tracks);
-
-if(song_id){
-    const index = tracks.findIndex(t => t.id === song_id);
-    console.log("Index of song: " + index);
-    if(index != -1)
-    {
-        player.loadTrack(index);
-        player.play();
-    }
-    else{
-        player.loadTrack(0);
-        alert("You did not upload a song you trying to play");
-    }
-}
-
 function setProgress(percentage) {
     // Ensure percentage is between 0 and 100
     percentage = Math.max(0, Math.min(100, percentage));
@@ -326,3 +298,64 @@ function animateProgress() {
         }
     }, 50);
 }
+
+//Set Cookie
+function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+
+//---------------CODE STARTS FROM HERE-------------------
+const player = new MusicPlayer(tracks);
+const volume = Number(getCookie('volume'));
+console.log(volume);
+player.audio.volume = volume;
+const volumeInput = document.createElement("input");
+volumeInput.type = 'range';
+volumeInput.min = 0;
+volumeInput.max = 1;
+volumeInput.step = 0.01;
+volumeInput.classList.add('volume');
+volumeInput.value = String(volume);
+volumeControl.append(volumeInput);
+
+//volumeBox.insertAdjacentHTML("beforeend", "<input class='volume' type='range' min='0' max='1' value ='"+ volume +"' step='0.01'>");
+
+
+if(song_id){
+    const index = tracks.findIndex(t => t.id === song_id);
+    console.log("Index of song: " + index);
+    if(index != -1)
+    {
+        player.loadTrack(index);
+        player.play();
+    }
+    else{
+        player.loadTrack(0);
+        alert("You did not upload a song you trying to play");
+    }
+}
+
+volumeControl.addEventListener('input', (e) => {
+    player.audio.volume = e.target.value;
+});
+
+volumeControl.addEventListener('mouseup', (e) => {
+    setCookie('volume', e.target.value);
+})

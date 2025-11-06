@@ -46,23 +46,7 @@
                             <p id="track-title">Track Title:</p>
                             <p id="track-artist">Track Artist:</p>
                         </div>
-                        @foreach(auth()->user()->songs->pluck('file_path_track') as $song_url)
-                            @php
-                                if($song_url == null)
-                                {
-                                    continue;
-                                }
-
-                            @endphp
-                            <audio id="audio" src="storage/{{$song_url}}"></audio>
-
-                            @php
-                                if($song_url != null)
-                                {
-                                    break;
-                                }
-                            @endphp
-                        @endforeach
+                            <audio id="audio" src=""></audio>
                     </div>
                     <div></div>
                     <div></div>
@@ -74,7 +58,7 @@
                         </div>
                     </div>
                     <div id="volume">
-                        <input class="volume" type="range" min="0" max="1" value="1" step="0.01">
+                        <!--<input class="volume" type="range" min="0" max="1"  step="0.01">-->
                         <div id="volume-icon">
                             <i class="fa fa-volume-up vol-ico"></i>
                         </div>

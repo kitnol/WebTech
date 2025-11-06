@@ -56,7 +56,7 @@
 /*bottom left*/
 /*scrollbar*/
 .scrollable {
-    height: 350px;
+    height: 90%;
     overflow-y: auto;
 }
 
@@ -87,7 +87,6 @@
     position:relative;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    padding: 30px;
     background-color: rgb(77, 2, 77);
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     color: #f1f1f1;
@@ -96,11 +95,10 @@
     grid-template:
             "title"
             "cards";
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 15% 85%;
 }
 
 .cards-grid{
-    grid-area: "cards";
     position: relative;
     display: grid;
     gap: 20px 20px;
