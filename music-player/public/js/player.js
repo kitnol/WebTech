@@ -1,6 +1,6 @@
 const playButton = document.getElementById('playBt');
 const volumeControl = document.getElementById('volume');
-
+const audio = document.getElementById('audio');
 const progressCircle = document.getElementById('progressCircle');
 const progressText = document.getElementById('progressText');
 const progressSlider = document.getElementById('progressSlider');
@@ -87,7 +87,7 @@ class MusicPlayer {
 
     mouseup(event) {
         console.log("Mouse up");
-        this.isMoving = false;
+        this.seekbar.removeEventListener('mousemove', (e) => this.changeSeek(e));
         const X = event.offsetX - 100;
         const Y = (event.offsetY - 100) * (-1);
         let angle = Math.atan2(X, Y) * (180 / Math.PI);
@@ -101,15 +101,15 @@ class MusicPlayer {
         let percent = angle / 360;
         console.log("Percent: " + percent);
         let audioTime = percent * this.audio.duration;
-        console.log("Calculated time: " + audioTime + " Current time: " + this.audio.currentTime);
-        this.audio.currentTime = 25;
+        console.log(angle + " " + this.audio.duration);
+        console.log("Calculated time: " + audioTime + " Current time: " + audio.currentTime);
 
         console.log("Set current time to " + this.audio.currentTime);
-        this.seekbar.removeEventListener('mousemove', (e) => this.changeSeek(e));
         this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e))
         console.log(this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e)));
         this.audio.playbackRate=1.0;
         this.change_amount = 11;
+        this.isMoving = false;
     }
 
     changeSeek(event) {
