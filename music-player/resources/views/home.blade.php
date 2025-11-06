@@ -36,7 +36,7 @@
             </div>
             <div class="main-right">
                 <div class="album-art">
-                    <img src="https://placehold.co/300x200?text=Album-Picture" class="album-pic" alt="albumpic" >
+                    <img src="https://placehold.co/300x200?text=Album-Picture" id="pic" class="album-pic">
                 </div>
                 <div class="player-class">
                     <div></div>
@@ -105,6 +105,7 @@
                                 'title' => $song->title,
                                 'artist' => $song->artist,
                                 'url' => $song->file_path_track,
+                                'cover' => $song->file_path_music_sheet,
                                 'id' => $song->id
                             ];
                         }

@@ -77,19 +77,17 @@
                 <button class="remove" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
               </div>
             </div>
-            <button type='button' class="add">Add</button>
             <div class="invalid-feedback">Please provide at least one track.</div>
           </div>
           <div class='grid tracks inputGroup'>
           <br>
-          <label> Music sheet: </label>
+          <label> Cover Art: </label>
             <div class='grid inputs'>
               <div class='track'>
-                <input type="file" name="file_path_music_sheet" class="inputForm" accept=".doc, .docx, .pdf, .png, .jpg, .jpeg" style="border: 0px">
+                <input type="file" name="cover_art" class="inputForm" accept=".png, .jpeg, .jpg" style="border: 0px">
                 <button class="remove" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
               </div>
             </div>
-            <button type='button' class="add">Add</button>
             <div class="invalid-feedback">Please provide at least one track.</div>
           </div>
         </fieldset>

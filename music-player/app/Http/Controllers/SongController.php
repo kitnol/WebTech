@@ -24,16 +24,13 @@ class SongController extends Controller
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string',
             'file_path_track.*'=>'required|mimes:mp3,wav,acc|max:5120', //5MB
-            'file_path_music_sheet'=>'nullable|mimes:doc,docx,pdf,png,jpg,jpeg|max:5120'//5MB
+            'file_path_music_sheet'=>'nullable|mimes:doc,docx,pdf,png,jpg,jpeg|max:5120',//5MB
         ]);
 
         $picturePath = null;
         $artistName = $validatedData['artist'];
         if ($request->hasFile('cover_art')) {
             $picturePath = $request->file('cover_art')->store('song_covers', 'public');
-        }
-        else {
-            $picturePath = "https://placehold.co/300x200?text={{$artist}}";
         }
 
         $trackPaths = null;
@@ -45,18 +42,15 @@ class SongController extends Controller
         }
 
 
-        $musicSheetPath = null; //no file uploaded
-        if ($request->hasFile('file_path_music_sheet')) { //file uploaded
-            $musicSheetPath = $request->file('file_path_music_sheet')->store('music_sheets', 'public'); //store file in public disk in folder music_sheets
-        }
-        $songinfo['cover_art'] = $picturePath;
+
+
         $songinfo['artist']= $request-> artist;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
         $songinfo['year']= $request-> year;
         $songinfo['description']= $request-> description;
         $songinfo['file_path_track'] = $trackPaths ? implode(',', $trackPaths) : null; //copied
-        $songinfo['file_path_music_sheet'] = $musicSheetPath;
+        $songinfo['file_path_music_sheet'] = $picturePath;
 
         $song=auth()->user()->songs()->create($songinfo); //pass the data while linking it to a user
 
@@ -113,7 +107,7 @@ class SongController extends Controller
     public function destroy($id)
     {
         $song = Song::findOrFail($id);
-        
+
         if ($song->user_id !== auth()->id()) {
             return redirect()->back()->with('error', 'Unauthorized action.');
         }
@@ -130,7 +124,7 @@ class SongController extends Controller
         }
 
         $song->delete();
-        
+
         return redirect()->route('tracks')->with('success', 'Song deleted successfully.');
     }
 }

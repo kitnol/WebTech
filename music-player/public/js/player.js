@@ -30,6 +30,7 @@ class MusicPlayer {
         this.timeDisplay = document.getElementById('timeDisplay');
         this.title = document.getElementById('track-title');
         this.artist = document.getElementById('track-artist');
+        this.coveraArt = document.getElementById('pic');
         this.songButton = null;
         //this.seekbar_cont = document.getElementsByClassName('seekbar-container');
 
@@ -169,6 +170,15 @@ class MusicPlayer {
     }
 
     loadTrack(index) {
+        if(!this.tracks[index].cover)
+        {
+            this.coveraArt.src = "https://placehold.co/300x200?text=" + this.tracks[index].artist;
+            console.log(this.coveraArt);
+            console.log("Change")
+        }
+        else{
+            this.coveraArt.src = "storage/"  + this.tracks[index].cover;
+        }
         this.audio.src = "storage/"  + this.tracks[index].url;
         this.audio.load();
         if(this.songButton != null)
@@ -287,8 +297,8 @@ function setProgress(percentage) {
 
     // Update the conic gradient
     progressCircle.style.background = `conic-gradient(
-                #dda0dd 0deg,
-                #dda0dd ${angle}deg,
+                #e17fe1 0deg,
+                #e17fe1 ${angle}deg,
                 #b3b3b3 ${angle}deg
             )`;
 }
@@ -296,8 +306,8 @@ function setProgress(percentage) {
 function setProgressAngle(angle) {
     // Update the conic gradient
     progressCircle.style.background = `conic-gradient(
-                #dda0dd 0deg,
-                #dda0dd ${angle}deg,
+                #e17fe1 0deg,
+                #e17fe1 ${angle}deg,
                 #b3b3b3 ${angle}deg
             )`;
 }

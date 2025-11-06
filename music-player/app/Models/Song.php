@@ -18,9 +18,9 @@ class Song extends Model
         'description',
         'file_path_track',
         'file_path_music_sheet',
+        'file_path_image',
         'duration',
         'user_id',
-
     ];
 
     public function user() //know who the songs belong to
