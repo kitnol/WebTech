@@ -10,23 +10,7 @@
     <main>
       <h2>Artist Info d-_-b</h2>
       <section class="card">
-        <img src="https://placehold.co/300x200?text={{$artist}}" alt="{{$artist}}" class="artistimage" >
-        <a href="javascript:editArtistimage()"><button class="button">&#9998;</button></a>
-        <div class="info-row" id="artist-edit" style="display:none;">
-          <form action="{{ route('editartist.post') }}" method="POST">
-              @csrf
-              <input type="hidden" name="current_artist" value="https://placehold.co/300x200?text={{$artist}}">
-              <div class="info-row">
-                  <label for="artist" class="label">Artist image:</label>
-                  <input type="text" id="new_artistimage" name="new_artistimage" value="{{$artist}}" required>
-              </div>
-              <button type="submit" class="button">Save artist</button>
-          </form>
-          <a href="javascript:cancelArtistimage()"><button class="button">&#10006;</button></a>
-        </div>
-
-
-
+        <img src="https://placehold.co/300x200/A837B8/ffffff?text={{$artist}}" alt="{{$artist}}" class="artistimage">
         <div class="info-row" id="artist-info">
           <span class="label">Artist:</span> 
           <span class="value">{{ $artist }} </span>

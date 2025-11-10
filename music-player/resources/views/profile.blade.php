@@ -31,6 +31,8 @@
             <!-- Start of card -->
             <article class="card">
                 <div class="card-info">
+                    <!-- Profile picture -->
+                    <img src="https://img.freepik.com/premium-photo/headphones-with-music-notes-headband-purple-background_1204450-18446.jpg" alt="Immagine musicale" class="profile-image"> 
                     <!-- Username info -->
                     <div class="info-row" id="username-info">
                         <span class="label">Username:</span>
@@ -98,11 +100,7 @@
                         <span class="value">NOT WORKING</span>
                     </div>
                 </div>
-                <!-- Profile picture -->
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F474x%2F59%2F1a%2Fab%2F591aabea9f41760593c8b3d86cc9d0af.jpg%3Fnii%3Dt&f=1&nofb=1&ipt=29e3ae791a9a6f16f9b234f998f3cdf98df02f45df8cb6b61fb091d04244dd8d"
-                    alt="User profile picture">
-            </article>
-            
+            </article>     
         </main>
     </body>
 @endsection

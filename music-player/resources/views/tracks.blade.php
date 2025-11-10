@@ -1,6 +1,5 @@
 @extends('layout')
 @section('title', 'Tracks')
-
 @section('content')
   <head>
     <link rel="stylesheet" href="{{ asset('css/tracks_styles.css') }}">

@@ -41,9 +41,6 @@ class SongController extends Controller
             }
         }
 
-
-
-
         $songinfo['artist']= $request-> artist;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;

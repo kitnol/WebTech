@@ -70,7 +70,7 @@
         </fieldset>
         <fieldset>
           <div class='grid tracks inputGroup'>
-            <label> Tracks (.mp3, .wav, .acc): </label>
+            <label> *Tracks (.mp3, .wav, .acc): </label>
             <div class='grid inputs'>
               <div class='track mb-3'>
                 <input type="file" name="file_path_track[]" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px">
