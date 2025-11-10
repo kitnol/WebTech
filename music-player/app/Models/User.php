@@ -53,6 +53,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Song::class);
     }
+
+
     public static function changeEmail($data)
     {
         // Assuming you have an authenticated user
@@ -88,5 +90,5 @@ class User extends Authenticatable
         $user->password = $data['password'];
         return $user->save();
     }
-    
+
 }

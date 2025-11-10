@@ -4,7 +4,7 @@
   <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/newtrack_styles.css') }}">
-
+    <!--<link rel="stylesheet" href="{{ asset('css/css/bootstrap.css') }}">-->
     <script defer src="{{ asset('js/events.js') }}"></script>
     <script defer src="{{ asset('js/keypress.js') }}"></script>
   </head>
@@ -72,9 +72,9 @@
           <div class='grid tracks inputGroup'>
             <label> Tracks (.mp3, .wav, .acc): </label>
             <div class='grid inputs'>
-              <div class='track'>
-                <input type="file" name="file_path_track[]" class="inputForm" multiple accept=".mp3, .wav, .acc" style="border: 0px">
-                <button class="remove" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
+              <div class='track mb-3'>
+                <input type="file" name="file_path_track[]" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px">
+                <button class="remove submitbutton" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
               </div>
             </div>
             <div class="invalid-feedback">Please provide at least one track.</div>
@@ -85,7 +85,7 @@
             <div class='grid inputs'>
               <div class='track'>
                 <input type="file" name="cover_art" class="inputForm" accept=".png, .jpeg, .jpg" style="border: 0px">
-                <button class="remove" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
+                <button class="remove submitbutton" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
               </div>
             </div>
             <div class="invalid-feedback">Please provide at least one track.</div>

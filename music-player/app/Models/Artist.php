@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Song extends Model
-{
+class Artist extends Model{
 
     protected $fillable = [
         'artist',
+        'artist_id',
         'cover_art',
         'album',
         'title',

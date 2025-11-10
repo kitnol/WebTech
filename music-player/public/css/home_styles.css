@@ -248,13 +248,11 @@ button i {
     margin: auto;
 }
 
-.volume input[type="range"] {
-
+.volume input[type="range"]{
     writing-mode: vertical-lr;
     direction: rtl;
     width: 90%;
     height: auto;
-
     outline: none;
 }
 

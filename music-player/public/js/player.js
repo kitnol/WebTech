@@ -98,7 +98,8 @@ class MusicPlayer {
         console.log("Percent: " + percent);
         let audioTime = percent * this.audio.duration;
         console.log(angle + " " + this.audio.duration);
-        console.log("Calculated time: " + audioTime + " Current time: " + audio.currentTime);
+        console.log("Calculated time: " + audioTime + " Current time: " + this.audio.currentTime);
+        this.audio.currentTime = audioTime;
 
         console.log("Set current time to " + this.audio.currentTime);
         this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e))
