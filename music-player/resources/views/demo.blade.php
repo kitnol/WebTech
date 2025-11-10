@@ -7,7 +7,7 @@
     <main class="main">
         <div class="main-left">
             <div class="hero-image">
-                <h1 class="hero-text" style="margin-left: 50px;">Demo Page d-_-b </h1>
+                <h1 class="hero-text" >Demo Page d-_-b </h1>
                 <p class="demotext">To access the functionalities <a href="{{ route('login') }}">Login</a> or <a href="{{ route('create') }}">Create</a> an account. <br> You can also learn more <a href="{{ route('aboutus') }}">about us</a>.</p>
             </div>
             <div class="song-list">

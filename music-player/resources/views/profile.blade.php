@@ -31,6 +31,8 @@
             <!-- Start of card -->
             <article class="card">
                 <div class="card-info">
+                    <!-- Profile picture -->
+                    <img src="https://img.freepik.com/premium-photo/headphones-with-music-notes-headband-purple-background_1204450-18446.jpg" alt="Immagine musicale" class="profile-image"> 
                     <!-- Username info -->
                     <div class="info-row" id="username-info">
                         <span class="label">Username:</span>
@@ -98,8 +100,6 @@
                         <span class="value">NOT WORKING</span>
                     </div>
                 </div>
-                <!-- Profile picture -->
-                <img src="https://img.freepik.com/premium-photo/headphones-with-music-notes-headband-purple-background_1204450-18446.jpg" alt="Immagine musicale">
             </article>     
         </main>
     </body>

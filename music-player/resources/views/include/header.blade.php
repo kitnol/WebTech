@@ -1,8 +1,6 @@
 <header class="header">
     <h1>d-_-b Music Player</h1>
-    <nav class="navbar">
-        
-        
+    <nav class="navbar">  
         @auth
             <a href="{{ route('home') }}" class="@if(request()->routeIs('home')) active @endif">Home</a>
             <a href="{{ route('tracks') }}" class="@if(request()->routeIs('tracks')) active @endif">Tracks</a>

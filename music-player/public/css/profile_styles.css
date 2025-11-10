@@ -64,12 +64,13 @@ p {
 }
 
 /* profile picture */
-.card img {
+.profile-image {
   width: 160px;
   height: 160px;
   object-fit: cover;   /* keeps image from stretching */
   border-radius: 50%;  /* makes it circular */
   border: 3px solid #784848; /* imge border */
+  margin-left: 36%;
 }
 
 .info-row {
