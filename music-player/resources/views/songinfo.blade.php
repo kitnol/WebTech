@@ -34,10 +34,6 @@
           <span class="label">Track:</span> 
           <span class="value">NOT WORKING</span>
         </div>
-        <div class="info-row">
-          <span class="label">Music Sheet:</span> 
-          <span class="value">NOT WORKING</span>
-        </div>
         <a href="javascript:editSong()"><button class="button">Edit</button></a>
       </section>
       <section class="card" id="song-edit" style="display:none;">
@@ -66,10 +62,6 @@
           </div>
           <div class="info-row">
             <span class="label">Track:</span>   
-            <span class="value">NOT WORKING</span>
-          </div>
-          <div class="info-row">
-            <span class="label">Music Sheet:</span> 
             <span class="value">NOT WORKING</span>
           </div>
           <button type="submit" class="button">Save song NOTWORKING - fix in songcontroller.php</button>

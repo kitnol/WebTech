@@ -8,8 +8,8 @@
 
   <body>
     <main>
+      <h2>Tracks!</h2>  
       @if (auth()->user()->songs->count() < 1)
-        <h2>Tracks!</h2>
         <p class="guidetext">
           Seems like you have no tracks saved yet! Add new <a href="/newtrack">here</a>!
         </p>

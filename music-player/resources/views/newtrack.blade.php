@@ -73,11 +73,12 @@
             <label> *Tracks (.mp3, .wav, .acc): </label>
             <div class='grid inputs'>
               <div class='track mb-3'>
-                <input type="file" name="file_path_track[]" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px">
+                <input type="file" name="file_path_track[]" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px" required>
                 <button class="remove submitbutton" type='button' disabled='disabled'><i class="fas fa-trash-alt"></i> Remove</button>
+                <div class="invalid-feedback">Please provide a track.</div>
               </div>
             </div>
-            <div class="invalid-feedback">Please provide at least one track.</div>
+            <div class="invalid-feedback">Please provide a track.</div>
           </div>
           <div class='grid tracks inputGroup'>
           <br>

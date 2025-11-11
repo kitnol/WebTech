@@ -89,16 +89,6 @@
                         <span class="label">Songs saved:</span>
                         <span class="value">{{auth()->user()->songs->count()}}</span>
                     </div>
-                    <!-- Hrs listened info -->
-                    <div class="info-row">
-                        <span class="label">Total listening hours:</span>
-                        <span class="value">NOT WORKING</span>
-                    </div>
-                    <!-- Most listened song info -->
-                    <div class="info-row">
-                        <span class="label">Most Listened Song:</span>
-                        <span class="value">NOT WORKING</span>
-                    </div>
                 </div>
             </article>     
         </main>
