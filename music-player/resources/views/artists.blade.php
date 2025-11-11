@@ -8,19 +8,27 @@
   <body>
     <main>
       <h2>Artists!</h2>
-      <p class="guidetext">
+      @if (auth()->user()->songs->count() < 1)
+        <p class="guidetext">
+          Seems like you have no artists saved yet! Add a new track <a href="/newtrack">here</a>!
+        </p>
+      @else
+        <p class="guidetext">
         Here you can find a list of all your artists, click on the artist to find out more. d-_-b
-      </p>
-      <section class="grid">
-        @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
-          <article class="card">
-            <img src="https://placehold.co/300x200/A837B8/ffffff?text={{$artist}}" alt="{{$artist}}" class="artistimage">
-            <p class="cardtext">{{$artist}}</p>
-            <p> Total songs in your list: {{ auth()->user()->songs->where('artist', $artist)->count() }}</p>
-            <a href="{{ route('artistinfo', ['artist' => $artist]) }}"><button class="button">View More</button></a>
-          </article>
-        @endforeach
-      </section>
+        </p>
+
+        <section class="grid">
+          @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+            <article class="card">
+              <img src="https://placehold.co/300x200/A837B8/ffffff?text={{$artist}}" alt="{{$artist}}" class="artistimage">
+              <p class="cardtext">{{$artist}}</p>
+              <p> Total songs in your list: {{ auth()->user()->songs->where('artist', $artist)->count() }}</p>
+              <a href="{{ route('artistinfo', ['artist' => $artist]) }}"><button class="button">View More</button></a>
+            </article>
+          @endforeach
+        </section>
+      @endif
+
     </main>
   </body>
 @endsection
