@@ -51,9 +51,9 @@ p {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
   max-width: 600px;   
   margin: 0 auto;    
-  display: flex;        /* make content side-by-side */
-  align-items: flex-start;   /* keeps items on top */
-  justify-content: space-between; 
+  display: flex;            /* make content side-by-side */
+  align-items: flex-start;  /* keeps items on top */
+  justify-content: center; /* center horizontally */
   gap: 20px;          
 }
 
@@ -74,24 +74,60 @@ p {
 
 .info-row {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 30px;     /* space between label and value */
-  margin: 20px 0; /* space between info rows */
+  margin-bottom: 30px; /* space between info rows  */
 }
 
 .label {
+  width: 250px; /* fixed width to align all input boxes */
+  margin-right: 10px;
   font-weight: bold;
   font-size: 20px;
   color: #520019;
 }
 
-.value {
+
+input{
+  border: 2px solid #d1a7cf;       /* a nice border */
+  background-color: #f9eef8;       /* a nice background */
+  padding: 8px 12px;               /* internal spacing */
+  border-radius: 8px;              /* rounded corners */
+  outline: none;                   /* removes outline when typing - is prettier */
+  color: #5c3838;
+  font-size: 20px;
+}
+
+/* This is necessary for styling the Username value as a value (and not disabled input box) while maintaining alignemnt */ 
+input[disabled] {
+  background-color: transparent; /* Set background as transparent */
+  border: none;
   color: #784848;
   font-size: 20px;
 }
 
+input:hover {
+  border-color: #b875b0;           /* makes border of input box stronger when hovering - pretty */
+}
+
+/* After clicking (when inputting value) */
+input:focus {
+  background-color: #fff;          /* brighten background - makes it more highlighted*/
+  border-color: #8a3d8a;           /* deeper purple border - pretty*/
+  box-shadow: 0 0 6px rgba(138,61,138,0.4); /* box shadow effect - pretty */
+}
+
+.button-row {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center horizontally */
+  gap: 15px;              /* space between buttons */
+  margin-top: 25px;
+}
+
 /*interactive button "save"*/
-button {
+.button {
   background-color: purple;
   border: none;
   color: white;
@@ -106,7 +142,7 @@ button {
   border-radius: 10px; /*add rounded corners*/
 }
 
-button:hover {
+.button:hover {
   background-color: indigo;color: white;
   transform: scale(1.1);   /* Increase size*/
 }

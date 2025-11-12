@@ -33,8 +33,8 @@
                 <div class="card-info">
                     <!-- Username info -->
                     <div class="info-row" id="username-info">
-                        <span class="label">Username:</span>
-                        <span class="value">{{auth()->user()->username}}</span>
+                        <label class="label">Username:</label>
+                        <input type="text" value="{{ auth()->user()->username }}" disabled>
                     </div>
                     <!-- Edit Password -->
                     <div class="info-row">
@@ -53,16 +53,18 @@
                                 <!-- Confirm New Password -->
                                 <div class="info-row">
                                     <label for="new_password_confirmation" class="label">Confirm New Password:</label>
-                                    <input type="text" id="new_password_confirmation" name="new_password_confirmation" required>
-                                </div>
-                                <!-- Save Button -->
-                                <button type="submit" class="button">Save Password</button>
+                                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+                                </div>   
                         </form>
                     </div>
-                    <a href="{{ route('profile')}}"><button class="button">Close</button></a> 
+                    <div class="button-row">
+                        <!-- Save Button -->
+                        <button type="submit" class="button">Save Password</button>
+                        <!-- Close Button -->
+                        <a href="{{ route('profile')}}"><button class="button">Close</button></a> 
+                     </div>
                 </div>
             </article>
-            
         </main>
     </body>
 @endsection
