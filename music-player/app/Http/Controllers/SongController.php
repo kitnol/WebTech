@@ -94,9 +94,7 @@ class SongController extends Controller
         $songinfo['title']= $request-> title;
         $songinfo['year']= $request-> year;
         $songinfo['description']= $request-> description;
-
-        //$song=auth()->user()->songs()-> somehow edit it($songinfo); //pass the data while linking it to a user
-
+        $song->update($songinfo);   //push the change to DB
         return redirect(route('songinfo', ['song' => $song->id]))->with("success", "The song has been recoded successfully!");
 
     }

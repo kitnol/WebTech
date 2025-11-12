@@ -64,7 +64,7 @@
             <span class="label">Track:</span>   
             <span class="value">NOT WORKING</span>
           </div>
-          <button type="submit" class="button">Save song NOTWORKING - fix in songcontroller.php</button>
+          <button type="submit" class="button">Save song</button>
         </form>
         <a href="javascript:cancelSong()"><button class="button">Cancel</button></a>
       </section>
