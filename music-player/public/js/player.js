@@ -326,7 +326,13 @@ function getCookie(cname) {
 const player = new MusicPlayer(tracks);
 const volume = Number(getCookie('volume'));
 console.log(volume);
-player.audio.volume = volume;
+if(isNaN(volume))
+{
+    player.audio.volume = 0.5;
+}
+else{
+    player.audio.volume = volume;
+}
 const volumeInput = document.createElement("input");
 volumeInput.type = 'range';
 volumeInput.min = 0;
