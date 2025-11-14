@@ -71,13 +71,13 @@ class MusicPlayer {
 
             this.isMoving = true;
             this.seekbar.addEventListener('mousemove', (e) => this.changeSeek_DJ(e));
-            this.seekbar.addEventListener('mouseup', (e) => this.mouseup(e));
+            this.seekbar.addEventListener('mouseup', (e) => this.mouseup2(e));
         }
         if (event.button == 0) {
             console.log("🖱 left click detected!")
             this.isMoving = true;
             this.seekbar.addEventListener('mousemove', (e) => this.changeSeek(e));
-            this.seekbar.addEventListener('mouseup', (e) => this.mouseup(e));
+            this.seekbar.addEventListener('mouseup', (e) => this.mouseup2(e));
         }
     }
 
@@ -99,7 +99,6 @@ class MusicPlayer {
         let audioTime = percent * this.audio.duration;
         console.log(angle + " " + this.audio.duration);
         console.log("Calculated time: " + audioTime + " Current time: " + this.audio.currentTime);
-        this.audio.currentTime = audioTime;
 
         console.log("Set current time to " + this.audio.currentTime);
         this.seekbar.removeEventListener('mouseup', (e) => this.mouseup(e))
@@ -107,6 +106,13 @@ class MusicPlayer {
         this.audio.playbackRate=1.0;
         this.change_amount = 11;
         this.isMoving = false;
+        this.audio.currentTime = 25;
+
+    }
+
+    mouseup2(event){
+        this.isMoving = false;
+        this.audio.currentTime = 25;
     }
 
     changeSeek(event) {

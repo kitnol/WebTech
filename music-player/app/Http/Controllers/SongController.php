@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Song;
+use App\Models\Artist;
+use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Session;
 
 class SongController extends Controller
@@ -17,36 +19,41 @@ class SongController extends Controller
 
     public function store(Request $request){
         $validatedData = $request -> validate([
-            'artist'=> 'required|string|max:255',
-            'cover_art' => 'nullable|image|max:2048', // 2MB max
+            'artist'=> 'nullable|string|max:255',
             'album' =>'nullable|string|max:255',
             'title'=> 'required|string|max:255',
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string',
-            'file_path_track.*'=>'required|mimes:mp3,wav,acc|max:5120', //5MB
-            'file_path_music_sheet'=>'nullable|mimes:doc,docx,pdf,png,jpg,jpeg|max:5120',//5MB
+            'file_path_track'=>'required|mimes:mp3,wav,acc|max:5120', //5MB
+            'cover_art_path'=>'nullable|mimes:png,jpg,jpeg|max:5120',//5MB
         ]);
 
         $picturePath = null;
-        $artistName = $validatedData['artist'];
         if ($request->hasFile('cover_art')) {
-            $picturePath = $request->file('cover_art')->store('song_covers', 'public');
+            $picturePath = $request->file('cover_art_path')->store('song_covers', 'public');
         }
 
-        $trackPaths = null;
+        $trackPath = null;
         if ($request->hasFile('file_path_track')) {
-            $trackPaths = [];
-            foreach ($request->file('file_path_track') as $track) {
-                $trackPaths[] = $track->store('tracks', 'public');
-            }
+            $trackPath = $request->file('file_path_track')->store('song_tracks', 'public');
         }
 
-        $songinfo['artist']= $request-> artist;
+        //$artist_id = ArtistController::store(['artist' => $request->artist, 'cover_art_path' => null, 'description' => null]);
+
+        $artist = Artist::where('artist', $request->input('artist'))->first();
+        if($artist == null){
+            $artist_id = ArtistController::store(['artist' => $request->artist, 'cover_art_path' => null, 'description' => null]);
+        }
+        else{
+           $artist_id = $artist->id;
+        }
+
+        $songinfo['artist_id']= $artist_id;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
         $songinfo['year']= $request-> year;
         $songinfo['description']= $request-> description;
-        $songinfo['file_path_track'] = $trackPaths ? implode(',', $trackPaths) : null; //copied
+        $songinfo['file_path_track'] = $trackPath;
         $songinfo['file_path_music_sheet'] = $picturePath;
 
         $song=auth()->user()->songs()->create($songinfo); //pass the data while linking it to a user

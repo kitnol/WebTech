@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('artist');
+            $table->integer('artist_id');
             $table->string('album')->nullable(); //optional
             $table->integer('year')->nullable(); //optional
             $table->text('description') ->nullable(); //optional

@@ -38,7 +38,7 @@
             <label> *Artist: </label>
             <input list="artist-options" name="artist" id="artist" class="inputForm" required />
             <datalist id="artist-options">
-              @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+              @foreach(auth()->user()->artists()->pluck('artist')->unique() as $artist)
                 <option value="{{$artist}}"></option>
               @endforeach
             </datalist>
@@ -73,7 +73,7 @@
             <label> *Tracks (.mp3, .wav, .acc): </label>
             <div class='grid inputs'>
               <div class='track mb-3'>
-                <input type="file" name="file_path_track[]" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px" required>
+                <input type="file" name="file_path_track" class="inputForm form-control" id="formFile" multiple accept=".mp3, .wav, .acc" style="border: 0px" required>
                 <div class="invalid-feedback">Please provide a track.</div>
               </div>
             </div>
@@ -84,7 +84,7 @@
           <label> Cover Art: </label>
             <div class='grid inputs'>
               <div class='track'>
-                <input type="file" name="cover_art" class="inputForm" accept=".png, .jpeg, .jpg" style="border: 0px">
+                <input type="file" name="cover_art_path" class="inputForm" accept=".png, .jpeg, .jpg" style="border: 0px">
               </div>
             </div>
             <div class="invalid-feedback">Please provide at least one track.</div>

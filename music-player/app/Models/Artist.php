@@ -10,16 +10,8 @@ class Artist extends Model{
 
     protected $fillable = [
         'artist',
-        'artist_id',
-        'cover_art',
-        'album',
-        'title',
-        'year',
+        'cover_art_path',
         'description',
-        'file_path_track',
-        'file_path_music_sheet',
-        'file_path_image',
-        'duration',
         'user_id',
     ];
 

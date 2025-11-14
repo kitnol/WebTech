@@ -8,7 +8,7 @@
 
   <body>
     <main>
-      <h2>Tracks!</h2>  
+      <h2>Tracks!</h2>
       @if (auth()->user()->songs->count() < 1)
         <p class="guidetext">
           Seems like you have no tracks saved yet! Add new <a href="/newtrack">here</a>!
@@ -43,7 +43,7 @@
                   <form action="{{ route('songs.destroy', $song->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">
+                    <button onclick="alert('ARE YOU SURE THAT THIS PEACE OF ART GONNA GO INTO THE TRASH????')" type="submit">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
                   </form>
