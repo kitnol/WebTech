@@ -37,7 +37,7 @@
                   </a>
 
                   <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">
-                    {{ $song->artist }} - {{ $song->title }}
+                    {{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist }} - {{ $song->title }}
                   </a>
 
                   <form action="{{ route('songs.destroy', $song->id) }}" method="POST">

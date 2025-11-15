@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::post('/editprofile', [AuthManager::class, 'editprofilePost'])->name('editprofile.post');
 
     Route::post('/editsong', [SongController::class, 'editsongPost'])->name('editsong.post');
-    
+
     Route::post('/changepassword', [AuthManager::class, 'changepasswordPost'])->name('changepassword.post');
 
     Route::get('/songinfo/{song}', function (Song $song) {
@@ -60,10 +60,10 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         return view('home', compact('play'));
     })->name('home.play');
 
-    Route::get('/artistinfo/{artist}', function ($artist) {
-        $songs = auth()->user()->songs()->where('artist', $artist)->get();
+    Route::get('/artistinfo/{artist_id}', function ($artist_id) {
+        $songs = auth()->user()->songs()->where('artist_id', $artist_id)->get();
         return view('artistinfo', [
-        'artist' => $artist,
+        'artist' => auth()->user()->artists()->where('id', $artist_id)->first(),
         'songs' => $songs,
         ]);
     })->name('artistinfo');

@@ -18,12 +18,12 @@
         </p>
 
         <section class="grid">
-          @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+          @foreach(auth()->user()->artists()->distinct()->get() as $artist)
             <article class="card">
-              <img src="https://placehold.co/300x200/A837B8/ffffff?text={{$artist}}" alt="{{$artist}}" class="artistimage">
-              <p class="cardtext">{{$artist}}</p>
-              <p> Total songs in your list: {{ auth()->user()->songs->where('artist', $artist)->count() }}</p>
-              <a href="{{ route('artistinfo', ['artist' => $artist]) }}"><button class="button">View More</button></a>
+              <img src="https://placehold.co/300x200/A837B8/ffffff?text={{$artist->artist}}" alt="{{$artist->artist}}" class="artistimage">
+              <p class="cardtext">{{$artist->artist}}</p>
+              <p> Total songs in your list: {{ auth()->user()->songs()->where('artist_id', $artist->id)->count() }}</p>
+              <a href="{{ route('artistinfo', ['artist_id' => $artist->id]) }}"><button class="button">View More</button></a>
             </article>
           @endforeach
         </section>

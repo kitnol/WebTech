@@ -17,16 +17,16 @@
                     </section>
                     <div class="scrollable">
                         <section class="cards-grid">
-                            @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+                            @foreach(auth()->user()->artists()->distinct()->get() as $artist)
                                     @php
                                     $songsbyartist = auth()->user()->songs
-                                        ->where('artist', $artist)
+                                        ->where('artist_id', $artist->id)
                                         ->unique('title');
                                     @endphp
                                     @foreach($songsbyartist as $song)
                                         <article class="card">
                                             <button onclick="player.play({{$song->id}})"><i id="playBt{{(string)$song->id}}" class="fa fa-play"></i></button>
-                                             <p>{{$song->artist}} - {{$song->title}}</p>
+                                             <p>{{$artist->artist}} - {{$song->title}}</p>
                                         </article>
                                     @endforeach
                             @endforeach
@@ -87,7 +87,7 @@
                         if($song->file_path_track != null) {
                             $songs_urls[] = [
                                 'title' => $song->title,
-                                'artist' => $song->artist,
+                                'artist' => auth()->user()->artists()->where('id', $artist->id)->first()->artist,
                                 'url' => $song->file_path_track,
                                 'cover' => $song->file_path_music_sheet,
                                 'id' => $song->id
