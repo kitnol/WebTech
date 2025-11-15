@@ -89,7 +89,7 @@
                                 'title' => $song->title,
                                 'artist' => auth()->user()->artists()->where('id', $artist->id)->first()->artist,
                                 'url' => $song->file_path_track,
-                                'cover' => $song->file_path_music_sheet,
+                                'cover' => $song->cover_art_path,
                                 'id' => $song->id
                             ];
                         }

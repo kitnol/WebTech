@@ -29,7 +29,7 @@ class SongController extends Controller
         ]);
 
         $picturePath = null;
-        if ($request->hasFile('cover_art')) {
+        if ($request->hasFile('cover_art_path')) {
             $picturePath = $request->file('cover_art_path')->store('song_covers', 'public');
         }
 
@@ -54,7 +54,7 @@ class SongController extends Controller
         $songinfo['year']= $request-> year;
         $songinfo['description']= $request-> description;
         $songinfo['file_path_track'] = $trackPath;
-        $songinfo['file_path_music_sheet'] = $picturePath;
+        $songinfo['cover_art_path'] = $picturePath;
 
         $song=auth()->user()->songs()->create($songinfo); //pass the data while linking it to a user
 

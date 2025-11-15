@@ -8,7 +8,7 @@
   <body>
     <main>
       <h2>Artists!</h2>
-      @if (auth()->user()->songs->count() < 1)
+      @if (auth()->user()->artists()s->count() < 1)
         <p class="guidetext">
           Seems like you have no artists saved yet! Add a new track <a href="/newtrack">here</a>!
         </p>

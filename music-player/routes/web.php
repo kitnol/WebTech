@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\ArtistController;
 use App\Models\Song;
 
 Route::get('/create', [AuthManager::class, 'create'])->name('create');
@@ -77,5 +78,5 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
         ]);
     })->name('editartist');
 
-    Route::post('/editartist', [SongController::class, 'editartistPost'])->name('editartist.post');
+    Route::post('/editartist', [ArtistController::class, 'editartistPost'])->name('editartist.post');
 });

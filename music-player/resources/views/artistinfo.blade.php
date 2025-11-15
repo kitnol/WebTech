@@ -19,7 +19,7 @@
         <div class="info-row" id="artist-edit" style="display:none;">
           <form action="{{ route('editartist.post') }}" method="POST">
               @csrf
-              <input type="hidden" name="current_artist" value="{{ $artist->artist }}">
+              <input type="hidden" name="artist_id" value="{{ $artist->id }}">
               <div class="info-row">
                   <label for="artist" class="label">Artist:</label>
                   <input type="text" id="new_artist" name="new_artist" value="{{$artist->artist  }}" required>

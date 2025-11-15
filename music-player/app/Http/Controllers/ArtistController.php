@@ -27,4 +27,30 @@ class ArtistController extends Controller
         return $artist->id;
 
     }
+
+    public function editartistPost(Request $request){
+
+        $idArtist = $request->input('artist_id');
+        $newArtist = $request->input('new_artist');
+
+        // 1. Validate the inputs
+        $request->validate([
+            'artist_id' => 'required|integer',
+            'new_artist' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+        ]);
+
+        // Changing artist name everywhere
+        $updatedCount = auth()->user()->artists()
+            ->where('id', $idArtist)
+            ->update(['artist' => $newArtist]);
+
+        if ($updatedCount > 0){
+            return redirect(route('artistinfo', ['artist_id' => $idArtist]))
+                ->with("success", "Artist '{$idArtist}' successfully renamed to '{$newArtist}' across {$updatedCount} songs.");
+        }
+    }
 }
