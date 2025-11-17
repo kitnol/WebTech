@@ -121,12 +121,36 @@ class SongController extends Controller
             }
         }
 
-        if ($song->file_path_music_sheet) {
-            \Storage::disk('public')->delete($song->file_path_music_sheet);
+        if ($song->cover_art_path) {
+            \Storage::disk('public')->delete($song->cover_art_path);
         }
 
         $song->delete();
 
         return redirect()->route('tracks')->with('success', 'Song deleted successfully.');
+    }
+
+    public static function destroy_with_artist($id)
+    {
+        $songs = Song::where('artist_id', $id)->get();
+
+        foreach ($songs as $song) {
+            if ($song->user_id !== auth()->id()) {
+                return redirect()->back()->with('error', 'Unauthorized action.');
+            }
+
+            if ($song->file_path_track) {
+                $tracks = explode(',', $song->file_path_track);
+                foreach ($tracks as $track) {
+                    \Storage::disk('public')->delete($track);
+                }
+            }
+
+            if ($song->cover_art_path) {
+                \Storage::disk('public')->delete($song->cover_art_path);
+            }
+
+            $song->delete();
+        }
     }
 }

@@ -16,6 +16,10 @@ p {
   color: black;
 }
 
+ul {
+    list-style: square;
+}
+
 .label {
   font-weight: bold;
   font-size: 20px;
@@ -39,7 +43,7 @@ p {
 .grid {
   display: grid;
   gap: 20px 20px;
-  padding: 50px;    
+  padding: 50px;
 }
 
 /*to make the grid change size based on the device*/
