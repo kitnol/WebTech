@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'Passedit')
 @section('content')
+
     <head>
         <link rel="stylesheet" href="{{ asset('css/passedit_styles.css') }}">
         <script src="{{ asset('js/passedit.js') }}"></script>
@@ -37,34 +38,32 @@
                         <input type="text" value="{{ auth()->user()->username }}" disabled>
                     </div>
                     <!-- Edit Password -->
-                    <div class="info-row">
-                        <form action="{{ route('changepassword.post') }}" method="POST"> <!-- This now works -->
-                            @csrf
-                                <!-- Current Password -->
-                                <div class="info-row">
-                                    <label for="current_password" class="label">Current Password:</label>
-                                    <input type="password" id="current_password" name="current_password" required>
-                                </div>
-                                <!-- New Password -->
-                                <div class="info-row">
-                                    <label for="new_password" class="label">New Password:</label>
-                                    <input type="password" id="new_password" name="new_password" required>
-                                </div>
-                                <!-- Confirm New Password -->
-                                <div class="info-row">
-                                    <label for="new_password_confirmation" class="label">Confirm New Password:</label>
-                                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
-                                </div>   
-                        
-                    </div>
-                    <div class="button-row">
-                        <!-- Save Button -->
-                        <button type="submit" class="button">Save Password</button>
+
+                    <form action="{{ route('changepassword.post') }}" method="POST"> <!-- This now works -->
+                        @csrf
+                        <!-- Current Password -->
+                        <div class="info-row">
+                            <label for="current_password" class="label">Current Password:</label>
+                            <input type="password" id="current_password" name="current_password" required>
+                        </div>
+                        <!-- New Password -->
+                        <div class="info-row">
+                            <label for="new_password" class="label">New Password:</label>
+                            <input type="password" id="new_password" name="new_password" required>
+                        </div>
+                        <!-- Confirm New Password -->
+                        <div class="info-row">
+                            <label for="new_password_confirmation" class="label">Confirm New Password:</label>
+                            <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+                        </div>
+
+
+                        <div class="button-row">
+                            <!-- Save Button -->
+                            <button type="submit" class="button">Save Password</button>
                     </form>
-                        <!-- Close Button -->
-                        <a href="{{ route('profile')}}"><button class="button">Close</button></a> 
-                     </div>
-                        
+                    <!-- Close Button -->
+                    <a href="{{ route('profile')}}"><button class="button">Close</button></a>
                 </div>
             </article>
         </main>
