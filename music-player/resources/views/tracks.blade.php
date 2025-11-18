@@ -50,12 +50,12 @@
         </p>
 
         <section class="grid">
-          @foreach(auth()->user()->songs->pluck('artist')->unique() as $artist)
+          @foreach(auth()->user()->songs->pluck('artist_id')->unique() as $artist)
             <fieldset>
-              <legend>{{ $artist }}</legend>
+              <legend>{{ auth()->user()->artists()->where('id', $artist)->first()->artist, }}</legend>
               @php
                 $songsbyartist = auth()->user()->songs
-                    ->where('artist', $artist)
+                    ->where('artist_id', $artist)
                     ->unique('title');
               @endphp
 
