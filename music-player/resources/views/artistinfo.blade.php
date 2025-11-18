@@ -77,7 +77,7 @@
                       <input type="file" name="cover_art_path" required>
                       <button type="submit">Upload</button>
                   </form>
-                  <a href="javascript:cancelArtist()"><button class="button">&#10006;</button></a>
+                  <a href="javascript:cancelPhoto()"><button class="button">&#10006;</button></a>
               </div>
           </div>
         <div class="info-row" id="artist-info">
