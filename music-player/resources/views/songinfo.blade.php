@@ -11,27 +11,27 @@
       <h2>Song Info d-_-b</h2>
       <section class="card" id="song-info">
         <div class="info-row">
-          <span class="label">Song Title:</span> 
+          <span class="label">Song Title:</span>
           <span class="value">{{ $song->title }}</span>
         </div>
         <div class="info-row">
-          <span class="label">Artist:</span> 
-          <span class="value">{{ $song->artist }}</span>
+          <span class="label">Artist:</span>
+          <span class="value">{{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist, }}</span>
         </div>
         <div class="info-row">
-          <span class="label">Album:</span> 
+          <span class="label">Album:</span>
           <span class="value">{{ $song->album }}</span>
         </div>
         <div class="info-row">
-          <span class="label">Year:</span> 
+          <span class="label">Year:</span>
           <span class="value">{{ $song->year }}</span>
         </div>
         <div class="info-row">
-          <span class="label">Description:</span> 
+          <span class="label">Description:</span>
           <span class="value">{{ $song->description }}</span>
         </div>
         <div class="info-row">
-          <span class="label">Track:</span> 
+          <span class="label">Track:</span>
           <span class="value">NOT WORKING</span>
         </div>
         <a href="javascript:editSong()"><button class="button">Edit</button></a>
@@ -41,27 +41,27 @@
           @csrf
           <input type="hidden" name="song_id" value="{{ $song->id }}">
           <div class="info-row">
-            <span class="label">Song Title:</span> 
+            <span class="label">Song Title:</span>
             <input type="text" id="title" name="title" value="{{ $song->title }}" required>
           </div>
           <div class="info-row">
-            <span class="label">Artist:</span> 
+            <span class="label">Artist:</span>
             <input type="text" id="artist" name="artist" value="{{ $song->artist }}" required>
           </div>
           <div class="info-row">
-            <span class="label">Album:</span> 
+            <span class="label">Album:</span>
             <input type="text" id="album" name="album" value="{{ $song->album }}">
           </div>
           <div class="info-row">
-            <span class="label">Year:</span> 
+            <span class="label">Year:</span>
             <input type="text" id="year" name="year" value="{{ $song->year }}">
           </div>
           <div class="info-row">
-            <span class="label">Description:</span> 
+            <span class="label">Description:</span>
             <textarea id="description" name="description">{{ $song->description }}</textarea>
           </div>
           <div class="info-row">
-            <span class="label">Track:</span>   
+            <span class="label">Track:</span>
             <span class="value">NOT WORKING</span>
           </div>
           <button type="submit" class="button">Save song</button>
