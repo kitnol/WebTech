@@ -55,14 +55,16 @@
                                     <label for="new_password_confirmation" class="label">Confirm New Password:</label>
                                     <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
                                 </div>   
-                        </form>
+                        
                     </div>
                     <div class="button-row">
                         <!-- Save Button -->
                         <button type="submit" class="button">Save Password</button>
+                    </form>
                         <!-- Close Button -->
                         <a href="{{ route('profile')}}"><button class="button">Close</button></a> 
                      </div>
+                        
                 </div>
             </article>
         </main>
