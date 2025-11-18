@@ -78,6 +78,19 @@
             </div>
         </div>
 
+              @endphp
+        <img src="{{$artist_img_url}}" alt="{{$artist->artist}}" class="artistimage">
+              <div id="photo-info"><a href="javascript:editPhoto()"><button class="button">&#9998;</button></a></div>
+              <div class="info-row" id="photo-edit" style="display:none;">
+                  <form action="{{ route('editartist-photo.post') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="artist_id" value="{{ $artist->id }}">
+                      <input type="file" name="cover_art_path" required>
+                      <button type="submit">Upload</button>
+                  </form>
+                  <a href="javascript:cancelPhoto()"><button class="button">&#10006;</button></a>
+              </div>
+          </div>
         <div class="info-row" id="artist-info">
           <span class="label">Artist:</span>
           <span class="value">{{ $artist->artist }} </span>
