@@ -88,10 +88,9 @@ img {
   margin-top: -10px;
   margin-left: -10px;
   margin-right: -10px;
-  height: auto;
+  height:200px;
     object-fit: scale-down;
     max-width: 300px;
-    max-height: 200px;
   width: calc(100% + 20px);
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
