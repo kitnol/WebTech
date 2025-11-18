@@ -83,7 +83,7 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::post('/destroyartist', [ArtistController::class, 'destroy'])->name('destroy.post');
     Route::post('/destroysong', [SongController::class, 'destroy'])->name('destroysong.post');
 
-    /* This is for checking the password before submitting changes -->*/ 
+    /* This is for checking the password before submitting changes -->*/
     Route::post('/check-password', function (\Illuminate\Http\Request $request) {
     $valid = \Illuminate\Support\Facades\Hash::check(
         $request->password,
@@ -93,4 +93,7 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     })->name('password.check');
     /* <-- */
 
+    Route::get('/song/{id}/download', [SongController::class, 'download'])
+        ->name('song.download')
+        ->middleware('auth');
 });

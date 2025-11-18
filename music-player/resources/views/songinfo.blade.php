@@ -32,7 +32,7 @@
         </div>
         <div class="info-row">
           <span class="label">Track:</span>
-          <span class="value">NOT WORKING</span>
+          <span class="value"><a href="{{ route('song.download', $song->id) }}"><button class="button">Downloads</button></a></span>
         </div>
         <a href="javascript:editSong()"><button class="button">Edit</button></a>
       </section>

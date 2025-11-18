@@ -89,6 +89,32 @@ class SongController extends Controller
                    ->with("success", "Artist '{$currentArtist}' successfully renamed to '{$newArtist}' across {$updatedCount} songs.");
         }
     }
+
+    public function download($id)
+    {
+        $song = Song::findOrFail($id);
+
+        // Optional: Check if user owns the song or has permission
+        if ($song->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Get the full path to the file
+        $filePath = storage_path('app/public/' . $song->file_path_track);
+
+        // Check if file exists
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found.');
+        }
+        $artist = Artist::findOrFail($song->artist_id)->artist;
+
+        // Generate a friendly filename
+        $fileName = $artist . ' - ' . $song->title . '.' . pathinfo($filePath, PATHINFO_EXTENSION);
+
+        // Return the file as a download
+        return response()->download($filePath, $fileName);
+    }
+
     public function editsongPost(Request $request){
         $request -> validate([
             'artist'=> 'required|string|max:255',
