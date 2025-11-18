@@ -146,3 +146,8 @@ input:focus {
   background-color: indigo;color: white;
   transform: scale(1.1);   /* Increase size*/
 }
+
+/* Error for checking the current password */
+.input-error {
+    border: 2px solid red;
+}

@@ -83,4 +83,14 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::post('/destroyartist', [ArtistController::class, 'destroy'])->name('destroy.post');
     Route::post('/destroysong', [SongController::class, 'destroy'])->name('destroysong.post');
 
+    /* This is for checking the password before submitting changes -->*/ 
+    Route::post('/check-password', function (\Illuminate\Http\Request $request) {
+    $valid = \Illuminate\Support\Facades\Hash::check(
+        $request->password,
+        auth()->user()->password
+    );
+    return response()->json(['valid' => $valid]);
+    })->name('password.check');
+    /* <-- */
+
 });

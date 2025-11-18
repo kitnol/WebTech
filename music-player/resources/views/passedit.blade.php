@@ -5,6 +5,7 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/passedit_styles.css') }}">
         <script src="{{ asset('js/passedit.js') }}"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">   <!-- This is for checking the current pass before changes -->
     </head>
 
     <body>
