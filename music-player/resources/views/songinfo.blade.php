@@ -46,7 +46,7 @@
           </div>
           <div class="info-row">
             <span class="label">Artist:</span>
-            <input type="text" id="artist" name="artist" value="{{ $song->artist }}" required>
+              <span class="value">{{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist, }}</span>
           </div>
           <div class="info-row">
             <span class="label">Album:</span>
@@ -62,7 +62,7 @@
           </div>
           <div class="info-row">
             <span class="label">Track:</span>
-            <span class="value">NOT WORKING</span>
+              <span class="value"><a href="{{ route('song.download', $song->id) }}"><button class="button">Downloads</button></a></span>
           </div>
           <button type="submit" class="button">Save song</button>
         </form>

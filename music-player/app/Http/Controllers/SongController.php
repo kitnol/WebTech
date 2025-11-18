@@ -117,14 +117,12 @@ class SongController extends Controller
 
     public function editsongPost(Request $request){
         $request -> validate([
-            'artist'=> 'required|string|max:255',
             'album' =>'nullable|string|max:255',
             'title'=> 'required|string|max:255',
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string'
         ]);
         $song = Song::findOrFail($request->input('song_id'));
-        $songinfo['artist']= $request-> artist;
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
         $songinfo['year']= $request-> year;
