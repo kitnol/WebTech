@@ -38,7 +38,7 @@
                     </div>
                     <!-- Edit Password -->
                     <div class="info-row">
-                        <form action="{{ route('changepassword.post') }}" method="POST"> <!-- !!!!!!Add this route -->
+                        <form action="{{ route('changepassword.post') }}" method="POST"> <!-- This now works -->
                             @csrf
                                 <!-- Current Password -->
                                 <div class="info-row">
