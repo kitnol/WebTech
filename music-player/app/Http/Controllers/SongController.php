@@ -17,6 +17,7 @@ class SongController extends Controller
         return view('newtrack');
     }
 
+
     public function store(Request $request){
         $validatedData = $request -> validate([
             'artist'=> 'nullable|string|max:255',
@@ -24,8 +25,9 @@ class SongController extends Controller
             'title'=> 'required|string|max:255',
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string',
-            'file_path_track'=>'required|mimes:mp3,wav,acc|max:5120', //5MB
-            'cover_art_path'=>'nullable|mimes:png,jpg,jpeg|max:5120',//5MB
+            'file_path_track'=>'required|mimes:mp3,wav,acc|max:11120', //5MB
+            'cover_art_path'=>'nul
+            lable|mimes:png,jpg,jpeg|max:5120',//5MB
         ]);
 
         $picturePath = null;

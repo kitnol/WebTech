@@ -11,15 +11,15 @@
             <h2>About us! d-_-b</h2>    
             <article class="card">
                     <p>
-                        Welcome, dear visitor! <br><br>
-                        We are five humble Mechatronics students, currently in our 5th semester at SDU, carrying forth the
-                        proud tradition of building websites.
+                        Welcome! 
                         <br><br>
-                        Our specialty? A fine little music player website, lovingly handcrafted for your listening pleasure.
-                        Here, you may not only enjoy the sweet sounds of your favorite tracks, but also bring your own!
+                        We are five Mechatronics students, building a website!
                         <br><br>
-                        This whole venture is part of the prestigious course “Web Technologies 2025”, where we perfect the
-                        art of turning late-night coffee and questionable code into a proper website.
+                        This project is part of the Web Technologies course 2025 at SDU!
+                        <br><br>
+                        We have poured our imagination and creativity in this project, aiming to create something of our own.
+                        This website reflects our own needs and desires for a music player: simplicity, customisability, and song ownership!
+                        This is why we want you to have full control over your music library, by allowing you to upload your own songs and artist data.
                         <br><br>
                         Please, make yourself at home!
 
