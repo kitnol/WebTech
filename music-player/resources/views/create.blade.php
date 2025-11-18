@@ -4,6 +4,7 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/create_styles.css') }}">
     </head>
+
     <body>
         <main>
             <!--display error messages-->
@@ -24,6 +25,7 @@
                     <div class="alert alert-success">{{session('success')}}</div>
                 @endif
             </div>
+
             <div class="create-container">
                 <h2>New user!</h2>
                 <p class="guidetext">Welcome! Are you ready to listen to your favorite songs? Then lets start by creating a new account. d^_^b</p>
@@ -45,6 +47,5 @@
             </div>
         </main>
     </body>
-
-    </html>
+</html>
 @endsection

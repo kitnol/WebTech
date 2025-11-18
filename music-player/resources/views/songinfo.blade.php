@@ -69,7 +69,6 @@
         <a href="javascript:cancelSong()"><button class="button">Cancel</button></a>
       </section>
       <a href="{{ route('tracks')}}"><button class="button">Close</button></a>
-
     </main>
   </body>
 @endsection

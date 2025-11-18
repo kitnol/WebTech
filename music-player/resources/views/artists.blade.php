@@ -16,20 +16,16 @@
         <p class="guidetext">
         Here you can find a list of all your artists, click on the artist to find out more. d-_-b
         </p>
-
         <section class="grid">
           @foreach(auth()->user()->artists()->distinct()->get() as $artist)
-                @php
-
-                    if($artist->cover_art_path !== null)
-                    {
-                        $artist_img_url = "http://127.0.0.1:8000/storage/" . $artist->cover_art_path;
-                    }
-                    else{
-                        $artist_img_url = "https://placehold.co/300x200/A837B8/ffffff?text=" . $artist->artist;
-                    }
-
-                @endphp
+            @php
+              if($artist->cover_art_path !== null){
+                $artist_img_url = "http://127.0.0.1:8000/storage/" . $artist->cover_art_path;
+              }
+              else{
+                $artist_img_url = "https://placehold.co/300x200/A837B8/ffffff?text=" . $artist->artist;
+              }
+            @endphp
             <article class="card">
               <img src="{{$artist_img_url}}" alt="{{$artist->artist}}" class="artistimage">
               <p class="cardtext">{{$artist->artist}}</p>
@@ -39,7 +35,6 @@
           @endforeach
         </section>
       @endif
-
     </main>
   </body>
 @endsection

@@ -4,6 +4,7 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/login_styles.css') }}">
     </head>
+
     <body>
         <main>
             <!--display error messages-->
@@ -41,7 +42,6 @@
                     <br>
                     <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
                 </form>
-                
                 <br>
                 <p class="link">
                     <a href="{{ route('create') }}">Create a new user instead</a>
@@ -50,5 +50,5 @@
 
             <script src="{{ asset('js/login.js') }}"></script>
         </main>
-        </body>
+    </body>
 @endsection

@@ -1,4 +1,4 @@
-<!--from https://getbootstrap.com/docs/5.3/getting-started/introduction/ -->
+<!--inspiration taken from https://getbootstrap.com/docs/5.3/getting-started/introduction/ -->
 <!doctype html>
 <html lang="en">
   <head>

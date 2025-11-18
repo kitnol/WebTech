@@ -17,7 +17,6 @@ class SongController extends Controller
         return view('newtrack');
     }
 
-
     public function store(Request $request){
         $validatedData = $request -> validate([
             'artist'=> 'nullable|string|max:255',
@@ -40,8 +39,6 @@ class SongController extends Controller
             $trackPath = $request->file('file_path_track')->store('song_tracks', 'public');
         }
 
-        //$artist_id = ArtistController::store(['artist' => $request->artist, 'cover_art_path' => null, 'description' => null]);
-
         $artist = Artist::where('artist', $request->input('artist'))->first();
         if($artist == null){
             $artist_id = ArtistController::store(['artist' => $request->artist, 'cover_art_path' => null, 'description' => null]);
@@ -61,7 +58,6 @@ class SongController extends Controller
         $song=auth()->user()->songs()->create($songinfo); //pass the data while linking it to a user
 
         return redirect(route('tracks'))->with("success", "The song has been recoded successfully!");
-
     }
 
     public function editartistPost(Request $request){
@@ -94,7 +90,7 @@ class SongController extends Controller
     {
         $song = Song::findOrFail($id);
 
-        // Optional: Check if user owns the song or has permission
+        //Check if user owns the song or has permission
         if ($song->user_id !== auth()->id()) {
             abort(403, 'Unauthorized action.');
         }
@@ -122,6 +118,7 @@ class SongController extends Controller
             'year'=>'nullable|integer|min:0|max:2100',
             'description'=>'nullable|string'
         ]);
+
         $song = Song::findOrFail($request->input('song_id'));
         $songinfo['album']= $request-> album;
         $songinfo['title']= $request-> title;
@@ -129,7 +126,6 @@ class SongController extends Controller
         $songinfo['description']= $request-> description;
         $song->update($songinfo);   //push the change to DB
         return redirect(route('songinfo', ['song' => $song->id]))->with("success", "The song has been recoded successfully!");
-
     }
 
     public function destroy(Request $request)

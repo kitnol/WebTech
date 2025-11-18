@@ -63,7 +63,7 @@ p {
   color: black;
 }
 
-/*interactive buttons "view more"*/
+/*interactive buttons*/
 button {
   background-color: purple;
   border: none;
@@ -94,9 +94,9 @@ img {
 }
 
 fieldset{
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 legend{

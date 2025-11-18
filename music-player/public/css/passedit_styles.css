@@ -88,7 +88,6 @@ p {
   color: #520019;
 }
 
-
 input{
   border: 2px solid #d1a7cf;       /* a nice border */
   background-color: #f9eef8;       /* a nice background */
@@ -126,7 +125,7 @@ input:focus {
   margin-top: 25px;
 }
 
-/*interactive button "save"*/
+/*interactive button*/
 .button {
   background-color: purple;
   border: none;

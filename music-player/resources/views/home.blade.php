@@ -18,17 +18,17 @@
                     <div class="scrollable">
                         <section class="cards-grid">
                             @foreach(auth()->user()->artists()->distinct()->get() as $artist)
-                                    @php
-                                    $songsbyartist = auth()->user()->songs
-                                        ->where('artist_id', $artist->id)
-                                        ->unique('title');
-                                    @endphp
-                                    @foreach($songsbyartist as $song)
-                                        <article class="card">
-                                            <button onclick="player.play({{$song->id}})"><i id="playBt{{(string)$song->id}}" class="fa fa-play"></i></button>
-                                             <p>{{$artist->artist}} - {{$song->title}}</p>
-                                        </article>
-                                    @endforeach
+                                @php
+                                $songsbyartist = auth()->user()->songs
+                                    ->where('artist_id', $artist->id)
+                                    ->unique('title');
+                                @endphp
+                                @foreach($songsbyartist as $song)
+                                    <article class="card">
+                                        <button onclick="player.play({{$song->id}})"><i id="playBt{{(string)$song->id}}" class="fa fa-play"></i></button>
+                                            <p>{{$artist->artist}} - {{$song->title}}</p>
+                                    </article>
+                                @endforeach
                             @endforeach
                         </section>
                     </div>
@@ -46,7 +46,7 @@
                             <p id="track-title">Track Title:</p>
                             <p id="track-artist">Track Artist:</p>
                         </div>
-                            <audio id="audio" src=""></audio>
+                        <audio id="audio" src=""></audio>
                     </div>
                     <div></div>
                     <div></div>
@@ -76,30 +76,27 @@
             </div>
         </main>
 
-
         <script>
-                @php
+            @php
+                $song_id = request('play');
 
-                    $song_id = request('play');
-
-                    $songs_urls = [];
-                    foreach(auth()->user()->songs as $song) {
-                        if($song->file_path_track != null) {
-                            $songs_urls[] = [
-                                'title' => $song->title,
-                                'artist' => auth()->user()->artists()->where('id', $artist->id)->first()->artist,
-                                'url' => $song->file_path_track,
-                                'cover' => $song->cover_art_path,
-                                'id' => $song->id
-                            ];
-                        }
+                $songs_urls = [];
+                foreach(auth()->user()->songs as $song) {
+                    if($song->file_path_track != null) {
+                        $songs_urls[] = [
+                            'title' => $song->title,
+                            'artist' => auth()->user()->artists()->where('id', $artist->id)->first()->artist,
+                            'url' => $song->file_path_track,
+                            'cover' => $song->cover_art_path,
+                            'id' => $song->id
+                        ];
                     }
-
-                @endphp
-                let song_id = {{$song_id ?? 'null'}};
-                const tracks = {!! json_encode($songs_urls) !!};
+                }
+            @endphp
+            
+            let song_id = {{$song_id ?? 'null'}};
+            const tracks = {!! json_encode($songs_urls) !!};
         </script>
         <script src="{{ asset('js/player.js') }}"></script>
     </body>
-
 @endsection

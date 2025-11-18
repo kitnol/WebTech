@@ -46,7 +46,7 @@ form {
   display: none;
 }
 
-/*interactive button "save"*/
+/*interactive button*/
 .submitbutton {
   background-color: purple;
   border: none;
@@ -73,30 +73,31 @@ fieldset{
 }
 
 .inputFrom{
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    /*@include font-size(1rem);*/
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    appearance: none; // Fix appearance for date inputs in Safari
-    background-color: #fff;
-    background-clip: padding-box;
-    /*border: $input-border-width solid $input-border-color;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  /*@include font-size(1rem);*/
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  appearance: none; /*Fix appearance for date inputs in Safari*/
+  background-color: #fff;
+  background-clip: padding-box;
+  /*border: $input-border-width solid $input-border-color;
 
-    @include border-radius($input-border-radius, 0);
+  @include border-radius($input-border-radius, 0);
 
-    @include box-shadow($input-box-shadow);
-    @include transition($input-transition);*/
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);*/
 
-    &[type="file"] {
-        overflow: hidden; // prevent pseudo element button overlap
+  &[type="file"] {
+      overflow: hidden; /*prevent pseudo element button overlap*/
 
-    &:not(:disabled):not([readonly]) {
-        cursor: pointer;
-    }
-}
+  &:not(:disabled):not([readonly]) {
+      cursor: pointer;
+  }
+  }
+}  
 
 input {
   border: 1px solid purple;

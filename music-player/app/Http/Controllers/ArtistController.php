@@ -20,7 +20,6 @@ class ArtistController extends Controller
 
     public static function store($artist)
     {
-
         $picturePath = null;
 
         $artistinfo['artist'] = $artist['artist'];
@@ -29,12 +28,10 @@ class ArtistController extends Controller
         $artist = auth()->user()->artists()->create($artistinfo); //pass the data while linking it to a user
 
         return $artist->id;
-
     }
 
     public function editartistPost(Request $request)
     {
-
         $idArtist = $request->input('artist_id');
         $newArtist = $request->input('new_artist');
 
@@ -64,7 +61,6 @@ class ArtistController extends Controller
         // 1. Validate the inputs first
         // Debug: Check what's being received
         //sdd($request->all(), $request->hasFile('cover_art_path'));
-
         $request->validate([
             'artist_id' => 'required|integer',
             'cover_art_path' => 'required|file|mimes:png,jpg,jpeg|max:5120',

@@ -73,6 +73,7 @@ class User extends Authenticatable
         $user->email = $data['email'];
         return $user->save(); // Save the updated user
     }
+    
     public static function changeProfile($data)
     {
         // Assuming you have an authenticated user

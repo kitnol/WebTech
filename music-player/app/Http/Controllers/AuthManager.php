@@ -78,6 +78,7 @@ class AuthManager extends Controller
         }
         return redirect(route('profile'))->with("success", "Email changed successfully");
     }
+
     public function editprofilePost(Request $request){
         $request -> validate([
             'username' => 'required|string|max:255',

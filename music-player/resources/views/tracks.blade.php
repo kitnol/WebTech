@@ -8,33 +8,30 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <script>
+    async function delete_song(id) {
+      if (confirm("Are you sure you want to delete this songs?")) {
+        try {
+          const response = await fetch('/destroysong', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({ id })
+          });
 
-
-      async function delete_song(id) {
-          if (confirm("Are you sure you want to delete this songs?")) {
-              try {
-                  const response = await fetch('/destroysong', {
-                      method: 'POST',
-                      headers: {
-                          'Content-Type': 'application/json',
-                          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                      },
-                      body: JSON.stringify({ id })
-                  });
-
-                  const data = await response.json();
-
-                  if (response.ok) {
-                      window.location.href = '/tracks'; // Redirect to artists page
-                  } else {
-                      alert(data.error || "Failed to delete artist.");
-                  }
-              } catch (error) {
-                  console.error("Error deleting artist:", error);
-                  alert("An error occurred while deleting the artist.");
-              }
+          const data = await response.json();
+          if (response.ok) {
+            window.location.href = '/tracks'; // Redirect to artists page
+          } else {
+            alert(data.error || "Failed to delete artist.");
           }
+        } catch (error) {
+          console.error("Error deleting artist:", error);
+          alert("An error occurred while deleting the artist.");
+        }
       }
+    }
   </script>
 
   <body>

@@ -74,11 +74,7 @@
                         <span class="label">Password:</span>
                         <span class="value">********</span>
                         <a href="{{ route('passedit') }}"><button class="button">&#9998;</button></a>
-
-
                     </div>
-
-
                     <!-- Joined since info -->
                     <div class="info-row">
                         <span class="label">Joined since:</span>

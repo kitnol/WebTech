@@ -14,21 +14,22 @@
       <!--display error messages-->
       <div class="mt-6">
           @if($errors->any()) <!--check for errors-->
-              <div class="col-12">
-                  @foreach($errors->all() as $error)
-                      <div class="alert alert-danger">{{$error}}</div>
-                  @endforeach
-              </div>
+            <div class="col-12">
+              @foreach($errors->all() as $error)
+                <div class="alert alert-danger">{{$error}}</div>
+              @endforeach
+            </div>
           @endif
 
           @if(session()->has('error'))
-              <div class="alert alert-danger">{{session('error')}}</div>
+            <div class="alert alert-danger">{{session('error')}}</div>
           @endif
 
           @if(session()->has('success'))
-              <div class="alert alert-success">{{session('success')}}</div>
+            <div class="alert alert-success">{{session('success')}}</div>
           @endif
       </div>
+
       <h2>Add new tracks!</h2>
       <p class="guidetext"> Here you can find new tracks to your list. d-_-b </p>
       <form action="{{route('newtrack.post')}}" method="POST" enctype="multipart/form-data"> <!--enctype="multipart/form-data" is required for uploading files-->
@@ -80,8 +81,8 @@
             <div class="invalid-feedback">Please provide a track.</div>
           </div>
           <div class='grid tracks inputGroup'>
-          <br>
-          <label> Cover Art: </label>
+            <br>
+            <label> Cover Art: </label>
             <div class='grid inputs'>
               <div class='track'>
                 <input type="file" name="cover_art_path" class="inputForm" accept=".png, .jpeg, .jpg" style="border: 0px">

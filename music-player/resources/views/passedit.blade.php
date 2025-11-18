@@ -39,7 +39,6 @@
                         <input type="text" value="{{ auth()->user()->username }}" disabled>
                     </div>
                     <!-- Edit Password -->
-
                     <form action="{{ route('changepassword.post') }}" method="POST"> <!-- This now works -->
                         @csrf
                         <!-- Current Password -->
@@ -57,7 +56,6 @@
                             <label for="new_password_confirmation" class="label">Confirm New Password:</label>
                             <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
                         </div>
-
 
                         <div class="button-row">
                             <!-- Save Button -->

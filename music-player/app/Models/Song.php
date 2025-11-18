@@ -8,7 +8,6 @@ use App\Models\User;
 
 class Song extends Model
 {
-
     protected $fillable = [
         'artist_id',
         'album',
