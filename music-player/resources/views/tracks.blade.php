@@ -5,6 +5,37 @@
     <link rel="stylesheet" href="{{ asset('css/tracks_styles.css') }}">
     <script defer src="{{ asset('js/tracks.js') }}"></script>
   </head>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+  <script>
+
+
+      async function delete_song(id) {
+          if (confirm("Are you sure you want to delete this songs?")) {
+              try {
+                  const response = await fetch('/destroysong', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                      },
+                      body: JSON.stringify({ id })
+                  });
+
+                  const data = await response.json();
+
+                  if (response.ok) {
+                      window.location.href = '/tracks'; // Redirect to artists page
+                  } else {
+                      alert(data.error || "Failed to delete artist.");
+                  }
+              } catch (error) {
+                  console.error("Error deleting artist:", error);
+                  alert("An error occurred while deleting the artist.");
+              }
+          }
+      }
+  </script>
 
   <body>
     <main>
@@ -39,14 +70,9 @@
                   <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">
                     {{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist }} - {{ $song->title }}
                   </a>
-
-                  <form action="{{ route('songs.destroy', $song->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button onclick="alert('ARE YOU SURE THAT THIS PEACE OF ART GONNA GO INTO THE TRASH????')" type="submit">
+                    <button onclick="delete_song({{ $song->id }})">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
-                  </form>
                 </article>
               @endforeach
             </fieldset>

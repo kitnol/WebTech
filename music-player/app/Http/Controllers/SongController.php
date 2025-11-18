@@ -106,28 +106,27 @@ class SongController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $song = Song::findOrFail($id);
+        $song = Song::findOrFail($request->id);
 
         if ($song->user_id !== auth()->id()) {
-            return redirect()->back()->with('error', 'Unauthorized action.');
+            return response()->json(['error' => 'Unauthorized action.'], 403);
         }
 
         if ($song->file_path_track) {
-            $tracks = explode(',', $song->file_path_track);
-            foreach ($tracks as $track) {
-                \Storage::disk('public')->delete($track);
-            }
+            $song_path = explode(',', $song->cover_art_path);
+            \Storage::disk('public')->delete($song_path);
         }
 
         if ($song->cover_art_path) {
-            \Storage::disk('public')->delete($song->cover_art_path);
+            $cover_art = explode(',', $song->cover_art_path);
+            \Storage::disk('public')->delete($cover_art);
         }
 
         $song->delete();
 
-        return redirect()->route('tracks')->with('success', 'Song deleted successfully.');
+        return response()->json(['success' => true, 'message' => 'Artist deleted successfully.']);
     }
 
     public static function destroy_with_artist($id)

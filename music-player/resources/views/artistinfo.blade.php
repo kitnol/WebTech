@@ -111,7 +111,7 @@
         </div>
       </section>
       <a href="{{ route('artists')}}"><button class="button">Close</button></a>
-        <a ><button onclick="delete_artist({{ $artist->id }})" class="button">Delete</button></a>
+        <a><button onclick="delete_artist({{ $artist->id }})" class="button">Delete</button></a>
     </main>
   </body>
 @endsection

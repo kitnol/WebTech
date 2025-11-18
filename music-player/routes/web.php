@@ -81,5 +81,6 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::post('/editartist', [ArtistController::class, 'editartistPost'])->name('editartist.post');
     Route::post('/editartist-photo', [ArtistController::class, 'editartistPhoto'])->name('editartist-photo.post');
     Route::post('/destroyartist', [ArtistController::class, 'destroy'])->name('destroy.post');
+    Route::post('/destroysong', [SongController::class, 'destroy'])->name('destroysong.post');
 
 });
