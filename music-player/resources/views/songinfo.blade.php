@@ -62,7 +62,7 @@
           </div>
           <div class="info-row">
             <span class="label">Track:</span>
-              <span class="value"><a href="{{ route('song.download', $song->id) }}"><button class="button">Downloads</button></a></span>
+              <span class="value"><button class="deactivatebutton" disabled>Downloads</button></a></span>
           </div>
           <button type="submit" class="button">Save song</button>
         </form>

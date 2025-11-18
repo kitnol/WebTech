@@ -72,7 +72,7 @@ p {
 }
 
 /*interactive button "save"*/
-button {
+.button {
   background-color: purple;
   border: none;
   color: white;
@@ -87,7 +87,22 @@ button {
   border-radius: 10px; /*add rounded corners*/
 }
 
-button:hover {
+.button:hover {
   background-color: indigo;color: white;
   transform: scale(1.1);   /* Increase size*/
+}
+
+.deactivatebutton {
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px; /*add rounded corners*/
 }
