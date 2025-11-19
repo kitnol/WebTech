@@ -89,7 +89,7 @@ img {
   margin-left: -10px;
   margin-right: -10px;
   height:200px;
-    object-fit: scale-down;
+    object-fit: cover;
     max-width: 300px;
   width: calc(100% + 20px);
   border-top-left-radius: 25px;

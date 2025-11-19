@@ -10,6 +10,15 @@
     <main>
       <h2>Song Info d-_-b</h2>
       <section class="card" id="song-info">
+          @php
+              if($song->cover_art_path !== null){
+                $artist_img_url = "http://127.0.0.1:8000/storage/" . $song->cover_art_path;
+              }
+              else{
+                $artist_img_url = "https://placehold.co/300x200/A837B8/ffffff?text=" . $song->artist;
+              }
+          @endphp
+          <img src="{{$artist_img_url}}" alt="{{$song->artist}}" class="artistimage">
         <div class="info-row">
           <span class="label">Song Title:</span>
           <span class="value">{{ $song->title }}</span>
@@ -37,6 +46,7 @@
         <a href="javascript:editSong()"><button class="button">Edit</button></a>
       </section>
       <section class="card" id="song-edit" style="display:none;">
+          <img src="{{$artist_img_url}}" alt="{{$song->artist}}" class="artistimage">
         <form action="{{ route('editsong.post') }}" method="POST">
           @csrf
           <input type="hidden" name="song_id" value="{{ $song->id }}">
