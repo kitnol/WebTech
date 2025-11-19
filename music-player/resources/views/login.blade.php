@@ -29,7 +29,7 @@
             <div class="login-container">
                 <h2>Login!</h2>
                 <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
-                <form action="{{route('login.post')}}" method="POST"> 
+                <!-- <form action="{{route('login.post')}}" method="POST"> 
                     @csrf
                     <fieldset>
                         <br>
@@ -38,7 +38,30 @@
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required><br>
                         <br>
-                    </fieldset>
+                    </fieldset> -->
+                    <!-- test -->
+            <article class="card">
+                <div class="card-info">
+                    <form action="{{route('login.post')}}" method="POST"> 
+                    @csrf
+                    <!-- Username info -->
+                    <div class="info-row" id="user-email">
+                        <label class="label">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <!-- Password input -->
+                    <div class="info-row">
+                        <label for="password" class="label">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                </div>
+            </article>
+
+
+
+
+
                     <br>
                     <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
                 </form>

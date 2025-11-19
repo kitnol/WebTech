@@ -25,11 +25,11 @@ fieldset{
   border: 1px solid purple;
 }
 
-label {
+/* label {
   display: inline-block;
   width: 65px;
   margin-right: 10px;
-}
+} */
   
 input {
   width: 200px; 
@@ -38,7 +38,8 @@ input {
   border-radius: 4px;
 }
 
-/*interactive buttons*/
+
+/*interactive button*/
 button {
   background-color: purple;
   border: none;
@@ -47,7 +48,7 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -56,5 +57,65 @@ button {
 
 button:hover {
   background-color: indigo;color: white;
-  transform: scale(1.1); /*increase size*/
+  transform: scale(1.1);   /* Increase size*/
+}
+
+/* Making the card that contains the email+pass pretty */
+.card {
+  background-color: #e6d1e3;
+  padding: 50px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 25px; /*add rounded corners*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
+  max-width: 350px;  
+  max-height: 125px; 
+  margin: 0 auto;    
+  display: flex;            /* make content side-by-side */
+  align-items: flex-start;  /* keeps items on top */
+  justify-content: center; /* center horizontally */
+  gap: 20px;          
+}
+
+/* left section (text) */
+.card-info {
+  flex: 1;  /* let the text area take remaining space */
+  text-align: left;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;     /* space between label and value */
+  margin-bottom: 30px; /* space between info rows  */
+}
+
+.label {
+  width: 120px; /* fixed width to align all input boxes */
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #520019;
+}
+
+input{
+  border: 2px solid #d1a7cf;       /* a nice border */
+  background-color: #f9eef8;       /* a nice background */
+  padding: 8px 12px;               /* internal spacing */
+  border-radius: 8px;              /* rounded corners */
+  outline: none;                   /* removes outline when typing - is prettier */
+  color: #5c3838;
+  font-size: 20px;
+}
+
+input:hover {
+  border-color: #b875b0;           /* makes border of input box stronger when hovering - pretty */
+}
+
+/* After clicking (when inputting value) */
+input:focus {
+  background-color: #fff;          /* brighten background - makes it more highlighted*/
+  border-color: #8a3d8a;           /* deeper purple border - pretty*/
+  box-shadow: 0 0 6px rgba(138,61,138,0.4); /* box shadow effect - pretty */
 }
