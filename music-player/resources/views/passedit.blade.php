@@ -65,11 +65,15 @@
                         <div class="button-row">
                             <!-- Save Button -->
                             <button type="submit" class="button">Save Password</button>
-                            <!-- Close Button -->
-                            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
+                        </div>
+
                     </form>
+
                 </div>
             </article>
+            <br><br>
+            <!-- Close Button -->
+            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
         </main>
     </body>
 @endsection
