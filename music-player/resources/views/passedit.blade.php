@@ -66,10 +66,11 @@
                             <!-- Save Button -->
                             <button type="submit" class="button">Save Password</button>
                             <!-- Close Button -->
-                            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
                     </form>
                 </div>
             </article>
+            <br>
+            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
         </main>
     </body>
 @endsection

@@ -10,6 +10,15 @@
     <main>
       <h2>Song Info d-_-b</h2>
       <section class="card" id="song-info">
+          @php
+              if($song->cover_art_path !== null){
+                $song_img_url = "http://127.0.0.1:8000/storage/" . $song->cover_art_path;
+              }
+              else{
+                $song_img_url = "https://placehold.co/300x200/A837B8/ffffff?text=" . $song->title;
+              }
+          @endphp
+          <img src="{{$song_img_url}}" alt="{{$song->title}}" class="songimage">
         <div class="info-row">
           <span class="label">Song Title:</span>
           <span class="value">{{ $song->title }}</span>
@@ -68,6 +77,7 @@
         </form>
         <a href="javascript:cancelSong()"><button class="button">Cancel</button></a>
       </section>
+        <br>
       <a href="{{ route('tracks')}}"><button class="button">Close</button></a>
     </main>
   </body>
