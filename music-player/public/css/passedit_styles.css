@@ -20,46 +20,59 @@ p {
 .grid {
   display: grid;
   gap: 20px 20px;
-  padding: 50px;    
+  padding: 50px;
 }
 
 /*to make the grid change size based on the device*/
-@media only screen and (max-width: 600px) { /*phone*/
-  .grid{
+@media only screen and (max-width: 600px) {
+
+  /*phone*/
+  .grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media only screen and (min-width: 600px) { /*tablet*/
-  .grid{
+@media only screen and (min-width: 600px) {
+
+  /*tablet*/
+  .grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media only screen and (min-width: 768px) { /*laptop*/
-  .grid{
+@media only screen and (min-width: 768px) {
+
+  /*laptop*/
+  .grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 .card {
   background-color: #e6d1e3;
-  padding: 70px;
+  padding: 50px;
   font-size: 10px;
   text-align: center;
-  border-radius: 25px; /*add rounded corners*/
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
-  max-width: 600px;   
-  margin: 0 auto;    
-  display: flex;            /* make content side-by-side */
-  align-items: flex-start;  /* keeps items on top */
-  justify-content: center; /* center horizontally */
-  gap: 20px;          
+  border-radius: 25px;
+  /*add rounded corners*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /*shadow*/
+  max-width: 580px;
+  max-height: 380px;
+  margin: 0 auto;
+  display: flex;
+  /* make content side-by-side */
+  align-items: flex-start;
+  /* keeps items on top */
+  justify-content: center;
+  /* center horizontally */
+  gap: 20px;
 }
 
 /* left section (text) */
 .card-info {
-  flex: 1;  /* let the text area take remaining space */
+  flex: 1;
+  /* let the text area take remaining space */
   text-align: left;
 }
 
@@ -67,61 +80,81 @@ p {
 .card img {
   width: 160px;
   height: 160px;
-  object-fit: cover;   /* keeps image from stretching */
-  border-radius: 50%;  /* makes it circular */
-  border: 3px solid #784848; /* imge border */
+  object-fit: cover;
+  /* keeps image from stretching */
+  border-radius: 50%;
+  /* makes it circular */
+  border: 3px solid #784848;
+  /* imge border */
 }
 
 .info-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;     /* space between label and value */
-  margin-bottom: 30px; /* space between info rows  */
+  gap: 30px;
+  /* space between label and value */
+  margin-bottom: 30px;
+  /* space between info rows  */
 }
 
 .label {
-  width: 250px; /* fixed width to align all input boxes */
+  width: 250px;
+  /* fixed width to align all input boxes */
   margin-right: 10px;
   font-weight: bold;
   font-size: 20px;
   color: #520019;
 }
 
-input{
-  border: 2px solid #d1a7cf;       /* a nice border */
-  background-color: #f9eef8;       /* a nice background */
-  padding: 8px 12px;               /* internal spacing */
-  border-radius: 8px;              /* rounded corners */
-  outline: none;                   /* removes outline when typing - is prettier */
+input {
+  border: 2px solid #d1a7cf;
+  /* a nice border */
+  background-color: #f9eef8;
+  /* a nice background */
+  padding: 8px 12px;
+  /* internal spacing */
+  border-radius: 8px;
+  /* rounded corners */
+  outline: none;
+  /* removes outline when typing - is prettier */
   color: #5c3838;
   font-size: 20px;
 }
 
-/* This is necessary for styling the Username value as a value (and not disabled input box) while maintaining alignemnt */ 
+
+/* This is necessary for styling the Username value as a value (and not disabled input box) while maintaining alignemnt */
 input[disabled] {
-  background-color: transparent; /* Set background as transparent */
+  background-color: transparent;
+  /* Set background as transparent */
   border: none;
   color: #784848;
   font-size: 20px;
 }
 
 input:hover {
-  border-color: #b875b0;           /* makes border of input box stronger when hovering - pretty */
+  border-color: #b875b0;
+  /* makes border of input box stronger when hovering - pretty */
 }
 
 /* After clicking (when inputting value) */
 input:focus {
-  background-color: #fff;          /* brighten background - makes it more highlighted*/
-  border-color: #8a3d8a;           /* deeper purple border - pretty*/
-  box-shadow: 0 0 6px rgba(138,61,138,0.4); /* box shadow effect - pretty */
+  background-color: #fff;
+  /* brighten background - makes it more highlighted*/
+  border-color: #8a3d8a;
+  /* deeper purple border - pretty*/
+  box-shadow: 0 0 6px rgba(138, 61, 138, 0.4);
+  /* box shadow effect - pretty */
 }
 
 .button-row {
   display: flex;
-  flex-direction: column; /* stack vertically */
-  align-items: center;    /* center horizontally */
-  gap: 15px;              /* space between buttons */
+  flex-direction: column;
+  /* stack vertically */
+  align-items: center;
+  /* center horizontally */
+  gap: 15px;
+  /* space between buttons */
   margin-top: 25px;
 }
 
@@ -138,15 +171,27 @@ input:focus {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  border-radius: 10px; /*add rounded corners*/
+  border-radius: 10px;
+  /*add rounded corners*/
 }
 
 .button:hover {
-  background-color: indigo;color: white;
-  transform: scale(1.1);   /* Increase size*/
+  background-color: indigo;
+  color: white;
+  transform: scale(1.1);
+  /* Increase size*/
 }
 
-/* Error for checking the current password */
+
+/* Error if the current password is wrong */
 .input-error {
-    border: 2px solid red;
+  border: 2px solid red;
+}
+
+.inline-error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  display: none;
+  /* Hidden until needed */
 }

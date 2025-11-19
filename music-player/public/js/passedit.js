@@ -48,20 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function showErrorMessage(msg) {
-    let errorBox = document.getElementById("inline-error");
-
-    if (!errorBox) {
-        errorBox = document.createElement("div");
-        errorBox.id = "inline-error";
-        errorBox.className = "alert alert-danger mt-2";
-        document.querySelector("#current_password").after(errorBox);
-    }
-
+    const errorBox = document.getElementById("inline-error");
     errorBox.textContent = msg;
+    errorBox.style.display = "block";
 }
 
 function clearErrorMessage() {
-    let errorBox = document.getElementById("inline-error");
-    if (errorBox) errorBox.remove();
+    const errorBox = document.getElementById("inline-error");
+    errorBox.textContent = "";
+    errorBox.style.display = "none";
 }
+
 /* <-- */

@@ -5,7 +5,7 @@
     <head>
         <link rel="stylesheet" href="{{ asset('css/passedit_styles.css') }}">
         <script src="{{ asset('js/passedit.js') }}"></script>
-        <meta name="csrf-token" content="{{ csrf_token() }}">   <!-- This is for checking the current pass before changes -->
+        <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- This is for checking the current pass before changes -->
     </head>
 
     <body>
@@ -44,7 +44,12 @@
                         <!-- Current Password -->
                         <div class="info-row">
                             <label for="current_password" class="label">Current Password:</label>
-                            <input type="password" id="current_password" name="current_password" required>
+                            <!-- small wrapper to show the error message under the input box -->
+                            <div class="input-wrapper">
+                                <input type="password" id="current_password" name="current_password" required>
+                                <!-- Error message in case of wrong original pass -->
+                                <div id="inline-error" class="inline-error"></div>
+                            </div>
                         </div>
                         <!-- New Password -->
                         <div class="info-row">
@@ -60,11 +65,11 @@
                         <div class="button-row">
                             <!-- Save Button -->
                             <button type="submit" class="button">Save Password</button>
+                            <!-- Close Button -->
+                            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
                     </form>
                 </div>
             </article>
-            <!-- Close Button -->
-            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
         </main>
     </body>
 @endsection
