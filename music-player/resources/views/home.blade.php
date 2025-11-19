@@ -46,7 +46,7 @@
                             <p id="track-title">Track Title:</p>
                             <p id="track-artist">Track Artist:</p>
                         </div>
-                        <audio id="audio" src=""></audio>
+
                     </div>
                     <div></div>
                     <div></div>
@@ -93,7 +93,7 @@
                     }
                 }
             @endphp
-            
+
             let song_id = {{$song_id ?? 'null'}};
             const tracks = {!! json_encode($songs_urls) !!};
         </script>
