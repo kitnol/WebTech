@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', 'Login')
 @section('content')
+
     <head>
         <link rel="stylesheet" href="{{ asset('css/login_styles.css') }}">
     </head>
@@ -25,45 +26,44 @@
                     <div class="alert alert-success">{{session('success')}}</div>
                 @endif
             </div>
-            
+
             <div class="login-container">
                 <h2>Login!</h2>
                 <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
+
+
+                <!-- Old Design Version -->
                 <!-- <form action="{{route('login.post')}}" method="POST"> 
-                    @csrf
-                    <fieldset>
-                        <br>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required><br><br>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required><br>
-                        <br>
-                    </fieldset> -->
-                    <!-- test -->
-            <article class="card">
-                <div class="card-info">
-                    <form action="{{route('login.post')}}" method="POST"> 
-                    @csrf
-                    <!-- Username info -->
-                    <div class="info-row" id="user-email">
-                        <label class="label">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                            @csrf
+                            <fieldset>
+                                <br>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required><br><br>
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required><br>
+                                <br>
+                            </fieldset> -->
+
+
+                <!-- New Design Version -->
+                <article class="card">
+                    <div class="card-info">
+                        <form action="{{route('login.post')}}" method="POST">
+                            @csrf
+                            <!-- Username info -->
+                            <div class="info-row" id="user-email">
+                                <label class="label">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <!-- Password input -->
+                            <div class="info-row">
+                                <label for="password" class="label">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
                     </div>
-                    <!-- Password input -->
-                    <div class="info-row">
-                        <label for="password" class="label">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    
-                </div>
-            </article>
-
-
-
-
-
-                    <br>
-                    <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
+                </article>
+                <br>
+                <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
                 </form>
                 <br>
                 <p class="link">
