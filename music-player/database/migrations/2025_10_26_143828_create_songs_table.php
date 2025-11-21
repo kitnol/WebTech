@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('year')->nullable(); //optional
             $table->text('description') ->nullable(); //optional
             $table->string('file_path_track') ->nullable(); //optional
+            $table->string('cover_art_path') ->nullable(); //optional
              $table->string('file_path_music_sheet') ->nullable(); //optional
             $table->integer('duration')->nullable(); // in seconds, optional
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // if songs belong to users

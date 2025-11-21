@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('songs', function (Blueprint $table) {
-            $table->string('cover_art')->nullable()->after('title');
+            $table->string('cover_art_path')->nullable()->after('title');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('songs', function (Blueprint $table) {
-            $table->dropColumn('cover_art');
+            $table->dropColumn('cover_art_path');
         });
     }
 };
