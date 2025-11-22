@@ -86,3 +86,7 @@ Finally, if you did everything right, you should be able to run the following co
 php artisan serve
 ```
 After a short time, the project will be up and running. Now, in your browser, you can type this address `http://localhost:8000` and try the project out!
+
+# Important: Create a symbolic link
+
+For project to function normally you will might need to create a symbolic link in folder `public` it is name should be `storage`. This link should leed to folder in project as '<project-path>/music-player/storage/app/public'. In case this is not done, project not gonna work normally. Tutorials on how to create a symbolic link can be found online.
