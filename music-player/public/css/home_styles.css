@@ -136,6 +136,8 @@
     display: flex; /* Flexbox for album-pic*/
     justify-content: center;
     align-items: center;
+    max-height: 400px;
+    overflow: hidden; 
 }
 .album-pic{
     border-top-left-radius: 30px;

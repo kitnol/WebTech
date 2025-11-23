@@ -95,10 +95,20 @@ class AuthManager extends Controller
     }
 
     public function changepasswordPost(Request $request){
-        $request -> validate([
+        $request->validate([
             'current_password' => 'required|string|max:255',
-            'new_password' => 'required|string|max:255',
+            'new_password' => [
+                'required',
+                'string',
+                'min:8',       
+                'regex:/[A-Z]/', 
+                'regex:/[0-9]/',  
+                'confirmed'
+            ],
             'new_password_confirmation' => 'required|string|max:255',
+        ], [
+            'new_password.min' => 'The password must have at least 8 characters.',
+            'new_password.regex' => 'The password must contain at least one capital letter and a number.',
         ]);
 
         $current_password = $request -> current_password;
