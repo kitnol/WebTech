@@ -83,6 +83,7 @@
             $songs_urls = [];
             foreach(auth()->user()->songs as $song) {
                 if($song->file_path_track != null) {
+                    $artist = auth()->user()->artists()->where('id', $song->artist_id)->first(); /*defining $artist again in the script otherwise the artist name does not update*/
                     $songs_urls[] = [
                         'title' => $song->title,
                         'artist' => auth()->user()->artists()->where('id', $artist->id)->first()->artist,

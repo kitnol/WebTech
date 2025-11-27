@@ -135,4 +135,25 @@ class AuthManager extends Controller
         Auth::logout();
         return redirect(route('login'));
     }
+
+    //users upgrate their role from standard user to premium
+    public function upgrade(Request $request)
+    {
+        $user = $request->user();
+        $user->role = 'premium';
+        $user->save();
+
+        return redirect()->back()->with('success', 'You are now a premium user!');
+    }
+
+    //users downgrade their role from premium to standard user
+    public function unsubscribe(Request $request)
+    {
+        $user = $request->user();
+        $user->role = 'user'; 
+        $user->save();
+
+        return redirect()->back()->with('success', 'You have unsubscribed and are now a standard user.');
+    }
+
 }

@@ -98,4 +98,15 @@ class User extends Authenticatable
         return $user->save();
     }
 
+    //check if the user role is premium
+    public function isPremium() 
+    {
+        return $this->role === 'premium';
+    }
+
+    //get all songs that a user has marked as favorite
+    public function favorites()
+    {
+        return $this->belongsToMany(Song::class, 'favorites');
+    }
 }

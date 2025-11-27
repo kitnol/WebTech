@@ -39,13 +39,17 @@ class SongController extends Controller
             $trackPath = $request->file('file_path_track')->store('song_tracks', 'public');
         }
 
-        $artist = Artist::where('artist', $request->input('artist'))->first();
-        if($artist == null){
-            $artist_id = ArtistController::store(['artist' => $request->artist, 'cover_art_path' => null, 'description' => null]);
-        }
-        else{
-           $artist_id = $artist->id;
-        }
+        $user = auth()->user();
+        $artistName = $request->input('artist') ?: 'Unknown Artist';
+
+        // changed to have different users have artists with the same name
+        $artist = $user->artists()->firstOrCreate(
+            ['artist' => $artistName],
+            ['cover_art_path' => null, 'description' => null]
+        );
+
+        $artist_id = $artist->id;
+
 
         $songinfo['artist_id']= $artist_id;
         $songinfo['album']= $request-> album;

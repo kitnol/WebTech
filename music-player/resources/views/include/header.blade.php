@@ -7,6 +7,10 @@
             <a href="{{ route('artists') }}" class="@if(request()->routeIs('artists')) active @endif">Artists</a>
             <a href="{{ route('newtrack') }}" class="@if(request()->routeIs('newtrack')) active @endif">Add new</a>
             <a href="{{ route('profile') }}" class="@if(request()->routeIs('profile')) active @endif">Profile</a>
+            <!--show the favorite page only if user role is premium-->
+            @if(auth()->check() && auth()->user()->isPremium())
+                <a href="{{ route('favorites.index') }}" class="@if(request()->routeIs('favorites.index')) active @endif">Favorites</a>
+            @endif
             <a href="{{ route('logout') }}" >Logout</a>
         @else
             <a href="{{ route('demo') }}" class="@if(request()->routeIs('demo')) active @endif">Demo</a>        

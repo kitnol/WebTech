@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\FavoriteController;
 use App\Models\Song;
 
 Route::get('/create', [AuthManager::class, 'create'])->name('create');
@@ -96,4 +97,13 @@ Route::group(['middleware' => 'auth'], function(){ //check if user is logged in 
     Route::get('/song/{id}/download', [SongController::class, 'download'])
         ->name('song.download')
         ->middleware('auth');
+
+    //favorite songs
+    Route::post('/favorites/toggle/{song}',[FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+    //upgrading or downgrading user role
+    Route::post('/upgrade', [AuthManager::class, 'upgrade'])->name('user.upgrade')->middleware('auth');
+    Route::post('/unsubscribe', [AuthManager::class, 'unsubscribe'])->name('user.unsubscribe')->middleware('auth');
+
 });

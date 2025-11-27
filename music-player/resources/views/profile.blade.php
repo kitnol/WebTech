@@ -85,6 +85,28 @@
                         <span class="label">Songs saved:</span>
                         <span class="value">{{auth()->user()->songs->count()}}</span>
                     </div>
+                    <!-- User Type info -->
+                    <div class="info-row">
+                        <span class="label">User Type:</span>
+                        <span class="value">{{ auth()->user()->isPremium() ? 'Premium' : 'Free' }}</span>
+                    </div>
+                    <!-- Button to change the user type different based on current role -->
+                    <div class="info-row">
+                        @if(auth()->check() && !auth()->user()->isPremium())
+                            <!-- upgrade to premium -->
+                            <form action="{{ route('user.upgrade') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="button">Become Premium</button>
+                            </form>
+                            <span class="value">Premium users have access to the exclusive feature of marking their favorite songs and finding them all in one space. Join now!</span>
+                        @elseif(auth()->check() && auth()->user()->isPremium())
+                            <!-- downgrade to standard user -->
+                            <form action="{{ route('user.unsubscribe') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="button">Unsubscribe</button>
+                            </form>
+                        @endif
+                    </div>
                 </div>
             </article>     
         </main>

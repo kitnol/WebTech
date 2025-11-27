@@ -70,6 +70,19 @@
                     <button onclick="delete_song({{ $song->id }})">
                       <i class="fa fa-trash" aria-hidden="true"></i>
                     </button>
+                  <!-- the star to select the favorite songs visible only to premium users -->
+                  @if(auth()->check() && auth()->user()->isPremium())
+                    <form action="{{ route('favorites.toggle', $song) }}" method="POST">
+                      @csrf
+                      <button type="submit" class="favorite-btn">
+                        @if(auth()->user()->favorites->contains($song))
+                          ★
+                        @else
+                          ☆
+                        @endif
+                      </button>
+                    </form>
+                  @endif
                 </article>
               @endforeach
             </fieldset>
