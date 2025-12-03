@@ -88,7 +88,7 @@
                     <!-- User Type info -->
                     <div class="info-row">
                         <span class="label">User Type:</span>
-                        <span class="value">{{ auth()->user()->isPremium() ? 'Premium' : 'Free' }}</span>
+                        <span class="value">{{ auth()->user()->isPremium() ? 'Premium' : 'Standard' }}</span>
                     </div>
                     <!-- Button to change the user type different based on current role -->
                     <div class="info-row">
