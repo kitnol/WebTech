@@ -1,68 +1,6 @@
-h2 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 30px;
-  color: #520019;
-}
-
-p {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-}
-
-main{
-  text-align: center;
-}
-
-/*fieldset input and lable*/
-fieldset{
-  width: 300px; 
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid purple;
-}
-
-/* label {
-  display: inline-block;
-  width: 65px;
-  margin-right: 10px;
-} */
-  
-input {
-  width: 200px; 
-  padding: 8px;
-  border: 1px solid purple;
-  border-radius: 4px;
-}
-
-
-/*interactive button*/
-button {
-  background-color: purple;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 10px; /*add rounded corners*/
-}
-
-button:hover {
-  background-color: indigo;color: white;
-  transform: scale(1.1);   /* Increase size*/
-}
-
 /* Making the card that contains the email+pass pretty */
 .card {
-  background-color: #e6d1e3;
+  background-color: var(--card-bg-color);
   padding: 50px;
   font-size: 10px;
   text-align: center;
@@ -96,26 +34,27 @@ button:hover {
   margin-right: 10px;
   font-weight: bold;
   font-size: 20px;
-  color: #520019;
+  color: var(--text-dark-color);
 }
 
-input{
-  border: 2px solid #d1a7cf;       /* a nice border */
-  background-color: #f9eef8;       /* a nice background */
-  padding: 8px 12px;               /* internal spacing */
-  border-radius: 8px;              /* rounded corners */
-  outline: none;                   /* removes outline when typing - is prettier */
-  color: #5c3838;
+
+input {
+  width: 200px; 
+  border: 2px solid var(--background-color); /* a nice border */
+  background-color: var(--txt-box-bg-color); /* a nice background */
+  padding: 8px 12px; /* internal spacing */
+  border-radius: 8px; /* rounded corners */
+  outline: none; /* removes outline when typing - is prettier */
+  color: var(--text-dark-color); /* color of the text the user writes */
   font-size: 20px;
 }
 
 input:hover {
-  border-color: #b875b0;           /* makes border of input box stronger when hovering - pretty */
+  border-color: var(--secondary-color);/* makes border of input box stronger when hovering - pretty */
 }
 
 /* After clicking (when inputting value) */
 input:focus {
-  background-color: #fff;          /* brighten background - makes it more highlighted*/
-  border-color: #8a3d8a;           /* deeper purple border - pretty*/
-  box-shadow: 0 0 6px rgba(138,61,138,0.4); /* box shadow effect - pretty */
+  background-color: #fff;  /* brighten background - makes it more highlighted*/
+  border-color: var(--secondary-color);  /* deeper border - pretty*/
 }

@@ -3,7 +3,7 @@
 @section('content')
   <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
-    <link rel="stylesheet" href="{{ asset('css/newtrack_styles.css') }}">
+    <link rel="stylesheet" href="{{ asset(path: 'css/newtrack_styles.css') }}">
     <!--<link rel="stylesheet" href="{{ asset('css/css/bootstrap.css') }}">-->
     <script defer src="{{ asset('js/events.js') }}"></script>
     <script defer src="{{ asset('js/keypress.js') }}"></script>

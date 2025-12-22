@@ -30,6 +30,7 @@
                     <div class="alert alert-success">{{session('success')}}</div>
                 @endif
             </div>
+            
             <!-- Start of card -->
             <article class="card">
                 <div class="card-info">

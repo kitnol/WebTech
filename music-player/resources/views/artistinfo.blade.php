@@ -61,7 +61,7 @@
             $artist_img_url = "http://127.0.0.1:8000/storage/" . $artist->cover_art_path;
           }
           else{
-            $artist_img_url = "https://placehold.co/300x200/A837B8/ffffff?text=" . $artist->artist;
+            $artist_img_url = "https://placehold.co/300x200/000000/ffffff?text=" . $artist->artist;
           }
           @endphp
         <img src="{{$artist_img_url}}" alt="{{$artist->artist}}" class="artistimage">

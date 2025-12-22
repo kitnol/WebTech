@@ -32,24 +32,7 @@
                 <p class="guidetext">Welcome! Are you ready to listen to your favorite songs? Then lets start by creating a
                     new account. d^_^b</p>
 
-                <!-- Old Design Version -->
-                <!-- <form action="{{ route('create.post') }}" method="POST">
-                            @csrf 
-
-                            <fieldset>
-                                <br>
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" name="username" minlength="5" required><br><br>
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required><br><br>
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                                    required><br><br>
-                            </fieldset> -->
-
                 <!-- New Design version: -->
-
                 <article class="card">
                     <form action="{{ route('create.post') }}" method="POST">
                         @csrf

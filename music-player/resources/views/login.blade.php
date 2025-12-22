@@ -31,20 +31,6 @@
                 <h2>Login!</h2>
                 <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
 
-
-                <!-- Old Design Version -->
-                <!-- <form action="{{route('login.post')}}" method="POST"> 
-                            @csrf
-                            <fieldset>
-                                <br>
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required><br><br>
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" name="password" required><br>
-                                <br>
-                            </fieldset> -->
-
-
                 <!-- New Design Version -->
                 <article class="card">
                     <div class="card-info">

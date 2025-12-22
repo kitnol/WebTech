@@ -13,7 +13,7 @@
             </div>
             <div class="song-list">
                 <section class="title" style="margin-left: 10px;">
-                    <h2>Track list:</h2>
+                    <h2 class="section_name">Track list:</h2>
                 </section>
                 <div class="scrollable">
                     <section class="cards-grid">
@@ -52,7 +52,7 @@
             <div class="player-class">
                 <div></div>
                 <div class="song-info">
-                    <h2>Played song:</h2>
+                    <h2 class="section_name">Played song:</h2>
                     <div class="track-info">
                         <p> Title: Track 2</p>
                         <p > Artist: Artist 3</p>

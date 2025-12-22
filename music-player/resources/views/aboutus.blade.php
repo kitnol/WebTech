@@ -10,7 +10,7 @@
             <section class="grid">
             <h2>About us! d-_-b</h2>    
             <article class="card">
-                <p>
+                <p class="guidetext">
                     Welcome! 
                     <br><br>
                     We are five Mechatronics students, building a website!

@@ -1,20 +1,4 @@
-main {
-  text-align: center;
-}
 
-h2 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 40px;
-  color: #520019;
-}
-
-p {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: black;
-}
 
 ul {
   list-style: square;
@@ -23,12 +7,12 @@ ul {
 .label {
   font-weight: bold;
   font-size: 20px;
-  color: #520019;
+  color: var(--text-dark-color);
   text-align: left;
 }
 
 .value {
-  color: #784848;
+  color: var(--text-dark-color);
   font-size: 20px;
 }
 
@@ -66,7 +50,7 @@ ul {
 }
 
 .card {
-  background-color: #e6d1e3;
+  background-color: var(--card-bg-color);
   max-width: 700px;   /* prevents it from stretching too wide */
   margin: auto;     /* centers the card inside the grid */
   padding: 20px 50px;  /* this padding is necessary to have the text in the card nicely centered */
@@ -76,33 +60,12 @@ ul {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /*shadow*/
 }
 
-/*interactive button*/
-button {
-  background-color: purple;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 10px; /*add rounded corners*/
-}
-
-button:hover {
-  background-color: indigo;color: white;
-  transform: scale(1.1);   /* Increase size*/
-}
-
 /* profile picture */
 .artistimage {
   width: 160px;
   height: 160px;
   object-fit: cover;   /* keeps image from stretching */
   border-radius: 50%;  /* makes it circular */
-  border: 3px solid #784848; /* imge border */
+  border: 3px solid var(--text-dark-color); /* image border */
   text-align: right;
 }

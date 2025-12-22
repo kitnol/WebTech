@@ -14,5 +14,6 @@
             <a href="{{ route('login') }}" class="@if(request()->routeIs('login')) active @endif">Login</a>
             <a href="{{ route('create') }}" class="@if(request()->routeIs('create')) active @endif">Create</a>
         @endauth
+            <a href="#" id="theme-toggle" title="Change theme">🎨</a>
     </nav>
 </header> 

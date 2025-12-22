@@ -1,29 +1,12 @@
-main {
-  text-align: center;
-}
-
-h2 {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 40px;
-  color: #520019;
-}
-
-p {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: black;
-}
 
 .label {
   font-weight: bold;
   font-size: 20px;
-  color: #520019;
+  color: var(--text-dark-color);
 }
 
 .value {
-  color: #784848;
+  color: var(--text-dark-color);
   font-size: 20px;
 }
 
@@ -61,7 +44,7 @@ p {
 }
 
 .card {
-  background-color: #e6d1e3;
+  background-color: var(--card-bg-color);
   max-width: 700px;   /* prevents it from stretching too wide */
   margin: auto;     /* centers the card inside the grid */
   padding: 20px 50px;  /* this padding is necessary to have the text in the card nicely centered */
@@ -73,9 +56,9 @@ p {
 
 /*interactive button*/
 .button {
-  background-color: purple;
+  background-color: var(--secondary-color);
   border: none;
-  color: white;
+  color: var(--text-light-color);
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -88,7 +71,8 @@ p {
 }
 
 .button:hover {
-  background-color: indigo;color: white;
+  background-color: var(--tertiary-color);
+  color: var(--text-light-color);
   transform: scale(1.1);   /* Increase size*/
 }
 
@@ -113,6 +97,6 @@ p {
     height: 160px;
     object-fit: cover;   /* keeps image from stretching */
     border-radius: 5%;  /* makes it circular */
-    border: 3px solid #784848; /* imge border */
+    border: 3px solid var(--secondary-color); /* imge border */
     text-align: right;
 }
