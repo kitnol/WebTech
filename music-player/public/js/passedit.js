@@ -17,6 +17,52 @@ function cancelEmail() {
     document.getElementById('emailname-info').style.display = '';
 }
 
+function fadeIn(container,start,length){
+    if (container) {
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(50px)';
+        container.style.transition = 'opacity '+length+'s ease-out, transform '+length+'s ease-out';
+        // make animation after a the start delay
+        setTimeout(() => {
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
+        }, start);
+    }
+}
+function fadeOut(container,length){
+    if (container) { // fadeou animation
+        container.style.transition = 'opacity '+length+'s ease-out, transform '+length+'s ease-out';
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(50px)';
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const topinfo = document.getElementById('top-info');
+    const crd = document.getElementById('card-container');
+    crd.style.opacity = '1';
+    const container = document.querySelector('.card');
+    const closebtn = document.getElementById('closebtn');
+    
+    fadeIn(topinfo,100,0.3);
+    fadeIn(container,300,0.3);
+    fadeIn(closebtn,500,0.3);
+    
+    if (closebtn) {
+        closebtn.addEventListener('click', function() {
+        //console.log('Password edit button pressed');
+        fadeOut(closebtn,0.35); 
+        
+        setTimeout(() => {
+            fadeOut(container,0.35);
+        }, 200); 
+        setTimeout(() => {
+            fadeOut(topinfo,0.35);
+        }, 400); 
+        });
+    }
+    
+});
+
 /* This is for checking the current password before submitting chages -->*/
 document.addEventListener("DOMContentLoaded", () => {
     const currentPasswordInput = document.getElementById("current_password");

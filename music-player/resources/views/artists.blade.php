@@ -3,19 +3,22 @@
 @section('content')
   <head>
     <link rel="stylesheet" href="{{ asset('css/artists_styles.css') }}">
+    <script src="{{ asset('js/artists.js') }}"></script>
   </head>
 
   <body>
     <main>
-      <h2>Artists!</h2>
-      @if (auth()->user()->artists()->count() < 1)
-        <p class="guidetext">
-          Seems like you have no artists saved yet! Add a new track <a href="/newtrack">here</a>!
-        </p>
-      @else
-        <p class="guidetext">
-        Here you can find a list of all your artists, click on the artist to find out more. d-_-b
-        </p>
+      <div id="top-info">
+        <h2>Artists!</h2>
+        @if (auth()->user()->artists()->count() < 1)
+          <p class="guidetext">
+            Seems like you have no artists saved yet! Add a new track <a href="/newtrack">here</a>!
+          </p>
+        @else
+          <p class="guidetext">
+          Here you can find a list of all your artists, click on the artist to find out more. d-_-b
+          </p>
+      </div>
         <section class="grid">
           @foreach(auth()->user()->artists()->distinct()->get() as $artist)
             @php

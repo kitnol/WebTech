@@ -3,15 +3,16 @@
 @section('content')
     <head>
         <link rel="stylesheet" href="{{ asset('css/home_styles.css') }}">
+        <script defer src="{{ asset('js/home.js') }}"></script>
     </head>
 
     <body>
     <main class="main">
         <div class="main-left">
-            <div class="hero-image">
+            <div class="hero-image" style="opacity: 0">
                 <h1 class="hero-text" style="margin-left: 50px;">Home Page</h1>
             </div>
-            <div class="song-list">
+            <div class="song-list" style="opacity: 0">
                 <section class="title" style="margin-left: 10px;">
                     <h2>Track list:</h2>
                 </section>
@@ -24,7 +25,7 @@
                                     ->unique('title');
                             @endphp
                             @foreach($songsbyartist as $song)
-                                <article class="card">
+                                <article class="card" style="opacity: 0">
                                     <button onclick="player.play({{$song->id}})"><i id="playBt{{(string)$song->id}}" class="fa fa-play"></i></button>
                                     <p>{{$artist->artist}} - {{$song->title}}</p>
                                 </article>
@@ -35,10 +36,10 @@
             </div>
         </div>
         <div class="main-right">
-            <div class="album-art">
+            <div class="album-art" style="opacity: 0">
                 <img src="https://placehold.co/300x200?text=Album-Picture" id="pic" class="album-pic">
             </div>
-            <div class="player-class">
+            <div class="player-class" style="opacity: 0">
                 <div></div>
                 <div class="song-info">
                     <h2>Played song:</h2>

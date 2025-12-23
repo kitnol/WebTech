@@ -1,12 +1,3 @@
-function editSong() {
-    document.getElementById('song-info').style.display = 'none';
-    document.getElementById('song-edit').style.display = '';
-}
-
-function cancelSong() {
-    document.getElementById('song-edit').style.display = 'none';
-    document.getElementById('song-info').style.display = '';
-}
 function fadeIn(container,start,length){
     if (container) {
         container.style.opacity = '0';
@@ -29,26 +20,17 @@ function fadeOut(container,length){
 document.addEventListener('DOMContentLoaded', function () {
     const topinfo = document.getElementById('top-info');
     const container = document.getElementById('card-container');
-    //crd.style.opacity = '1';
-    //const container = document.querySelector('.card');
-    const closebtn = document.getElementById('closebtn');
-    
     fadeIn(topinfo,100,0.3);
-    fadeIn(container,300,0.3);
-    fadeIn(closebtn,500,0.3);
-    
-    if (closebtn) {
-        closebtn.addEventListener('click', function() {
-        //console.log('Password edit button pressed');
-        fadeOut(closebtn,0.35); 
-        
-        setTimeout(() => {
-            fadeOut(container,0.35);
-        }, 200); 
+    fadeIn(container,400,0.5);
+
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+        //console.log('Form submitted');
+        fadeOut(container,0.35); 
         setTimeout(() => {
             fadeOut(topinfo,0.35);
-        }, 400); 
+        }, 100);           
         });
     }
-    
 });

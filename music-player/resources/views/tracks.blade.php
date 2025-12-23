@@ -36,19 +36,20 @@
 
   <body>
     <main>
-      <h2>Tracks!</h2>
-      @if (auth()->user()->songs->count() < 1)
-        <p class="guidetext">
-          Seems like you have no tracks saved yet! Add new <a href="/newtrack">here</a>!
-        </p>
-      @else
-        <p class="guidetext">
-          Here you can find a list of all your tracks, click on the track to find out more. d-_-b
-        </p>
-
+      <div id="top-info">
+        <h2>Tracks!</h2>
+        @if (auth()->user()->songs->count() < 1)
+          <p class="guidetext">
+            Seems like you have no tracks saved yet! Add new <a href="/newtrack">here</a>!
+          </p>
+        @else
+          <p class="guidetext">
+            Here you can find a list of all your tracks, click on the track to find out more. d-_-b
+          </p>
+      </div>
         <section class="grid">
           @foreach(auth()->user()->songs->pluck('artist_id')->unique() as $artist)
-            <fieldset>
+            <fieldset class="groupedfield">
               <legend>{{ auth()->user()->artists()->where('id', $artist)->first()->artist, }}</legend>
               @php
                 $songsbyartist = auth()->user()->songs
@@ -65,7 +66,7 @@
                   </a>
 
                   <a href="{{ route('songinfo', ['song' => $song->id]) }}" class="cardtext">
-                    {{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist }} - {{ $song->title }}
+                    <button class="button">{{ auth()->user()->artists()->where('id', $song->artist_id)->first()->artist }} - {{ $song->title }}</button>
                   </a>
                     <button onclick="delete_song({{ $song->id }})">
                       <i class="fa fa-trash" aria-hidden="true"></i>

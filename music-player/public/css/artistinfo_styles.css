@@ -34,10 +34,12 @@ ul {
 
 .info-row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   gap: 30px;     /* space between label and value */
   margin: 20px 0; /* space between info rows */
 }
+
 
 /*cards fratures*/
 .grid {
@@ -66,6 +68,7 @@ ul {
 }
 
 .card {
+  opacity: 0;
   background-color: #e6d1e3;
   max-width: 700px;   /* prevents it from stretching too wide */
   margin: auto;     /* centers the card inside the grid */
@@ -105,4 +108,39 @@ button:hover {
   border-radius: 50%;  /* makes it circular */
   border: 3px solid #784848; /* imge border */
   text-align: right;
+}
+#deletebtn{
+  opacity: 0;
+}
+#closebtn{
+  opacity: 0;
+}
+input {
+  border: 2px solid #d1a7cf;
+  /* a nice border */
+  background-color: #f9eef8;
+  /* a nice background */
+  padding: 8px 12px;
+  /* internal spacing */
+  border-radius: 8px;
+  /* rounded corners */
+  outline: none;
+  /* removes outline when typing - is prettier */
+  color: #5c3838;
+  font-size: 20px;
+}
+
+/* Animation classes for smooth transitions */
+.hidden {
+  display: none;
+  opacity: 0;
+}
+/* cancel animation for button */
+.cancel-col {
+  background-color: rgb(204, 0, 0);color: white;
+  transition: transform 0.5s ease-in-out;
+}
+.cancel-col:hover {
+  background-color: rgb(130, 0, 0);color: white;
+  transition: transform 0.5s ease-in-out;
 }

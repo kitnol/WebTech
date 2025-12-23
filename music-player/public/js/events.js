@@ -40,3 +40,31 @@ function toggleRemoveButton(){
     tracks[0].querySelector("button").disabled = true;
   }
 }
+
+// Fade out function for navbar navigation
+function fadeOut(container, length) {
+    if (container) {
+        container.style.transition = 'opacity ' + length + 's ease-out, transform ' + length + 's ease-out';
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(50px)';
+    }
+}
+
+// Function to fade out and navigate on navbar click
+function fadeOutAndNavigate(event, href) {
+    event.preventDefault();
+    const topinfo = document.getElementById('top-info');
+    const cardcontainer = document.getElementById('card-container');
+    if (topinfo && cardcontainer){
+      fadeOut(cardcontainer, 0.35);
+      setTimeout(() => {
+      fadeOut(topinfo, 0.35);
+      },300);
+    } else{
+    const main = document.querySelector('main');
+    fadeOut(main, 0.5);
+    }
+    setTimeout(() => {
+        window.location.href = href;
+    }, 200);
+}

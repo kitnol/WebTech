@@ -40,7 +40,14 @@ class AuthManager extends Controller
         $credentials = $request->only('email','password');
 
         if (Auth::attempt($credentials)){
+            if ($request->expectsJson()) {
+                return response()->json(['redirect' => route('home')]);
+            }
             return redirect()->intended(route('home'));
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['errors' => ['Invalid details, please try again']], 422);
         }
 
         return redirect(route('login'))->with("error", "Invalid details, please try again");
@@ -58,7 +65,13 @@ class AuthManager extends Controller
         $data['password']= Hash::make($request-> password); //make the password encripted
         $user=User::create($data); //pass the data
         if (!$user){
+            if ($request->expectsJson()) {
+                return response()->json(['errors' => ['Registration failed']], 422);
+            }
             return redirect(route('create'))->with("error", "No user, registration failed");
+        }
+        if ($request->expectsJson()) {
+            return response()->json(['redirect' => route('login'), 'success' => 'Registration successful, Please log in']);
         }
         return redirect(route('login'))->with("success", "Registration successful, Please log in");
     }

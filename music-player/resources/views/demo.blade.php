@@ -3,41 +3,42 @@
 @section('content')
     <head>
         <link rel="stylesheet" href="{{ asset('css/demo_styles.css') }}">
+        <script defer src="{{ asset('js/home.js') }}"></script>
     </head>
 
     <main class="main">
         <div class="main-left">
-            <div class="hero-image">
+            <div class="hero-image" style="opacity: 0">
                 <h1 class="hero-text" >Demo Page d-_-b </h1>
                 <p class="demotext">To access the functionalities <a href="{{ route('login') }}">Login</a> or <a href="{{ route('create') }}">Create</a> an account. <br> You can also learn more <a href="{{ route('aboutus') }}">about us</a>.</p>
             </div>
-            <div class="song-list">
+            <div class="song-list" style="opacity: 0">
                 <section class="title" style="margin-left: 10px;">
                     <h2>Track list:</h2>
                 </section>
                 <div class="scrollable">
                     <section class="cards-grid">
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
                             <p>Artist 1 - Track 1 </p>
                         </article>
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>                                
                             <p>Artist 2 - Track 2 </p>
                         </article>
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>
                             <p>Artist 3 - Track 3 </p>
                         </article>
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>                                
                             <p>Artist 4 - Track 4 </p>
                         </article>
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>                                
                             <p>Artist 5 - Track 5 </p>
                         </article>
-                        <article class="card">
+                        <article class="card" style="opacity: 0">
                             <button onclick="player.play()"><i id="playBt" class="fa fa-play"></i></button>                                
                             <p>Artist 6 - Track 6 </p>
                         </article>
@@ -46,10 +47,10 @@
             </div>
         </div>
         <div class="main-right">
-            <div class="album-art">
+            <div class="album-art" style="opacity: 0">
                 <img src="https://placehold.co/300x200?text=Album-Picture" class="album-pic" alt="albumpic" >
             </div>
-            <div class="player-class">
+            <div class="player-class" style="opacity: 0">
                 <div></div>
                 <div class="song-info">
                     <h2>Played song:</h2>

@@ -43,6 +43,7 @@
 
   <body>
     <main>
+      <div id="top-info">
       <h2>Artist Info d-_-b</h2>
       @error('error')
       <span class="error-message">{{ $message }}</span>
@@ -53,6 +54,7 @@
       @error('success')
       <span class="error-message">{{ $message }}</span>
       @enderror
+    </div>
       <section class="card">
         <div>
 
@@ -65,34 +67,36 @@
           }
           @endphp
         <img src="{{$artist_img_url}}" alt="{{$artist->artist}}" class="artistimage">
-              <div id="photo-info"><a href="javascript:editPhoto()"><button class="button">&#9998;</button></a></div>
-              <div class="info-row" id="photo-edit" style="display:none;">
+              <div id="photo-info" style="margin: 20px 0"><a href="javascript:editPhoto()"><button class="button">&#9998;</button></a></div>
+              <div class="info-row hidden" id="photo-edit">
                   <form action="{{ route('editartist-photo.post') }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="artist_id" value="{{ $artist->id }}">
                       <input type="file" name="cover_art_path" required>
                       <button type="submit">Upload</button>
                   </form>
-                  <a href="javascript:cancelPhoto()"><button class="button">&#10006;</button></a>
+                  <a href="javascript:cancelPhoto()"><button class="button cancel-col">&#10006;</button></a>
               </div>
           </div>
-        <div class="info-row" id="artist-info">
+          <!-- Artist info -->
+        <div class="info-row" id="artist-row">
           <span class="label">Artist:</span>
-          <span class="value">{{ $artist->artist }} </span>
-          <a href="javascript:editArtist()"><button class="button">&#9998;</button></a>
+          <!-- Artist info -->
+          <div id="artist-info">
+            <span class="value">{{ $artist->artist }} </span>
+          </div>
+         <!-- Artist edit -->
+          <div id="artist-edit" class="hidden">
+            <form action="{{ route('editartist.post') }}" method="POST">
+              @csrf
+              <input type="hidden" name="artist_id" value="{{ $artist->id }}">
+                <input type="text" id="new_artist" name="new_artist" value="{{$artist->artist}}" required>
+                <button type="submit" class="button">✔</button>
+            </form>
+         </div>
+          <a href="javascript:editArtist()" id="artist-button"><button class="button">&#9998;</button></a>
         </div>
-        <div class="info-row" id="artist-edit" style="display:none;">
-          <form action="{{ route('editartist.post') }}" method="POST">
-            @csrf
-            <input type="hidden" name="artist_id" value="{{ $artist->id }}">
-            <div class="info-row">
-              <label for="artist" class="label">Artist:</label>
-              <input type="text" id="new_artist" name="new_artist" value="{{$artist->artist}}" required>
-            </div>
-            <button type="submit" class="button">Save artist</button>
-          </form>
-          <a href="javascript:cancelArtist()"><button class="button">&#10006;</button></a>
-        </div>
+        
 
         <div class="info-row">
           <span class="label">Total songs from your list:</span>
@@ -109,8 +113,8 @@
         </div>
       </section>
 
-      <a href="{{ route('artists')}}"><button class="button">Close</button></a>
-      <a><button onclick="delete_artist({{ $artist->id }})" class="button">Delete</button></a>
+      <a href="{{ route('artists')}}"><button class="button" id="closebtn">Close</button></a>
+      <a><button onclick="delete_artist({{ $artist->id }})" class="button" id="deletebtn">Delete</button></a>
     </main>
   </body>
 @endsection

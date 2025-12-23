@@ -8,8 +8,8 @@
     <body>
         <main>
             <section class="grid">
-            <h2>About us! d-_-b</h2>    
-            <article class="card">
+            <h2 id="top-info">About us! d-_-b</h2>    
+            <article class="card" id="card-container">
                 <p>
                     Welcome! 
                     <br><br>
@@ -26,5 +26,25 @@
                 </p>
             </article>
         </main>
+        <script>
+            function fadeIn(container,start,length){
+                if (container) {
+                    container.style.opacity = '0';
+                    container.style.transform = 'translateY(50px)';
+                    container.style.transition = 'opacity '+length+'s ease-out, transform '+length+'s ease-out';
+                    // make animation after a the start delay
+                    setTimeout(() => {
+                        container.style.opacity = '1';
+                        container.style.transform = 'translateY(0)';
+                    }, start);
+                }
+            }
+            document.addEventListener('DOMContentLoaded', function () {
+            const topinfo = document.getElementById('top-info');
+            const container = document.getElementById('card-container');
+            fadeIn(topinfo,100,0.3);
+            fadeIn(container,300,0.3);
+            });
+        </script>
     </body>
 @endsection

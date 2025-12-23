@@ -10,27 +10,30 @@
 
     <body>
         <main>
-            <h2>d-_-b Password Edit!</h2>
-            <p class="guidetext">Change your private password!</p>
-            <!--display error messages-->
-            <div class="mt-5">
-                @if($errors->any()) <!--check for errors-->
-                    <div class="col-12">
-                        @foreach($errors->all() as $error)
-                            <div class="alert alert-danger">{{$error}}</div>
-                        @endforeach
-                    </div>
-                @endif
+            <div id="top-info">
+                <h2>d-_-b Password Edit!</h2>
+                <p class="guidetext">Change your private password!</p>
+                <!--display error messages-->
+                <div class="mt-5">
+                    @if($errors->any()) <!--check for errors-->
+                        <div class="col-12">
+                            @foreach($errors->all() as $error)
+                                <div class="alert alert-danger">{{$error}}</div>
+                            @endforeach
+                        </div>
+                    @endif
 
-                @if(session()->has('error'))
-                    <div class="alert alert-danger">{{session('error')}}</div>
-                @endif
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">{{session('error')}}</div>
+                    @endif
 
-                @if(session()->has('success'))
-                    <div class="alert alert-success">{{session('success')}}</div>
-                @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">{{session('success')}}</div>
+                    @endif
+                </div>
             </div>
             <!-- Start of card -->
+            <div id="card-container">
             <article class="card">
                 <div class="card-info">
                     <!-- Username info -->
@@ -73,7 +76,8 @@
             </article>
             <br><br>
             <!-- Close Button -->
-            <a href="{{ route('profile')}}"><button class="button">Close</button></a>
+            <a href="{{ route('profile')}}"><button class="button" id="closebtn">Close</button></a>
+            </div>
         </main>
     </body>
 @endsection

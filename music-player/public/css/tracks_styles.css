@@ -62,7 +62,9 @@ p {
   font-size: 20px;
   color: black;
 }
-
+.groupedfield{
+  opacity:0;
+}
 /*interactive buttons*/
 button {
   background-color: purple;

@@ -39,6 +39,7 @@ p {
 }
 
 .card {
+  opacity:0;
     max-width: 280px;
   background-color: #f1f1f1;
       padding: 10px;

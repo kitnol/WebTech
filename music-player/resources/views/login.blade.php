@@ -3,6 +3,7 @@
 @section('content')
 
     <head>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('css/login_styles.css') }}">
     </head>
 
@@ -28,9 +29,10 @@
             </div>
 
             <div class="login-container">
-                <h2>Login!</h2>
-                <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
-
+                <div id="top-info">
+                    <h2>Login!</h2>
+                    <p class="guidetext">To access the pages please login or create a new account. d-_-b</p>
+                </div> 
 
                 <!-- Old Design Version -->
                 <!-- <form action="{{route('login.post')}}" method="POST"> 
@@ -46,29 +48,31 @@
 
 
                 <!-- New Design Version -->
-                <article class="card">
-                    <div class="card-info">
-                        <form action="{{route('login.post')}}" method="POST">
-                            @csrf
-                            <!-- Username info -->
-                            <div class="info-row" id="user-email">
-                                <label class="label">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <!-- Password input -->
-                            <div class="info-row">
-                                <label for="password" class="label">Password:</label>
-                                <input type="password" id="password" name="password" required>
-                            </div>
-                    </div>
-                </article>
-                <br>
-                <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
-                </form>
-                <br>
-                <p class="link">
-                    <a href="{{ route('create') }}">Create a new user instead</a>
-                </p>
+                <div id="card-container">
+                    <article class="card">
+                        <div class="card-info">
+                            <form action="{{route('login.post')}}" method="POST">
+                                @csrf
+                                <!-- Username info -->
+                                <div class="info-row" id="user-email">
+                                    <label class="label">Email:</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <!-- Password input -->
+                                <div class="info-row">
+                                    <label for="password" class="label">Password:</label>
+                                    <input type="password" id="password" name="password" required>
+                                </div>
+                        </div>
+                    </article>
+                    <br>
+                    <button type="submit" value="Login" id="login-button" class="submitbutton">Login</button>
+                    </form>
+                    <br>
+                    <p class="link">
+                        <a href="{{ route('create') }}">Create a new user instead</a>
+                    </p>
+                </div>
             </div>
 
             <script src="{{ asset('js/login.js') }}"></script>

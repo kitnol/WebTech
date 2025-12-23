@@ -75,12 +75,14 @@ p {
 
 .info-row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
   gap: 30px;     /* space between label and value */
   margin: 20px 0; /* space between info rows */
 }
 
 .label {
+  text-align: center;
   font-weight: bold;
   font-size: 20px;
   color: #520019;
@@ -90,7 +92,9 @@ p {
   color: #784848;
   font-size: 20px;
 }
-
+.form{
+  display: inline;
+}
 /*interactive button "save"*/
 button {
   background-color: purple;
@@ -110,4 +114,45 @@ button {
 button:hover {
   background-color: indigo;color: white;
   transform: scale(1.1);   /* Increase size*/
+}
+
+input {
+  border: 2px solid #d1a7cf;
+  /* a nice border */
+  background-color: #f9eef8;
+  /* a nice background */
+  padding: 8px 12px;
+  /* internal spacing */
+  border-radius: 8px;
+  /* rounded corners */
+  outline: none;
+  /* removes outline when typing - is prettier */
+  color: #5c3838;
+  font-size: 20px;
+}
+/* Animation classes for smooth transitions */
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+  display: flex !important;
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+/* cancel animation for button */
+.cancel-col {
+  background-color: rgb(204, 0, 0);color: white;
+  transition: transform 0.5s ease-in-out;
+}
+.cancel-col:hover {
+  background-color: rgb(130, 0, 0);color: white;
+  transition: transform 0.5s ease-in-out;
 }
