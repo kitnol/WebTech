@@ -15,6 +15,7 @@ class MusicPlayer {
         this.currentTrackID = 0;
         this.isPlaying = false;
         this.isMoving = false;
+        this.isNode = false;
         this.last_angle = 0;
 
         // Web Audio API setup
@@ -25,6 +26,7 @@ class MusicPlayer {
         this.startTime = 0;
         this.pauseTime = 0;
         this.duration = 0;
+        this.looping = false;
 
         // DOM elements
         this.seekbar = document.getElementById('progressCircle');
@@ -55,12 +57,13 @@ class MusicPlayer {
     }
 
     async loadTrack(index) {
-        // Update UI
-        // let index = this.tracks.findIndex(t => t.id === id);
-        // console.log("Index of song: " + index);
+
         if(this.currentTrackIndex == index) {
+            console.error("Track already loaded:", this.tracks[index].title);
             return 0;
         }
+
+        console.warn("Loading track:", this.tracks[index].title);
 
 
         if (!this.tracks[index].cover) {
@@ -71,11 +74,6 @@ class MusicPlayer {
             console.log("Cover art found: " + this.tracks[index].cover);
             this.coverArt.style.objectFit = 'scale-down';
             this.coverArt.src = "storage/" + this.tracks[index].cover;
-        }
-
-        if (this.songButton != null) {
-            this.songButton.classList.remove('fa-pause');
-            this.songButton.classList.add('fa-play');
         }
 
         this.currentTrackID = this.tracks[index].id;
@@ -110,6 +108,38 @@ class MusicPlayer {
         }
     }
 
+    seekTo(time) {
+        // Clamp time to valid range
+        time = Math.max(0, Math.min(time, this.duration));
+        
+        console.log("Seeking to:", time);
+
+        const wasPlaying = this.isPlaying;
+
+        // Stop current playback completely
+        if (this.sourceNode) {
+            try {
+                this.sourceNode.stop();
+                this.sourceNode.disconnect();
+            } catch (e) {
+                console.log("Source already stopped");
+            }
+            this.sourceNode = null;
+        }
+
+        // Set the new position
+        this.pauseTime = time;
+        this.isPlaying = false;
+        
+        console.log("✅ Seeked to:", this.pauseTime);
+
+        // Restart if it was playing
+        if (wasPlaying) {
+            console.log("▶ Resuming playback after seek");
+            this.playAudio();
+        }
+    }
+
     playAudio() {
         if (!this.audioBuffer) {
             console.error("No audio loaded");
@@ -124,28 +154,41 @@ class MusicPlayer {
         // Start playing from pauseTime
         this.sourceNode.start(0, this.pauseTime);
         this.startTime = this.audioContext.currentTime - this.pauseTime;
-        this.isPlaying = true;
 
         // Handle end of audio
         this.sourceNode.onended = () => {
-            if (this.isPlaying) {
+            if (this.audioBuffer.duration - this.getCurrentTime() < 0.1) {
                 this.isPlaying = false;
                 this.pauseTime = 0;
                 this.updatePlayButtonUI(false);
+                console.log("Audio ended");
             }
         };
+        this.isPlaying = true;
+        
+        console.log("playAudio isPlaying set to ", this.isPlaying);
     }
 
     pauseAudio() {
-        if (!this.isPlaying) return;
+        if (!this.isPlaying) {
+            console.log("Already paused");
+            return;
+        }
 
-        // Calculate current position
+        // Calculate current position BEFORE stopping
         this.pauseTime = this.audioContext.currentTime - this.startTime;
+        
+        console.log("Pausing at:", this.pauseTime);
 
         // Stop the source
         if (this.sourceNode) {
-            this.sourceNode.stop();
-            this.sourceNode.disconnect();
+            try {
+                this.sourceNode.stop();
+                this.sourceNode.disconnect();
+            } catch (e) {
+                console.log("Error stopping source:", e);
+            }
+            this.sourceNode = null;
         }
 
         this.isPlaying = false;
@@ -153,47 +196,35 @@ class MusicPlayer {
 
     stopAudio() {
         if (this.sourceNode) {
-            this.sourceNode.stop();
-            this.sourceNode.disconnect();
-        }
-
-        if (this.songButton != null) {
-            this.songButton.classList.remove('fa-play');
-            this.songButton.classList.add('fa-pause');
+            try {
+                this.sourceNode.stop();
+                this.sourceNode.disconnect();
+            } catch (e) {
+                console.log("Error stopping source:", e);
+            }
+            this.sourceNode = null;
         }
 
         this.isPlaying = false;
         this.pauseTime = 0;
     }
 
-    seekTo(time) {
-        // Clamp time to valid range
-        time = Math.max(0, Math.min(time, this.duration));
-
-        const wasPlaying = this.isPlaying;
-
-        if (this.isPlaying) {
-            this.pauseAudio();
-        }
-
-        this.pauseTime = time;
-        console.log("✅ Seeked to:", this.pauseTime);
-
-        if (wasPlaying) {
-            this.playAudio();
-        }
-    }
+    
 
     getCurrentTime() {
         if (this.isPlaying) {
+            console.log("Getting current time while playing");
+            console.log("Current time:", this.audioContext.currentTime - this.startTime);
             return this.audioContext.currentTime - this.startTime;
         }
+        console.log("Getting current time while paused");
         return this.pauseTime;
     }
 
     updateTime() {
         if (!this.isMoving && this.audioBuffer && this.isPlaying) {
             const currentTime = this.getCurrentTime();
+            console.log("isPlaying: ", this.isPlaying);
             const percentage = (currentTime / this.duration) * 100;
 
             // Update vinyl rotation
@@ -213,7 +244,11 @@ class MusicPlayer {
             let currentMinutes = Math.floor(currentTime / 60);
             let currentSeconds = Math.floor(currentTime % 60);
             this.timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds);
+            console.log("Time updated to:", this.timeDisplay.textContent);
         }
+        // else{
+        //     console.log("Skipping time update because isMoving is true or no audioBuffer");
+        // }
     }
 
     click(event) {
@@ -227,7 +262,7 @@ class MusicPlayer {
         }
     }
 
-    mouseup(event) {
+    async mouseup(event) {
         console.log("Mouse up");
 
         this.seekbar.removeEventListener('mousemove', this.boundChangeSeek);
@@ -248,9 +283,22 @@ class MusicPlayer {
         console.log("Seeking to:", seekTime, "out of", this.duration);
 
         // Use the new seek method
-        this.seekTo(seekTime);
+        await this.seekTo(seekTime);
 
         this.isMoving = false;
+        console.log("isMoving set to false ", this.isMoving);
+        console.log("isMoving: ", this.isMoving, ";  audioBuffer: ", this.audioBuffer, ";  isPlaying: ", this.isPlaying);
+
+        const currentTime = this.getCurrentTime();
+        const percentage = (currentTime / this.duration) * 100;
+        setProgress(percentage);
+        
+        let currentMinutes = Math.floor(currentTime / 60);
+        let currentSeconds = Math.floor(currentTime % 60);
+        this.timeDisplay.textContent = currentMinutes + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds);
+        
+        console.log("Display updated to:", this.timeDisplay.textContent);
+
     }
 
     changeSeek(event) {
@@ -298,13 +346,16 @@ class MusicPlayer {
                 await this.loadTrack(index);
                 this.currentTrackID = id;
                 this.isPlaying = false;
+                console.warn("Loaded new track ID:", id, "at index:", index);
             }
         }
 
         if (!this.isPlaying) {
             this.playAudio();
             this.updatePlayButtonUI(true);
+            console.log("▶ Playing track ID:", this.currentTrackID);
         } else {
+            console.log("⏸ Pausing track ID:", this.currentTrackID);
             this.pauseAudio();
             this.updatePlayButtonUI(false);
         }
@@ -317,21 +368,43 @@ class MusicPlayer {
     }
 
     async next() {
-        this.currentTrackIndex = (this.currentTrackIndex + 1) % this.tracks.length;
-        await this.loadTrack(this.currentTrackIndex);
-        this.isPlaying = false;
-        this.play(this.tracks[this.currentTrackIndex].id);
+        if (this.sourceNode) {
+            try {
+                this.sourceNode.stop();
+                this.sourceNode.disconnect();
+            } catch (e) {
+                console.log("Error stopping source:", e);
+            }
+            this.sourceNode = null;
+        }
+        this.pauseTime = 0;
+        await this.loadTrack((this.currentTrackIndex + 1) % this.tracks.length);
+        this.playAudio();
+        this.updatePlayButtonUI(true);
         setProgressAngle(0);
         this.vinyl_angle = 0;
     }
 
     async previous() {
-        this.currentTrackIndex = (this.currentTrackIndex - 1 + this.tracks.length) % this.tracks.length;
-        await this.loadTrack(this.currentTrackIndex);
-        this.isPlaying = false;
-        this.play(this.tracks[this.currentTrackIndex].id);
+        if (this.sourceNode) {
+            try {
+                this.sourceNode.stop();
+                this.sourceNode.disconnect();
+            } catch (e) {
+                console.log("Error stopping source:", e);
+            }
+            this.sourceNode = null;
+        }
+        this.pauseTime = 0;
+        await this.loadTrack((this.currentTrackIndex - 1 + this.tracks.length) % this.tracks.length);
+        this.playAudio();
+        this.updatePlayButtonUI(true);
         setProgressAngle(0);
         this.vinyl_angle = 0;
+    }
+
+    loop(){
+        this.looping = !this.looping;
     }
 }
 
